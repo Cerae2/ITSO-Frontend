@@ -24,7 +24,7 @@ function Learnmore() {
         <div className="yellowContainer">
         <div className="buttonContainer">
         <Link to="/School">
-            <button>About Us</button>
+            <button>School</button>
             </Link>
             <Link to="/Staff">
             <button>Staff</button>
@@ -36,7 +36,7 @@ function Learnmore() {
             <button>Policy statement</button>
             </Link>
             <Link to="/AboutUs">
-            <button>School</button>
+            <button>About Us</button>
             </Link>
             {/* Add more buttons as needed */}
           </div>
