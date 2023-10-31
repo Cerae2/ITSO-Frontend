@@ -1,0 +1,47 @@
+.frontpageStyle {
+  background-color: #201B51;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0; /* Remove the single quotes around 0 */
+  position: relative;
+}
+.textContainerStyle {
+  background-color: #201B51;
+  max-width: 1000px;
+  width: 100%; /* Remove the single quotes around '100%' */
+  color: #FBB217;
+  text-align: center;
+  padding: 20px;
+  position: relative; /* Use relative instead of absolute */
+}
+.logoStyle {
+  max-width: 5%;
+  height: auto;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+.SchoolContainer {
+  background-color:#FBB217 ;
+  color: black;
+  position: absolute;
+  max-width: 100%;
+  padding: 10px 500px;
+  text-align: center;
+  top: 30%;
+  border-radius: 30px;
+  
+ 
+}
+.whiteContainer {
+  background-color: white;
+  color: black;
+  position: absolute;
+  top: 50%;
+  height: 50%;
+  width: 90%;
+  align-items: center;
+  border-radius: 30px;
+}
