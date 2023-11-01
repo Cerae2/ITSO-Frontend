@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import './login.css'
+import Header from '../../call_components/Header';
+import './Login.css'
 import myImage from '../pictures/ustp_logo.jpg';
 import { Link } from 'react-router-dom';
 
 function Login() {
+  <Header/>
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -46,7 +48,7 @@ function Login() {
         </div>
 
         {/* Login Button */}
-        <Link to="/Learnmore"><button type="submit" className="login-button">Login</button></Link>
+        <Link to="/Dashboard"><button type="submit" className="login-button">Login</button></Link>
 
         {/* Forgot Password Link */}
         <a href="#" className="forgot-password">Forgot Password?</a>

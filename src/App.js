@@ -1,6 +1,7 @@
 import React from "react";
 import {BrowserRouter as Router, Routes, Route,} from "react-router-dom";
-import Login from '../src/Pages/login/login';
+import Dashboard from "../src/Pages/Dashboard/Dashboard";
+import Login from "../src/Pages/Login/Login";
 import Learnmore from "../src/Pages/Learnmore/Learnmore";
 import School from "../src/Pages/School/School";
 import Patent from "../src/Pages/Patent/Patent";
@@ -9,15 +10,20 @@ import AboutUs from "../src/Pages/AboutUs/AboutUs";
 import Staff from "../src/Pages/Staff/Staff";
 
 
+
+
 function App() {
   return (
+    
     
       <div className="App">
           <Router>
             <div >
             <Routes>
                 
-                <Route path="/" element={<Login/>}/>
+               
+                <Route path="/" element={<Dashboard/>}/>
+                <Route path="/Login" element={<Login/>}/>
                 <Route path="/Learnmore" element={<Learnmore/>}/>
                 <Route path="/School" element={<School/>}/>
                 <Route path="/Patent" element={<Patent/>}/>
