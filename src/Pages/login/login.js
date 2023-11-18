@@ -18,8 +18,13 @@ function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    if (!credentials.username || !credentials.password) {
+      console.error('Username and password are required');
+      return; // Don't proceed with the request if fields are empty
+    }
+
     try {
-      const response = await fetch('https://localhost:8000/itsologin/', {
+      const response = await fetch('http://localhost:8000/itsologin/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
