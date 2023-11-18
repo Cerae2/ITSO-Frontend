@@ -1,60 +1,75 @@
 import React, { useState } from 'react';
 import Header from '../../call_components/Header';
-import './Login.css'
+import './login.css';
 import myImage from '../pictures/ustp_logo.jpg';
 import { Link } from 'react-router-dom';
 
 function Login() {
-  <Header/>
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [credentials, setCredentials] = useState({
+    username: '',
+    password: '',
+  });
 
-  const handleUsernameChange = (event) => {
-    setUsername(event.target.value);
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setCredentials({ ...credentials, [name]: value });
   };
 
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
-
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Add your authentication logic here, e.g., make an API request
-  };
 
-  // ...rest of your component code
+    try {
+      const response = await fetch('https://localhost:8000/itsologin/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: credentials.username,
+          password: credentials.password,
+        }),
+      });
+
+      if (response.ok) {
+        window.location.href = '/Dashboard'; // Redirect to Dashboard upon successful login
+      } else {
+        console.error('Authentication failed');
+        // Handle authentication errors or display an error message to the user
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      // Handle network errors or other exceptions
+    }
+  };
 
   return (
     <div className="login-container">
-        <img src={myImage} className="image-resize" alt="USTP Logo" />
+      <Header />
+      <img src={myImage} className="image-resize" alt="USTP Logo" />
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <input
             placeholder='Email:'
             type="text"
-            id="username"
-            value={username}
-            onChange={handleUsernameChange}
+            name="username"
+            value={credentials.username}
+            onChange={handleInputChange}
           />
         </div>
         <div className="form-group">
           <input
             placeholder='Password:'
             type="password"
-            id="password"
-            value={password}
-            onChange={handlePasswordChange}
+            name="password"
+            value={credentials.password}
+            onChange={handleInputChange}
           />
         </div>
-
-        {/* Login Button */}
-        <Link to="/Dashboard"><button type="submit" className="login-button">Login</button></Link>
-
-        {/* Forgot Password Link */}
-        <a href="#" className="forgot-password">Forgot Password?</a>
+        <button type="submit" className="login-button">Login</button>
+        <Link to="#" className="forgot-password">Forgot Password?</Link>
       </form>
     </div>
   );
-}  
+}
 
 export default Login;

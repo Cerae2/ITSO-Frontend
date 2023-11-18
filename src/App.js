@@ -1,7 +1,7 @@
 import React from "react";
 import {BrowserRouter as Router, Routes, Route,} from "react-router-dom";
 import Dashboard from "../src/Pages/Dashboard/Dashboard";
-import Login from "../src/Pages/Login/Login";
+import Login from "../src/Pages/login/login";
 import Learnmore from "../src/Pages/Learnmore/Learnmore";
 import School from "../src/Pages/School/School";
 import Patent from "../src/Pages/Patent/Patent";
