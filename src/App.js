@@ -1,43 +1,41 @@
-import React from "react";
-import {BrowserRouter as Router, Routes, Route,} from "react-router-dom";
-import Dashboard from "../src/Pages/Dashboard/Dashboard";
-import Login from "../src/Pages/login/login";
-import Learnmore from "../src/Pages/Learnmore/Learnmore";
-import School from "../src/Pages/School/School";
-import Patent from "../src/Pages/Patent/Patent";
-import Policy from "../src/Pages/Policy/Policy";
-import AboutUs from "../src/Pages/AboutUs/AboutUs";
-import Staff from "../src/Pages/Staff/Staff";
-
-
-
+import logo from "./logo.svg";
+import "./App.css";
+import React, { useState, useEffect } from "react";
+import {
+  HashRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+  useLocation as useReactRouterLocation,
+} from "react-router-dom";
+import Dashboard from "./pages/PRIVATE/Dashboard/Dashboard";
+import Landing from "./pages/PUBLIC/Landing/Landing";
+import Services from "./pages/PRIVATE/Services/Services";
+import Submit from "./pages/PRIVATE/Submit/Submit";
+import Downloadable from "./pages/PRIVATE/Downloadable/Downloadable";
+import Home from "./pages/PRIVATE/Home/Home";
 
 function App() {
   return (
-    
-    
-      <div className="App">
-          <Router>
-            <div >
-            <Routes>
-                
-               
-                <Route path="/" element={<Dashboard/>}/>
-                <Route path="/Login" element={<Login/>}/>
-                <Route path="/Learnmore" element={<Learnmore/>}/>
-                <Route path="/School" element={<School/>}/>
-                <Route path="/Patent" element={<Patent/>}/>
-                <Route path="/Policy" element={<Policy/>}/>
-                <Route path="/AboutUs" element={<AboutUs/>}/>
-                <Route path="/Staff" element={<Staff/>}/>
-                
-            </Routes>
-            </div>
-          </Router>
-      </div>
-     
-      
-    );
-  }
+    <div>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Landing></Landing>}></Route>
+        </Routes>
+
+        <Routes>
+          <Route path="/dashboard" element={<Dashboard></Dashboard>}></Route>
+          <Route path="/service" element={<Services></Services>}></Route>
+          <Route path="/home" element={<Home></Home>}></Route>
+          <Route
+            path="/download"
+            element={<Downloadable></Downloadable>}
+          ></Route>
+          <Route path="/submit" element={<Submit></Submit>}></Route>
+        </Routes>
+      </Router>
+    </div>
+  );
+}
 
 export default App;

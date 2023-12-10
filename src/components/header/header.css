@@ -1,0 +1,37 @@
+.header-container {
+  display: flex;
+  position: fixed;
+  flex: 1;
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  z-index: 999;
+  background-color: #201b51;
+  align-items: center;
+}
+
+.header-title {
+  color: white;
+  line-height: 1;
+  font-family: "Times New Roman", Times, serif;
+  width: 700px;
+}
+
+.ant-dropdown-link {
+  color: white;
+}
+
+.dropdown-container {
+  display: flex;
+  width: 100%;
+  padding-right: 20px;
+  justify-content: space-evenly;
+}
+.button-login {
+  border: 0;
+  background-color: transparent;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 17px;
+  cursor: pointer;
+}

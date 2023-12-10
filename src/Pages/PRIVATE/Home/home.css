@@ -1,0 +1,25 @@
+.home-container {
+    display: flex;
+    flex: 1;
+    background-color: #201b51;
+    width: 100%;
+    height: 15%;
+  }
+  .logo-blue {
+    height: 150px;
+    width: 150px;
+  }
+  .header-container-home {
+    display: flex;
+    align-items: center;
+  }
+  
+  .title-container-home {
+    line-height: 1;
+  }
+  .uni-title {
+    color: white;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 20px;
+  }
+  

@@ -1,0 +1,48 @@
+.input-container {
+  position: relative;
+}
+
+.input-component {
+  height: 40px;
+  width: 300px;
+  outline: none;
+  font-size: 20px;
+  padding: 5px;
+  margin-bottom: 30px;
+  border: 1px solid white;
+  background-color: transparent;
+  transition: 0.4s ease-in-out;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: white;
+}
+
+::placeholder {
+  color: #ffffff7a;
+  font-size: 14px;
+}
+.input-component:focus::placeholder {
+  color: #ffffff00;
+  transition: 0.5s ease-in-out;
+}
+
+.input-component:hover {
+  box-shadow: 1px 1px 10px 1px rgba(255, 255, 255, 0.575);
+}
+
+.label {
+  color: rgba(255, 255, 255, 0);
+  font-weight: 90;
+  position: absolute;
+  top: 0px;
+  left: 10px;
+  transition: 0.4s ease-in-out;
+  pointer-events: none;
+}
+
+.input-container:focus-within .label {
+  color: rgb(255, 255, 255);
+  font-weight: 90;
+  top: -40px;
+  font-size: 14px;
+}
