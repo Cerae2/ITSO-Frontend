@@ -1,0 +1,66 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.banner {
+  position: relative;
+  background: url(./../../../assets/building.jpg);
+  height: 65vh;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+.banner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.568
+  ); /* Adjust the alpha (last value) for transparency */
+}
+.banner .waves {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  left: 0;
+  top: 0;
+  transform: rotateX(180deg);
+}
+.hello {
+  font-size: 500px;
+  display: flex;
+  z-index: 999px;
+}
+
+.title-search {
+  position: absolute;
+  top: 12%;
+  left: 2%;
+  flex-direction: row;
+  display: flex;
+  width: 100vh;
+}
+
+.invention-title {
+  color: white;
+  font-size: 7vh;
+  font-weight: 500;
+  font-family: "Times New Roman", Times, serif;
+  right: 0;
+}
+.sub-title {
+  color: white;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: lighter;
+  font-size: 2vh;
+  right: 0;
+}

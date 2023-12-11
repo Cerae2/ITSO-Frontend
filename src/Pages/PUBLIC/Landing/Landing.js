@@ -11,7 +11,6 @@ import Header from "../../../components/header/Header";
 function landing(props) {
   return (
     <>
-      <Header></Header>
       <div className="landing-container">
         <div className="bg-container">
           <img className="bg" src={bg}></img>
@@ -29,7 +28,7 @@ function landing(props) {
                 alignItems: "center",
               }}
             >
-              <InputField label={"Username"}></InputField>
+              <InputField colorInput={"white"} colorLabel={"white"} label={"Username"}></InputField>
               <PasswordField label={"Password"}></PasswordField>
             </div>
             <div style={{}}>

@@ -1,0 +1,53 @@
+.global-input-container {
+  position: relative;
+}
+
+.global-input-component {
+  height: 40px;
+  width: 300px;
+  outline: none;
+  font-size: 20px;
+  padding: 5px;
+  margin-bottom: 30px;
+  border: 1px solid rgb(100, 100, 100);
+  background-color: transparent;
+  transition: 0.4s ease-in-out;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: rgb(0, 0, 0);
+  border-radius: 5px;
+
+  font-family: "Times New Roman", Times, serif;
+}
+
+::placeholder {
+  color: #616161;
+  font-size: 14px;
+}
+.global-input-component:focus::placeholder {
+  color: #ffffff;
+  transition: 0.5s ease-in-out;
+}
+
+.global-input-component:hover {
+  box-shadow: 1px 1px 10px 1px rgba(25, 19, 56, 0.171);
+}
+
+.global-label {
+  color: rgba(0, 0, 0, 0);
+  position: absolute;
+  top: 0px;
+  left: 10px;
+  transition: 0.4s ease-in-out;
+  pointer-events: none;
+  font-size: 12px;
+  font-weight: normal;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.global-input-container:focus-within .global-label {
+  color: rgb(0, 0, 0);
+  font-weight: 90;
+  top: -30px;
+  font-size: 14px;
+}

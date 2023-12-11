@@ -1,7 +1,7 @@
 import React from "react";
 import "./inputfield.css";
 
-function InputField({ label, onChange }) {
+function InputField({ label, onChange, colorInput, colorLabel }) {
   return (
     <div className="input-container">
       <input

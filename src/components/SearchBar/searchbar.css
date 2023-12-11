@@ -1,0 +1,25 @@
+.search-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  width: 80vh;
+}
+.search-input {
+  outline: 0;
+  height: 50px;
+  width: 120vh;
+  padding: 10px;
+  transition: background-color 0.5s ease-in-out;
+  font-size: 25px;
+  font-family: "Times New Roman", Times, serif;
+}
+.icon-search {
+  background-color: #16194d;
+}
+
+::placeholder {
+  color: rgba(0, 0, 0, 0.562);
+  font-size: 25px;
+}

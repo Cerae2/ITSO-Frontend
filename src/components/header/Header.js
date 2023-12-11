@@ -7,6 +7,7 @@ import { Dropdown, Menu, Space } from "antd";
 import campusData from "./../JSON/campus.json";
 import aboutUsData from "./../JSON/about.json";
 import { Button } from "@mui/material";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function Header(props) {
   const campusMenu = (
@@ -46,16 +47,22 @@ function Header(props) {
     </Menu>
   );
 
+  const navigate = useNavigate(); // Use the useNavigate hook
+
+  const handleLoginClick = () => {
+    navigate("/landing");
+  };
+
   return (
     <div className="header-container">
       <img
-        style={{ height: 90, width: 90, marginRight: 40, marginLeft: 20 }}
+        style={{ height: 60, width: 60, marginRight: 40, marginLeft: 20 }}
         src={logo}
         alt="Logo"
       ></img>
       <div className="header-title">
-        <p>UNIVERSITY OF SCIENCE AND TECHNOLOGY</p>
-        <p>OF THE SOUTHERN PHILIPPINES</p>
+        <p className="school-name">UNIVERSITY OF SCIENCE AND TECHNOLOGY</p>
+        <p className="school-name">OF THE SOUTHERN PHILIPPINES</p>
       </div>
       <div className="dropdown-container">
         <Dropdown overlay={campusMenu} trigger={["click", "hover"]}>
@@ -73,7 +80,9 @@ function Header(props) {
             Contact us <DownOutlined />
           </a>
         </Dropdown>
-        <button className="button-login">Login</button>
+        <button onClick={handleLoginClick} className="button-login">
+          Login
+        </button>
       </div>
     </div>
   );
