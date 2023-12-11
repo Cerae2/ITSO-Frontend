@@ -3,10 +3,14 @@ import React, { useState } from "react";
 import "./searchbar.css";
 import { Button } from "@mui/material";
 
-function SearchBar(props) {
+function SearchBar({ onChange }) {
   return (
     <div className="search-container">
-      <input className="search-input" placeholder="search..."></input>
+      <input
+        onChange={onChange}
+        className="search-input"
+        placeholder="search..."
+      ></input>
       <Button
         style={{
           height: 50,

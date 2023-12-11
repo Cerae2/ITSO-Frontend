@@ -51,3 +51,13 @@
   top: -30px;
   font-size: 14px;
 }
+
+.check-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.cam-label {
+  font-size: 17px;
+}

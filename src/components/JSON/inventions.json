@@ -1,0 +1,72 @@
+[
+  {
+    "Title_of_Invention": "Smart Home Automation System",
+    "Inventors": ["John Doe", "Jane Smith"],
+    "Summary": "A system for controlling and automating various devices within a home, providing convenience and energy efficiency.",
+    "Campus": "USTP Balubal",
+    "Category": "Patent"
+  },
+  {
+    "Title_of_Invention": "Bio-sensing Wearable Health Monitor",
+    "Inventors": ["Alice Johnson", "Bob Anderson"],
+    "Summary": "A wearable device that monitors various health parameters in real-time, providing users with personalized health insights.",
+    "Campus": "USTP Cagayan de Oro Campus",
+    "Category": "Patent"
+  },
+  {
+    "Title_of_Invention": "Multi-functional Folding Furniture",
+    "Inventors": ["Charlie Brown", "Eva Martinez"],
+    "Summary": "Innovative furniture design that can be folded and adapted for various purposes, optimizing space utilization.",
+    "Campus": "USTP Claveria",
+    "Category": "Utility Model"
+  },
+  {
+    "Title_of_Invention": "Augmented Reality Educational App",
+    "Inventors": ["Michael Chang", "Sophie Adams"],
+    "Summary": "An educational mobile application that uses augmented reality to enhance learning experiences for students.",
+    "Campus": "USTP Cagayan de Oro Campus",
+    "Category": "Patent"
+  },
+  {
+    "Title_of_Invention": "Solar-Powered Water Purification System",
+    "Inventors": ["David Williams", "Olivia Turner"],
+    "Summary": "A sustainable water purification system powered by solar energy, providing clean water in remote areas.",
+    "Campus": "USTP Vallanueva",
+    "Category": "Patent"
+  },
+  {
+    "Title_of_Invention": "Ergonomic Office Chair Design",
+    "Inventors": ["Grace Lee", "Robert Taylor"],
+    "Summary": "An office chair design that prioritizes ergonomics and comfort, reducing the risk of musculoskeletal issues.",
+    "Campus": "USTP Claveria",
+    "Category": "Industrial Design"
+  },
+  {
+    "Title_of_Invention": "Smart Agriculture Monitoring System",
+    "Inventors": ["Daniel Rodriguez", "Mia Patel"],
+    "Summary": "An IoT-based system for monitoring and managing agricultural conditions, optimizing crop yield and resource usage.",
+    "Campus": "USTP Claveria",
+    "Category": "Patent"
+  },
+  {
+    "Title_of_Invention": "Interactive Children's Book App",
+    "Inventors": ["Sophia Brown", "Jack Wilson"],
+    "Summary": "An app that combines traditional storytelling with interactive elements to engage and educate young readers.",
+    "Campus": "USTP Cagayan de Oro Campus",
+    "Category": "Copyright"
+  },
+  {
+    "Title_of_Invention": "Foldable Electric Scooter",
+    "Inventors": ["Elijah Clark", "Hannah Kim"],
+    "Summary": "A compact and foldable electric scooter for urban commuting, promoting eco-friendly transportation.",
+    "Campus": "USTP Claveria",
+    "Category": "Utility Model"
+  },
+  {
+    "Title_of_Invention": "AI-driven Personalized Shopping Assistant",
+    "Inventors": ["Ava Garcia", "Liam Thomas"],
+    "Summary": "An artificial intelligence-powered assistant that recommends personalized shopping choices based on user preferences and trends.",
+    "Campus": "USTP Balubal",
+    "Category": "Patent"
+  }
+]

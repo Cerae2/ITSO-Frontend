@@ -35,11 +35,6 @@
   top: 0;
   transform: rotateX(180deg);
 }
-.hello {
-  font-size: 500px;
-  display: flex;
-  z-index: 999px;
-}
 
 .title-search {
   position: absolute;
@@ -63,4 +58,127 @@
   font-weight: lighter;
   font-size: 2vh;
   right: 0;
+}
+
+.patent-container {
+  content: "";
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding: 5vh;
+}
+
+.filter-cotainer {
+  position: relative;
+  width: 50vh;
+  margin-right: 5vh;
+  padding: 20px;
+  height: 100%;
+  border-top: 15px solid #1a103f;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-subcotainer {
+  border-top: 12px solid #3a3a3a;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  width: 50vh;
+  left: 0;
+  margin-left: -20px;
+}
+
+.filter-subcotainer.campus {
+  border-top: none;
+  width: 50vh;
+  left: 0;
+  margin-left: -20px;
+}
+
+.filter-subcotainer.categories {
+  border-top: 12px solid #3a3a3a;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  width: 50vh;
+  left: 0;
+  margin-left: -20px;
+  margin-top: 50px;
+}
+.archive-container {
+  border: 1px solid grey;
+  position: relative;
+  width: 45%;
+  padding: 10px;
+  padding-top: 50px;
+  padding-left: 50px;
+  padding-right: 50px;
+  border-top: 15px solid #1a103f;
+  display: flex;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  flex-direction: column;
+}
+
+.row-line {
+  display: flex;
+  flex-direction: row;
+}
+.title-sub {
+  font-size: 2vh;
+  font-weight: bold;
+  width: 12vh;
+}
+
+.title-main {
+  font-size: 2vh;
+}
+
+.title-btn {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+.title-css {
+  font-size: 3vh;
+  margin-bottom: 40px;
+  transition: 0.2s ease-in-out;
+}
+.title-css:hover {
+  color: rgba(255, 153, 0, 0.815);
+}
+
+.container-data {
+  text-transform: none;
+  background-color: white;
+  width: 100%;
+  text-align: left;
+  padding: 10px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin-bottom: 40px;
+  border: 1px solid grey;
+  border-top: 5px solid #1a103f;
+  border-radius: 5px;
+}
+
+.search-message {
+  font-family: "Times New Roman", Times, serif;
+}
+
+.category-label {
+  font-weight: bold;
+  font-size: 40px;
+  margin-bottom: 30px;
+}
+
+.empty-con {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

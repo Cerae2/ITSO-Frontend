@@ -18,8 +18,3 @@
 .icon-search {
   background-color: #16194d;
 }
-
-::placeholder {
-  color: rgba(0, 0, 0, 0.562);
-  font-size: 25px;
-}

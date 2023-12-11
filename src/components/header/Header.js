@@ -56,7 +56,7 @@ function Header(props) {
   return (
     <div className="header-container">
       <img
-        style={{ height: 60, width: 60, marginRight: 40, marginLeft: 20 }}
+        style={{ height: "7vh", width: "7vh", marginRight: 40, marginLeft: 20 }}
         src={logo}
         alt="Logo"
       ></img>
