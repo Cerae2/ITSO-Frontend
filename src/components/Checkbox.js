@@ -2,17 +2,15 @@ import React, { useState } from "react";
 import "./style.css";
 import { Checkbox } from "@mui/material";
 
-function CheckBox({ label, onChange }) {
-  const [checked, setChecked] = useState(false);
-
+const CheckBox = ({ label, onChange, checked, key }) => {
   const handleCheckboxChange = () => {
-    setChecked(!checked);
-    onChange(label, !checked);
+    onChange(!checked);
   };
 
   return (
     <div className="check-container">
       <Checkbox
+        key={key}
         checked={checked}
         onChange={handleCheckboxChange}
         sx={{
@@ -26,6 +24,6 @@ function CheckBox({ label, onChange }) {
       <p className="cam-label">{label}</p>
     </div>
   );
-}
+};
 
 export default CheckBox;
