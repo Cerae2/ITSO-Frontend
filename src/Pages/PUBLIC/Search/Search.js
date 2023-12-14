@@ -5,12 +5,15 @@ import SearchBar from "../../../components/SearchBar/SearchBar";
 import inventionData from "./../../../components/JSON/inventions.json";
 import CheckBox from "../../../components/Checkbox";
 import empty from "./../../../assets/empty_state.png";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Search(props) {
   const [selectedCampuses, setSelectedCampuses] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-
+  const navigate = useNavigate();
+  const [selectedInvention, setSelectedInvention] = useState(null);
   const handleCampusChange = (campus, checked) => {
     if (checked) {
       setSelectedCampuses([...selectedCampuses, campus]);
@@ -18,6 +21,12 @@ function Search(props) {
       const newSelectedCampuses = selectedCampuses.filter((c) => c !== campus);
       setSelectedCampuses(newSelectedCampuses);
     }
+  };
+
+  const handleDetailsPage = (invention) => {
+    console.log("Selected Invention:", invention);
+    setSelectedInvention(invention);
+    navigate(`/detailsPage/${invention.id}`);
   };
 
   const handleCategoryChange = (category, checked) => {
@@ -192,11 +201,14 @@ function Search(props) {
             filteredData.map((invention) => (
               <>
                 <div className="container-data">
-                  <button className="title-btn">
+                  <Link
+                    to={`/detailsPage/${invention.id}`}
+                    className="title-btn"
+                  >
                     <h1 className="title-css">
                       {invention.Title_of_Invention}
                     </h1>
-                  </button>
+                  </Link>
                   <div className="row-line">
                     <div className="title-sub-container inventors">
                       <p className="title-sub inventors">Inventors:</p>

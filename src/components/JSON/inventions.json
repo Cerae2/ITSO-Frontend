@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "Title_of_Invention": "Smart Home Automation System",
     "Inventors": ["John Doe", "Jane Smith"],
     "Summary": "A system for controlling and automating various devices within a home, providing convenience and energy efficiency.",
@@ -7,6 +8,7 @@
     "Category": "Patent"
   },
   {
+    "id": 2,
     "Title_of_Invention": "Bio-sensing Wearable Health Monitor",
     "Inventors": ["Alice Johnson", "Bob Anderson"],
     "Summary": "A wearable device that monitors various health parameters in real-time, providing users with personalized health insights.",
@@ -14,6 +16,7 @@
     "Category": "Patent"
   },
   {
+    "id": 3,
     "Title_of_Invention": "Multi-functional Folding Furniture",
     "Inventors": ["Charlie Brown", "Eva Martinez"],
     "Summary": "Innovative furniture design that can be folded and adapted for various purposes, optimizing space utilization.",
@@ -21,6 +24,7 @@
     "Category": "Utility Model"
   },
   {
+    "id": 4,
     "Title_of_Invention": "Augmented Reality Educational App",
     "Inventors": ["Michael Chang", "Sophie Adams"],
     "Summary": "An educational mobile application that uses augmented reality to enhance learning experiences for students.",
@@ -28,6 +32,7 @@
     "Category": "Patent"
   },
   {
+    "id": 5,
     "Title_of_Invention": "Solar-Powered Water Purification System",
     "Inventors": ["David Williams", "Olivia Turner"],
     "Summary": "A sustainable water purification system powered by solar energy, providing clean water in remote areas.",
@@ -35,6 +40,7 @@
     "Category": "Patent"
   },
   {
+    "id": 6,
     "Title_of_Invention": "Ergonomic Office Chair Design",
     "Inventors": ["Grace Lee", "Robert Taylor"],
     "Summary": "An office chair design that prioritizes ergonomics and comfort, reducing the risk of musculoskeletal issues.",
@@ -42,6 +48,7 @@
     "Category": "Industrial Design"
   },
   {
+    "id": 7,
     "Title_of_Invention": "Smart Agriculture Monitoring System",
     "Inventors": ["Daniel Rodriguez", "Mia Patel"],
     "Summary": "An IoT-based system for monitoring and managing agricultural conditions, optimizing crop yield and resource usage.",
@@ -49,6 +56,7 @@
     "Category": "Patent"
   },
   {
+    "id": 8,
     "Title_of_Invention": "Interactive Children's Book App",
     "Inventors": ["Sophia Brown", "Jack Wilson"],
     "Summary": "An app that combines traditional storytelling with interactive elements to engage and educate young readers.",
@@ -56,6 +64,7 @@
     "Category": "Copyright"
   },
   {
+    "id": 9,
     "Title_of_Invention": "Foldable Electric Scooter",
     "Inventors": ["Elijah Clark", "Hannah Kim"],
     "Summary": "A compact and foldable electric scooter for urban commuting, promoting eco-friendly transportation.",
@@ -63,6 +72,7 @@
     "Category": "Utility Model"
   },
   {
+    "id": 10,
     "Title_of_Invention": "AI-driven Personalized Shopping Assistant",
     "Inventors": ["Ava Garcia", "Liam Thomas"],
     "Summary": "An artificial intelligence-powered assistant that recommends personalized shopping choices based on user preferences and trends.",
