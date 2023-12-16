@@ -74,7 +74,27 @@
   font-weight: 100;
 }
 
-.ui-nav.logout {
+.logout {
+  width: 5vh;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  list-style: none;
+}
+
+.logout-con {
   position: absolute;
-  right: 0;
+  border: 1px solid white;
+  border-radius: 100px;
+  width: 5vh;
+  height: 5vh;
+  right: 4vh;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.logout-con.bell {
+  right: 10vh;
+  border: none;
 }
