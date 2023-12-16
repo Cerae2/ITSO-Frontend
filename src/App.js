@@ -31,6 +31,7 @@ function App() {
           <Route path="/service" element={<Services></Services>}></Route>
           <Route path="/home" element={<Home></Home>}></Route>
           <Route path="/detailsPage/:id" element={<DetailsPage />} />
+          <Route path="/logout" element={<Search />} />
           <Route
             path="/download"
             element={<Downloadable></Downloadable>}
