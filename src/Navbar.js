@@ -2,15 +2,13 @@ import { Widgets } from "@mui/icons-material";
 import React from "react";
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import logo from "./assets/logo-blue.jpg";
+import "./App.css";
 
 function Navbar(props) {
   return (
-    <nav>
-      <div className="toggle-button">
-        <Widgets></Widgets>
-      </div>
-
-      <ul>
+    <nav className="nav">
+      <img className="nav-logo" src={logo}></img>
+      <ul className="ui-nav">
         <CustomLink to="/dashboard">Dashboard</CustomLink>
         <CustomLink to="/service">Service</CustomLink>
         <CustomLink to="/download">Downloadable Files</CustomLink>

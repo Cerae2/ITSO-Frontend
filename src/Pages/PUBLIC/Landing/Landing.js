@@ -7,8 +7,15 @@ import InputField from "../../../components/LoginComponent/InputField";
 import PasswordField from "../../../components/LoginComponent/PasswordField";
 import Home from "../../PRIVATE/Home/Home";
 import Header from "../../../components/header/Header";
+import { useNavigate } from "react-router-dom";
 
-function landing(props) {
+function Landing(props) {
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    navigate("/dashboard");
+  };
+
   return (
     <>
       <div className="landing-container">
@@ -28,7 +35,11 @@ function landing(props) {
                 alignItems: "center",
               }}
             >
-              <InputField colorInput={"white"} colorLabel={"white"} label={"Username"}></InputField>
+              <InputField
+                colorInput={"white"}
+                colorLabel={"white"}
+                label={"Username"}
+              ></InputField>
               <PasswordField label={"Password"}></PasswordField>
             </div>
             <div style={{}}>
@@ -46,6 +57,7 @@ function landing(props) {
                   fontSize: 15,
                   width: "100%",
                 }}
+                onClick={handleLogin}
               >
                 LOGIN
               </Button>
@@ -57,4 +69,4 @@ function landing(props) {
   );
 }
 
-export default landing;
+export default Landing;
