@@ -16,6 +16,7 @@ import Downloadable from "./pages/PRIVATE/Downloadable/Downloadable";
 import Home from "./pages/PRIVATE/Home/Home";
 import Search from "./pages/PUBLIC/Search/Search";
 import DetailsPage from "./pages/PUBLIC/Search/DetailsPage/DetailsPage";
+import Profile from "./pages/PRIVATE/Profile/Profile";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard></Dashboard>}></Route>
           <Route path="/service" element={<Services></Services>}></Route>
           <Route path="/home" element={<Home></Home>}></Route>
+          <Route path="/profile" element={<Profile></Profile>}></Route>
           <Route path="/detailsPage/:id" element={<DetailsPage />} />
           <Route path="/logout" element={<Search />} />
           <Route
