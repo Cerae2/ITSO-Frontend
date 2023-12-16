@@ -60,3 +60,16 @@
 .ui-nav li.active::before {
   width: 100%;
 }
+
+.title-nav {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.nav-h3 {
+  font-weight: 100;
+}

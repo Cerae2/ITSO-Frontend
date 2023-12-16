@@ -8,6 +8,11 @@ function Navbar(props) {
   return (
     <nav className="nav">
       <img className="nav-logo" src={logo}></img>
+      <div className="title-nav">
+        <h3 className="nav-h3">UNIVERSITY OF SCIENCE AND TECHNOGY</h3>
+        <h3 className="nav-h3">OF SOUTHERN PHILIPPINES</h3>
+      </div>
+
       <ul className="ui-nav">
         <CustomLink to="/dashboard">Dashboard</CustomLink>
         <CustomLink to="/service">Service</CustomLink>
