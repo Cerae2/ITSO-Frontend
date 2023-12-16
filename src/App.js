@@ -17,6 +17,7 @@ import Home from "./pages/PRIVATE/Home/Home";
 import Search from "./pages/PUBLIC/Search/Search";
 import DetailsPage from "./pages/PUBLIC/Search/DetailsPage/DetailsPage";
 import Profile from "./pages/PRIVATE/Profile/Profile";
+import DetailsDash from "./pages/PRIVATE/Dashboard/DetailsDash/DetailsDash";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="/home" element={<Home></Home>}></Route>
           <Route path="/profile" element={<Profile></Profile>}></Route>
           <Route path="/detailsPage/:id" element={<DetailsPage />} />
+          <Route path="/detailsDashPage/:id" element={<DetailsDash />} />
           <Route path="/logout" element={<Search />} />
           <Route
             path="/download"

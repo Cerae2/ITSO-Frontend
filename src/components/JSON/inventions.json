@@ -5,7 +5,11 @@
     "Inventors": ["John Doe", "Jane Smith"],
     "Summary": "A system for controlling and automating various devices within a home, providing convenience and energy efficiency.",
     "Campus": "USTP Balubal",
-    "Category": "Patent"
+    "Category": "Patent",
+    "Status": "Pending",
+    "Department": "Engineering",
+    "Date_of_Submission": "2023-01-15",
+    "Feedback": "Awaiting review from the patent office."
   },
   {
     "id": 2,
@@ -13,7 +17,11 @@
     "Inventors": ["Alice Johnson", "Bob Anderson"],
     "Summary": "A wearable device that monitors various health parameters in real-time, providing users with personalized health insights.",
     "Campus": "USTP Cagayan de Oro",
-    "Category": "Patent"
+    "Category": "Patent",
+    "Status": "Approved",
+    "Department": "Health Sciences",
+    "Date_of_Submission": "2023-02-22",
+    "Feedback": "Approved for patent. Congratulations!"
   },
   {
     "id": 3,
@@ -21,7 +29,11 @@
     "Inventors": ["Charlie Brown", "Eva Martinez"],
     "Summary": "Innovative furniture design that can be folded and adapted for various purposes, optimizing space utilization.",
     "Campus": "USTP Claveria",
-    "Category": "Utility Model"
+    "Category": "Utility Model",
+    "Status": "Pending",
+    "Department": "Design and Architecture",
+    "Date_of_Submission": "2023-03-10",
+    "Feedback": "Under evaluation by the design committee."
   },
   {
     "id": 4,
@@ -29,7 +41,11 @@
     "Inventors": ["Michael Chang", "Sophie Adams"],
     "Summary": "An educational mobile application that uses augmented reality to enhance learning experiences for students.",
     "Campus": "USTP Cagayan de Oro",
-    "Category": "Patent"
+    "Category": "Patent",
+    "Status": "Under Review",
+    "Department": "Computer Science",
+    "Date_of_Submission": "2023-04-05",
+    "Feedback": "Reviewing the technical aspects. Feedback pending."
   },
   {
     "id": 5,
@@ -37,7 +53,11 @@
     "Inventors": ["David Williams", "Olivia Turner"],
     "Summary": "A sustainable water purification system powered by solar energy, providing clean water in remote areas.",
     "Campus": "USTP Vallanueva",
-    "Category": "Patent"
+    "Category": "Patent",
+    "Status": "Approved",
+    "Department": "Environmental Engineering",
+    "Date_of_Submission": "2023-05-20",
+    "Feedback": "Successfully granted a patent. Well done!"
   },
   {
     "id": 6,
@@ -45,7 +65,11 @@
     "Inventors": ["Grace Lee", "Robert Taylor"],
     "Summary": "An office chair design that prioritizes ergonomics and comfort, reducing the risk of musculoskeletal issues.",
     "Campus": "USTP Claveria",
-    "Category": "Industrial Design"
+    "Category": "Industrial Design",
+    "Status": "Rejected",
+    "Department": "Industrial Design",
+    "Date_of_Submission": "2023-06-08",
+    "Feedback": "Not approved. Please address design concerns."
   },
   {
     "id": 7,
@@ -53,7 +77,11 @@
     "Inventors": ["Daniel Rodriguez", "Mia Patel"],
     "Summary": "An IoT-based system for monitoring and managing agricultural conditions, optimizing crop yield and resource usage.",
     "Campus": "USTP Claveria",
-    "Category": "Patent"
+    "Category": "Patent",
+    "Status": "Pending",
+    "Department": "Agricultural Engineering",
+    "Date_of_Submission": "2023-07-15",
+    "Feedback": "Pending review by agricultural experts."
   },
   {
     "id": 8,
@@ -61,7 +89,11 @@
     "Inventors": ["Sophia Brown", "Jack Wilson"],
     "Summary": "An app that combines traditional storytelling with interactive elements to engage and educate young readers.",
     "Campus": "USTP Cagayan de Oro",
-    "Category": "Copyright"
+    "Category": "Copyright",
+    "Status": "Approved",
+    "Department": "Education",
+    "Date_of_Submission": "2023-08-03",
+    "Feedback": "Approved for copyright. Great educational content!"
   },
   {
     "id": 9,
@@ -69,7 +101,11 @@
     "Inventors": ["Elijah Clark", "Hannah Kim"],
     "Summary": "A compact and foldable electric scooter for urban commuting, promoting eco-friendly transportation.",
     "Campus": "USTP Claveria",
-    "Category": "Utility Model"
+    "Category": "Utility Model",
+    "Status": "Under Review",
+    "Department": "Mechanical Engineering",
+    "Date_of_Submission": "2023-09-12",
+    "Feedback": "Engineering review in progress."
   },
   {
     "id": 10,
@@ -77,6 +113,10 @@
     "Inventors": ["Ava Garcia", "Liam Thomas"],
     "Summary": "An artificial intelligence-powered assistant that recommends personalized shopping choices based on user preferences and trends.",
     "Campus": "USTP Balubal",
-    "Category": "Patent"
+    "Category": "Patent",
+    "Status": "Pending",
+    "Department": "Computer Science",
+    "Date_of_Submission": "2023-10-01",
+    "Feedback": "Pending technical evaluation."
   }
 ]

@@ -30,7 +30,7 @@
   position: relative;
   transition: 0.5s ease-in-out;
   font-weight: normal;
-  font-size: 2vh;
+  font-size: 17px;
 }
 
 .ui-nav li.active a {
