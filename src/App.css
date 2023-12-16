@@ -16,6 +16,12 @@
   margin-left: 5vh;
 }
 
+.nav-header {
+  display: flex;
+  flex-direction: row;
+  font-size: 2vh;
+}
+
 .ui-nav a {
   text-decoration: none;
   color: rgb(255, 255, 255);
@@ -30,7 +36,6 @@
   position: relative;
   transition: 0.5s ease-in-out;
   font-weight: normal;
-  font-size: 17px;
 }
 
 .ui-nav li.active a {
@@ -38,8 +43,8 @@
 }
 
 .nav-logo {
-  width: 8vh;
-  height: 8vh;
+  width: 100px;
+  height: 100px;
 }
 
 .ui-nav li::before {
@@ -69,7 +74,6 @@
   justify-content: center;
   color: white;
   font-family: "Times New Roman", Times, serif;
-  font-size: 2vh;
 }
 
 .nav-h3 {

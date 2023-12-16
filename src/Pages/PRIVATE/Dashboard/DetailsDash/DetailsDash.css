@@ -1,0 +1,154 @@
+.details-dash-con {
+  display: flex;
+  height: 87vh;
+  padding: 5vh;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.sub-details-dash-con {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  border-radius: 30px;
+  padding: 10px;
+}
+
+.box-1,
+.box-2 {
+  display: flex;
+  border-radius: 30px;
+  height: 100%;
+  width: 50%;
+  padding: 10px;
+  flex-direction: column;
+}
+
+.box-1-1,
+.box-1-2,
+.box-2-1,
+.box-2-2 {
+  display: flex;
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  border-radius: 25px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.box-1-2 {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-dash-td {
+  min-width: 30vh;
+  padding: 8px;
+  margin: 5px 0;
+}
+
+.feedback-con {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #f0c48a;
+}
+
+.feedback-title {
+  text-align: justify;
+  margin-top: 10px;
+}
+
+.detail-dash-td.title {
+  background-color: rgba(255, 166, 0, 0.63);
+  border: 1px solid rgb(255, 166, 0);
+  min-width: 20vh;
+  color: white;
+}
+.feedback-icon {
+  width: 4vh;
+  height: 4vh;
+}
+
+.box-2-1 {
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  padding: 3vh;
+  border: 1px solid rgb(206, 206, 206);
+}
+.box-2-2 {
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  padding: 3vh;
+  border: 1px solid rgb(206, 206, 206);
+}
+
+.file-style {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: none;
+  height: 35px;
+  width: 100%;
+  cursor: pointer;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: white;
+  transition: 0.2s ease-in-out;
+  border: 1px solid rgb(236, 236, 236);
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.file-style-2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: none;
+  height: 35px;
+  width: 100%;
+  cursor: pointer;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: white;
+  transition: 0.2s ease-in-out;
+  border: 1px solid rgb(236, 236, 236);
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.del-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.file-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.file-btn-2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.file-style.selected {
+  border: 1px solid rgb(255, 166, 0);
+  height: 35px;
+  width: 100%;
+  color: white;
+  cursor: pointer;
+  background-color: #ffa600a1;
+  color: #0b9912;
+}
+.form-title-feed {
+  display: flex;
+  align-items: center;
+}
+.btn-add {
+  display: flex;
+  align-items: flex-start;
+}

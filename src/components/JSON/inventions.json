@@ -3,120 +3,242 @@
     "id": 1,
     "Title_of_Invention": "Smart Home Automation System",
     "Inventors": ["John Doe", "Jane Smith"],
-    "Summary": "A system for controlling and automating various devices within a home, providing convenience and energy efficiency.",
+    "Summary": "A cutting-edge system for controlling and automating various devices within a home...",
     "Campus": "USTP Balubal",
     "Category": "Patent",
-    "Status": "Pending",
+    "Status": "Approved",
     "Department": "Engineering",
     "Date_of_Submission": "2023-01-15",
-    "Feedback": "Awaiting review from the patent office."
+    "Feedback": [
+      {
+        "StatusFeedback": "Under Review",
+        "FileComment": "This version is currently under review. We appreciate the innovation in the Smart Home Automation System. Please provide additional details on the security protocols implemented to ensure the safety of the automated devices.",
+        "File": {
+          "FileName": "Example1.pdf",
+          "FilePath": "./../FILES/Example1.pdf"
+        }
+      },
+      {
+        "StatusFeedback": "Under Review",
+        "FileComment": "The second version is still under evaluation. While the system's functionality is commendable, we need clarification on power consumption optimization. Please include relevant data and efficiency measures in the next submission.",
+        "File": {
+          "FileName": "Example1_v2.pdf",
+          "FilePath": "./../FILES/Example1_v2.pdf"
+        }
+      },
+      {
+        "StatusFeedback": "Under Review",
+        "FileComment": "The third version is pending further review. Emphasize the system's adaptability to diverse home environments, and provide any updates on compatibility with emerging technologies.",
+        "File": {
+          "FileName": "Example1_v3.pdf",
+          "FilePath": "./../FILES/Example1_v3.pdf"
+        }
+      }
+    ]
   },
   {
     "id": 2,
     "Title_of_Invention": "Bio-sensing Wearable Health Monitor",
     "Inventors": ["Alice Johnson", "Bob Anderson"],
-    "Summary": "A wearable device that monitors various health parameters in real-time, providing users with personalized health insights.",
+    "Summary": "An innovative wearable device designed to monitor and analyze various health parameters...",
     "Campus": "USTP Cagayan de Oro",
     "Category": "Patent",
     "Status": "Approved",
     "Department": "Health Sciences",
     "Date_of_Submission": "2023-02-22",
-    "Feedback": "Approved for patent. Congratulations!"
+    "Feedback": [
+      {
+        "StatusFeedback": "Approved",
+        "FileComment": " Congratulations! The Bio-sensing Wearable Health Monitor has been approved. It meets all health and safety standards, and the usability is excellent. Well done to Alice Johnson and Bob Anderson!",
+        "File": {
+          "FileName": "Example2.pdf",
+          "FilePath": "./../FILES/Example2.pdf"
+        }
+      },
+      {
+        "StatusFeedback": "Approved",
+        "FileComment": "The second version is also approved. The refinements enhance user experience without compromising the device's accuracy. Great job on the continuous improvement!",
+        "File": {
+          "FileName": "Example2_v2.pdf",
+          "FilePath": "./../FILES/Example2_v2.pdf"
+        }
+      },
+      {
+        "StatusFeedback": "Approved",
+        "FileComment": "The third version maintains the high standards. It's approved with appreciation for the ongoing commitment to excellence.",
+        "File": {
+          "FileName": "Example2_v3.pdf",
+          "FilePath": "./../FILES/Example2_v3.pdf"
+        }
+      }
+    ]
   },
   {
     "id": 3,
     "Title_of_Invention": "Multi-functional Folding Furniture",
     "Inventors": ["Charlie Brown", "Eva Martinez"],
-    "Summary": "Innovative furniture design that can be folded and adapted for various purposes, optimizing space utilization.",
+    "Summary": "Introducing a revolutionary furniture design that combines functionality with space optimization. The multi-functional folding furniture adapts to various purposes, making it an ideal choice for modern living spaces. Its innovative design and versatility set new standards in the world of interior design. The furniture seamlessly transforms between different configurations, providing users with flexibility and convenience in their living environments.",
     "Campus": "USTP Claveria",
     "Category": "Utility Model",
     "Status": "Pending",
     "Department": "Design and Architecture",
     "Date_of_Submission": "2023-03-10",
-    "Feedback": "Under evaluation by the design committee."
+    "Feedback": [
+      {
+        "StatusFeedback": "Under Review",
+        "FileComment": "This version is under review. While the concept is intriguing, we need more information on the materials used to ensure durability and safety. Please submit detailed specifications in the next version.",
+        "File": {
+          "FileName": "Example2.pdf",
+          "FilePath": "./../FILES/Example2.pdf"
+        }
+      }
+    ]
   },
   {
     "id": 4,
     "Title_of_Invention": "Augmented Reality Educational App",
     "Inventors": ["Michael Chang", "Sophie Adams"],
-    "Summary": "An educational mobile application that uses augmented reality to enhance learning experiences for students.",
+    "Summary": "An educational mobile application that uses augmented reality to enhance learning experiences for students. The app introduces interactive 3D models, simulations, and immersive content to engage students in various subjects. Its intuitive interface caters to diverse learning styles, fostering a dynamic and inclusive educational environment. The augmented reality educational app aims to revolutionize the way students interact with educational content.",
     "Campus": "USTP Cagayan de Oro",
     "Category": "Patent",
     "Status": "Under Review",
     "Department": "Computer Science",
     "Date_of_Submission": "2023-04-05",
-    "Feedback": "Reviewing the technical aspects. Feedback pending."
+    "Feedback": [
+      {
+        "StatusFeedback": "Rejected",
+        "FileComment": "The Augmented Reality Educational App is under review. We see potential, but further details are needed on the accessibility features. Ensure that the app is inclusive for students with diverse needs.",
+        "File": {
+          "FileName": "Example2.pdf",
+          "FilePath": "./../FILES/Example2.pdf"
+        }
+      }
+    ]
   },
   {
     "id": 5,
     "Title_of_Invention": "Solar-Powered Water Purification System",
     "Inventors": ["David Williams", "Olivia Turner"],
-    "Summary": "A sustainable water purification system powered by solar energy, providing clean water in remote areas.",
+    "Summary": "A sustainable water purification system powered by solar energy, providing clean water in remote areas. The system combines advanced filtration methods with solar-powered pumps to ensure a reliable and eco-friendly water supply. Its modular design allows for easy deployment in areas with limited access to clean water sources, addressing a critical need for sustainable water solutions.",
     "Campus": "USTP Vallanueva",
     "Category": "Patent",
     "Status": "Approved",
     "Department": "Environmental Engineering",
     "Date_of_Submission": "2023-05-20",
-    "Feedback": "Successfully granted a patent. Well done!"
+    "Feedback": [
+      {
+        "StatusFeedback": "Approved",
+        "FileComment": "Congratulations! The Solar-Powered Water Purification System has been approved. It's an innovative solution, and the modularity is appreciated. Great work, David Williams and Olivia Turner!",
+        "File": {
+          "FileName": "Example2.pdf",
+          "FilePath": "./../FILES/Example2.pdf"
+        }
+      }
+    ]
   },
   {
     "id": 6,
     "Title_of_Invention": "Ergonomic Office Chair Design",
     "Inventors": ["Grace Lee", "Robert Taylor"],
-    "Summary": "An office chair design that prioritizes ergonomics and comfort, reducing the risk of musculoskeletal issues.",
+    "Summary": "An office chair design that prioritizes ergonomics and comfort, reducing the risk of musculoskeletal issues. The ergonomic office chair features adjustable lumbar support, breathable materials, and a sleek design that promotes good posture. It aims to enhance the well-being and productivity of office workers by providing a comfortable and supportive seating solution.",
     "Campus": "USTP Claveria",
     "Category": "Industrial Design",
     "Status": "Rejected",
     "Department": "Industrial Design",
     "Date_of_Submission": "2023-06-08",
-    "Feedback": "Not approved. Please address design concerns."
+    "Feedback": [
+      {
+        "StatusFeedback": "Rejected",
+        "FileComment": "Unfortunately, the Ergonomic Office Chair Design has been rejected. The design needs significant improvements in lumbar support and overall ergonomics. Please resubmit with detailed adjustments.",
+        "File": {
+          "FileName": "Example2.pdf",
+          "FilePath": "./../FILES/Example2.pdf"
+        }
+      }
+    ]
   },
   {
     "id": 7,
     "Title_of_Invention": "Smart Agriculture Monitoring System",
     "Inventors": ["Daniel Rodriguez", "Mia Patel"],
-    "Summary": "An IoT-based system for monitoring and managing agricultural conditions, optimizing crop yield and resource usage.",
+    "Summary": "An IoT-based system for monitoring and managing agricultural conditions, optimizing crop yield and resource usage. The smart agriculture monitoring system integrates sensors, data analytics, and real-time monitoring to assist farmers in making informed decisions. Its user-friendly interface and data-driven insights contribute to sustainable farming practices.",
     "Campus": "USTP Claveria",
     "Category": "Patent",
     "Status": "Pending",
     "Department": "Agricultural Engineering",
     "Date_of_Submission": "2023-07-15",
-    "Feedback": "Pending review by agricultural experts."
+    "Feedback": [
+      {
+        "StatusFeedback": "Under Review",
+        "FileComment": " This version is under review. While the system shows promise, we need a more detailed breakdown of the data analytics process. Specify the key performance indicators and provide examples of real-time monitoring benefits.",
+        "File": {
+          "FileName": "Example2.pdf",
+          "FilePath": "./../FILES/Example2.pdf"
+        }
+      }
+    ]
   },
   {
     "id": 8,
     "Title_of_Invention": "Interactive Children's Book App",
     "Inventors": ["Sophia Brown", "Jack Wilson"],
-    "Summary": "An app that combines traditional storytelling with interactive elements to engage and educate young readers.",
+    "Summary": "An app that combines traditional storytelling with interactive elements to engage and educate young readers. The interactive children's book app features animated characters, sound effects, and interactive quizzes to enhance the reading experience. Its educational content and engaging format make it a valuable tool for fostering a love of reading in young minds.",
     "Campus": "USTP Cagayan de Oro",
     "Category": "Copyright",
     "Status": "Approved",
     "Department": "Education",
     "Date_of_Submission": "2023-08-03",
-    "Feedback": "Approved for copyright. Great educational content!"
+    "Feedback": [
+      {
+        "StatusFeedback": "Approved",
+        "FileComment": " Congratulations! The Interactive Children's Book App has been approved. It successfully combines education and engagement. Well done, Sophia Brown and Jack Wilson!",
+        "File": {
+          "FileName": "Example2.pdf",
+          "FilePath": "./../FILES/Example2.pdf"
+        }
+      }
+    ]
   },
   {
     "id": 9,
     "Title_of_Invention": "Foldable Electric Scooter",
     "Inventors": ["Elijah Clark", "Hannah Kim"],
-    "Summary": "A compact and foldable electric scooter for urban commuting, promoting eco-friendly transportation.",
+    "Summary": "A compact and foldable electric scooter for urban commuting, promoting eco-friendly transportation. The foldable electric scooter combines portability with sustainable technology, making it an ideal solution for short-distance travel. Its innovative design and efficient electric propulsion contribute to reducing carbon emissions in urban environments.",
     "Campus": "USTP Claveria",
     "Category": "Utility Model",
     "Status": "Under Review",
     "Department": "Mechanical Engineering",
     "Date_of_Submission": "2023-09-12",
-    "Feedback": "Engineering review in progress."
+    "Feedback": [
+      {
+        "StatusFeedback": "Under Review",
+        "FileComment": "This version is under review. Safety features need further clarification. Please provide detailed information on braking systems, stability, and adherence to regulatory standards.",
+        "File": {
+          "FileName": "Example2.pdf",
+          "FilePath": "./../FILES/Example2.pdf"
+        }
+      }
+    ]
   },
   {
     "id": 10,
     "Title_of_Invention": "AI-driven Personalized Shopping Assistant",
     "Inventors": ["Ava Garcia", "Liam Thomas"],
-    "Summary": "An artificial intelligence-powered assistant that recommends personalized shopping choices based on user preferences and trends.",
+    "Summary": "An artificial intelligence-powered assistant that recommends personalized shopping choices based on user preferences and trends. The AI-driven personalized shopping assistant utilizes machine learning algorithms to analyze user behavior and preferences, providing tailored product recommendations. Its seamless integration with e-commerce platforms enhances the online shopping experience.",
     "Campus": "USTP Balubal",
     "Category": "Patent",
     "Status": "Pending",
     "Department": "Computer Science",
     "Date_of_Submission": "2023-10-01",
-    "Feedback": "Pending technical evaluation."
+    "Feedback": [
+      {
+        "StatusFeedback": "Under Review",
+        "FileComment": "This version is under review. While the concept is intriguing, provide more insights into how the AI analyzes user behavior. Include examples of successful personalized recommendations in the next version.",
+        "File": {
+          "FileName": "Example2.pdf",
+          "FilePath": "./../FILES/Example2.pdf"
+        }
+      }
+    ]
   }
 ]

@@ -23,10 +23,12 @@ function Navbar(props) {
 
   return (
     <nav className="nav">
-      <img className="nav-logo" src={logo} alt="Logo"></img>
-      <div className="title-nav">
-        <h3 className="nav-h3">UNIVERSITY OF SCIENCE AND TECHNOLOGY</h3>
-        <h3 className="nav-h3">OF SOUTHERN PHILIPPINES</h3>
+      <div className="nav-header">
+        <img className="nav-logo" src={logo} alt="Logo"></img>
+        <div className="title-nav">
+          <h3 className="nav-h3">UNIVERSITY OF SCIENCE AND TECHNOLOGY</h3>
+          <h3 className="nav-h3">OF SOUTHERN PHILIPPINES</h3>
+        </div>
       </div>
 
       <ul className="ui-nav">
