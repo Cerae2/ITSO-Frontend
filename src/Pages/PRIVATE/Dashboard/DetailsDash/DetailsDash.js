@@ -101,6 +101,7 @@ function DetailsDash(props) {
                 <div className="file-btn">
                   <div style={{ width: "100%" }}>
                     <button
+                      disabled
                       key={index}
                       className={`file-style ${
                         selectedButton === index ? "selected" : ""
