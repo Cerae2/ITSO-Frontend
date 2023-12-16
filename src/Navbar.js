@@ -18,7 +18,7 @@ function Navbar(props) {
         <CustomLink to="/service">Service</CustomLink>
         <CustomLink to="/download">Downloadable Files</CustomLink>
         <CustomLink to="/submit">Submit Request</CustomLink>
-        <li>
+        <li className="ui-nav logout">
           <CustomLink to="/logout">Logout</CustomLink>
         </li>
       </ul>
