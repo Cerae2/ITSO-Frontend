@@ -186,6 +186,13 @@ function DetailsDash(props) {
                   </div>
                 </div>
               ))}
+              {selectedInvention.Feedback.length === 0 &&
+                selectedInvention.Status !== "Under Review" &&
+                selectedInvention.Status !== "Rejected" && (
+                  <p style={{ textAlign: "center", marginTop: 10 }}>
+                    No returned files.
+                  </p>
+                )}
             </div>
           </div>
         </div>

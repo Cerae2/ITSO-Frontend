@@ -1,15 +1,18 @@
+import React from "react";
+import { Link, useMatch, useResolvedPath } from "react-router-dom";
+import { Button, Dropdown, Menu } from "antd";
 import {
   NotificationImportant,
   Notifications,
   Person,
 } from "@mui/icons-material";
-import React from "react";
-import { Link, useMatch, useResolvedPath } from "react-router-dom";
-import { Button, Dropdown, Menu } from "antd";
 import logo from "./assets/logo-blue.jpg";
 import "./App.css";
+import { useAuth } from "./AuthContext";
 
 function Navbar(props) {
+  const { user, logout } = useAuth();
+
   const ProfileMenu = (
     <Menu style={{ width: 250 }}>
       <Menu.Item>
@@ -24,22 +27,34 @@ function Navbar(props) {
   return (
     <nav className="nav">
       <div className="nav-header">
-        <img className="nav-logo" src={logo} alt="Logo"></img>
+        <img className="nav-logo" src={logo} alt="Logo" />
         <div className="title-nav">
           <h3 className="nav-h3">UNIVERSITY OF SCIENCE AND TECHNOLOGY</h3>
           <h3 className="nav-h3">OF SOUTHERN PHILIPPINES</h3>
         </div>
       </div>
 
-      <ul className="ui-nav">
-        <CustomLink to="/dashboard">Dashboard</CustomLink>
-        <CustomLink to="/service">Service</CustomLink>
-        <CustomLink to="/download">Downloadable Files</CustomLink>
-        <CustomLink to="/submit">Submit Request</CustomLink>
-      </ul>
+      {user && (
+        <ul className="ui-nav">
+          {user.role === "admin" ? (
+            <>
+              <CustomLink to="/dashboardadmin">Dashboard</CustomLink>
+              <CustomLink to="/adduser">Add User</CustomLink>
+              <CustomLink to="/userlist">User List</CustomLink>
+            </>
+          ) : (
+            <>
+              <CustomLink to="/dashboard">Dashboard</CustomLink>
+              <CustomLink to="/service">Service</CustomLink>
+              <CustomLink to="/download">Downloadable Files</CustomLink>
+              <CustomLink to="/submit">Submit Request</CustomLink>
+            </>
+          )}
+        </ul>
+      )}
 
       <li className="logout">
-        <dv className="logout-con bell">
+        <div className="logout-con bell">
           <Button
             style={{
               backgroundColor: "transparent",
@@ -47,9 +62,9 @@ function Navbar(props) {
               border: "none",
             }}
           >
-            <Notifications></Notifications>
+            <Notifications />
           </Button>
-        </dv>
+        </div>
         <div className="logout-con">
           <Dropdown overlay={ProfileMenu} placement="bottomRight" arrow>
             <Person style={{ color: "white" }} />
