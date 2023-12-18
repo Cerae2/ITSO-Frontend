@@ -8,16 +8,21 @@ import {
   Navigate,
   useLocation as useReactRouterLocation,
 } from "react-router-dom";
-import Dashboard from "./pages/PRIVATE/Dashboard/Dashboard";
-import Landing from "./pages/PUBLIC/Landing/Landing";
-import Services from "./pages/PRIVATE/Services/Services";
-import Submit from "./pages/PRIVATE/Submit/Submit";
-import Downloadable from "./pages/PRIVATE/Downloadable/Downloadable";
-import Home from "./pages/PRIVATE/Home/Home";
-import Search from "./pages/PUBLIC/Search/Search";
-import DetailsPage from "./pages/PUBLIC/Search/DetailsPage/DetailsPage";
-import Profile from "./pages/PRIVATE/Profile/Profile";
-import DetailsDash from "./pages/PRIVATE/Dashboard/DetailsDash/DetailsDash";
+import Dashboard from "./Pages/PRIVATE/Dashboard/Dashboard";
+import Landing from "./Pages/PUBLIC/Landing/Landing";
+import Services from "./Pages/PRIVATE/Services/Services";
+import DetailsPage from "../src/Pages/PUBLIC/Search/DetailsPage/DetailsPage"
+import Profile from "./Pages/PRIVATE/Profile/Profile";
+import DetailsDash from "./Pages/PRIVATE/Dashboard/DetailsDash/DetailsDash";
+import Submit from "./Pages/PRIVATE/Submit/Submit";
+import Search from "./Pages/PUBLIC/Search/Search";
+import Downloadable from "./Pages/PRIVATE/Downloadable/Downloadable";
+import Home from "./Pages/PRIVATE/Home/Home";
+import Patent from "./Pages/PRIVATE/Services/Patent/Patent";
+import UtilityModel from "./Pages/PRIVATE/Services/UtilityModel/UtilityModel";
+import IndustrialDesign from "./Pages/PRIVATE/Services/IndustrialDesign/IndustrialDesign";
+import Trademark from "./Pages/PRIVATE/Services/Trademark/Trademark";
+import Copyright from "./Pages/PRIVATE/Services/Copyright/Copyright";
 
 function App() {
   return (
@@ -36,6 +41,11 @@ function App() {
           <Route path="/detailsPage/:id" element={<DetailsPage />} />
           <Route path="/detailsDashPage/:id" element={<DetailsDash />} />
           <Route path="/logout" element={<Search />} />
+          <Route path="/patent" element={<Patent />} />
+          <Route path="/utilitymodel" element={<UtilityModel />} />
+          <Route path="/industraildesign" element={<IndustrialDesign />} />
+          <Route path="/trademark" element={<Trademark />} />
+          <Route path="/copyright" element={<Copyright />} />
           <Route
             path="/download"
             element={<Downloadable></Downloadable>}
