@@ -19,6 +19,7 @@ import {
 import inventionData from "./../../../../components/JSON/inventions.json";
 import { Dropdown, Menu, Modal, Space } from "antd";
 import statusData from "./../../../../components/JSON/status.json";
+import feedback from "./../../../../assets/fedback.png";
 
 function DetailsAdminDash(props) {
   const { id } = useParams();
@@ -105,6 +106,28 @@ function DetailsAdminDash(props) {
                   <td className="detail-dash-td">{selectedInvention.Campus}</td>
                 </tr>
               </table>
+            </div>
+            <div className="box-1-2">
+              <div className="feedback-con">
+                <img
+                  className="feedback-icon"
+                  src={feedback}
+                  alt="feedback-icon"
+                ></img>
+                <h3>Feedback</h3>
+              </div>
+              <div className="feedback-comment">
+                {selectedButton !== null && (
+                  <div className="feedback-file">
+                    <p className="feedback-title">
+                      {selectedInvention.Feedback[selectedButton].FileComment}
+                    </p>
+                  </div>
+                )}
+                {selectedButton === null && (
+                  <p className="feedback-title">No file selected.</p>
+                )}
+              </div>
             </div>
           </div>
 
