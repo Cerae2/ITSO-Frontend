@@ -75,6 +75,7 @@
   flex-direction: column;
   padding: 3vh;
   border: 1px solid rgb(206, 206, 206);
+  min-height: 25.5vh;
 }
 .box-2-2 {
   background-color: rgb(255, 255, 255);

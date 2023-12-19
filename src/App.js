@@ -23,6 +23,7 @@ import DetailsDash from "./pages/PRIVATE/Dashboard/DetailsDash/DetailsDash";
 import DashboardAdmin from "./pages/ADMIN/Dashboard/DashboardAdmin";
 import AddUser from "./pages/ADMIN/AddUser/AddUser";
 import UserList from "./pages/ADMIN/UserList/UserList";
+import DetailsAdminDash from "./pages/ADMIN/Dashboard/DetailsAdminDash/DetailsAdminDash";
 
 function App() {
   return (
@@ -39,6 +40,10 @@ function App() {
             <Route
               path="/dashboardadmin"
               element={<DashboardAdmin></DashboardAdmin>}
+            ></Route>
+            <Route
+              path="/dashboardadmindetail/:id"
+              element={<DetailsAdminDash></DetailsAdminDash>}
             ></Route>
             <Route path="/adduser" element={<AddUser></AddUser>}></Route>
             <Route path="/userlist" element={<UserList></UserList>}></Route>
