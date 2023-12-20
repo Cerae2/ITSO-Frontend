@@ -66,7 +66,12 @@ function Navbar(props) {
           </Button>
         </div>
         <div className="logout-con">
-          <Dropdown overlay={ProfileMenu} placement="bottomRight" arrow>
+          <Dropdown
+            overlay={ProfileMenu}
+            placement="bottomRight"
+            arrow
+            trigger={["click"]}
+          >
             <Person style={{ color: "white" }} />
           </Dropdown>
         </div>

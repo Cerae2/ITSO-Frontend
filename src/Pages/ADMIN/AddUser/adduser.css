@@ -1,0 +1,31 @@
+.add-user-cont {
+  display: flex;
+  padding: 5vh;
+  height: 80vh;
+}
+
+.account-cont {
+}
+
+.input-cont-add {
+  display: flex;
+  flex-direction: column;
+}
+.row0 {
+  display: flex;
+  margin-bottom: 20px;
+  margin-top: 5vh;
+}
+.row1 {
+  display: flex;
+}
+.row2 {
+  display: flex;
+}
+.row3 {
+  display: flex;
+}
+.account {
+  height: 60vh;
+  width: 60vh;
+}
