@@ -164,7 +164,7 @@ function DetailsAdminDash(props) {
                             : feedbackItem.StatusFeedback === "Approved"
                             ? "#85e2af"
                             : feedbackItem.StatusFeedback === "Rejected"
-                            ? "red"
+                            ? "#ffb6b6"
                             : "#ffe8a8",
                       }}
                     >
@@ -176,7 +176,7 @@ function DetailsAdminDash(props) {
                               : feedbackItem.StatusFeedback === "Approved"
                               ? "#155f2d"
                               : feedbackItem.StatusFeedback === "Rejected"
-                              ? "white"
+                              ? "#ff0000"
                               : "#503d0b",
                         }}
                       >
