@@ -46,14 +46,7 @@ function Landing(props) {
             <div className="logo-container-land">
               <img className="logo-land" src={logo} alt="Logo"></img>
             </div>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                width: "40vh",
-                alignItems: "center",
-              }}
-            >
+            <div className="login-container-text">
               <InputField
                 colorInput={"white"}
                 colorLabel={"white"}
