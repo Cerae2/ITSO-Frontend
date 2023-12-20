@@ -155,6 +155,34 @@ function DetailsAdminDash(props) {
                       display: "flex",
                     }}
                   >
+                    <div
+                      className={`con-stat-details con-stat-details-${feedbackItem.StatusFeedback.toLowerCase()}`}
+                      style={{
+                        backgroundColor:
+                          feedbackItem.StatusFeedback === "Under Review"
+                            ? "#8383bd"
+                            : feedbackItem.StatusFeedback === "Approved"
+                            ? "#85e2af"
+                            : feedbackItem.StatusFeedback === "Rejected"
+                            ? "red"
+                            : "#ffe8a8",
+                      }}
+                    >
+                      <p
+                        style={{
+                          color:
+                            feedbackItem.StatusFeedback === "Under Review"
+                              ? "#1d1d47"
+                              : feedbackItem.StatusFeedback === "Approved"
+                              ? "#155f2d"
+                              : feedbackItem.StatusFeedback === "Rejected"
+                              ? "white"
+                              : "#503d0b",
+                        }}
+                      >
+                        {feedbackItem.StatusFeedback}
+                      </p>
+                    </div>
                     <Button
                       style={{ color: "#0D0359" }}
                       onClick={handleOpenModal}
@@ -167,6 +195,7 @@ function DetailsAdminDash(props) {
                   </div>
                 </div>
               ))}
+
               <Modal
                 style={{ backgroundColor: "white", borderRadius: 10 }}
                 width={"100vh"}

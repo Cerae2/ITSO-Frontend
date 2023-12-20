@@ -37,5 +37,29 @@
   margin-top: 10px;
 }
 
-.admin-feed-btn {
+.con-stat-details {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  border-radius: 20px;
+  padding: 10px;
+  margin-left: 20px;
+}
+.con-stat-details-approved {
+  background-color: #85e2af;
+}
+
+.con-stat-details-rejected {
+  background-color: red;
+}
+
+.con-stat-details-under-review {
+  background-color: #1d1d47;
+}
+
+.con-stat-details-pending {
+  background-color: #503d0b;
+}
+.con-stat-details {
+  min-width: 15vh;
 }
