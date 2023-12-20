@@ -73,11 +73,11 @@
 
 .filter-cotainer {
   position: relative;
-  width: 50vh;
+  width: 40vh;
   margin-right: 5vh;
   padding: 20px;
   height: 100%;
-  border-top: 15px solid #1a103f;
+
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   display: flex;
@@ -85,7 +85,6 @@
 }
 
 .filter-subcotainer {
-  border-top: 12px solid #3a3a3a;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   width: 50vh;
@@ -94,17 +93,18 @@
 }
 
 .filter-subcotainer.campus {
-  border-top: none;
-  width: 50vh;
+  border-top: 12px solid #3a3a3a;
+  width: 100%;
   left: 0;
   margin-left: -20px;
+  margin-top: -20px;
 }
 
 .filter-subcotainer.categories {
   border-top: 12px solid #3a3a3a;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  width: 50vh;
+  width: 100%;
   left: 0;
   margin-left: -20px;
   margin-top: 50px;
@@ -112,7 +112,7 @@
 .archive-container {
   border: 1px solid grey;
   position: relative;
-  width: 45%;
+  width: 60%;
   padding: 10px;
   padding-top: 50px;
   padding-left: 50px;

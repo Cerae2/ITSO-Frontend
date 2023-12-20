@@ -66,8 +66,14 @@ function AddUser(props) {
             ></Selection>
           </div>
           <div className="row3">
-            <TextFieldComponet label={"Email"}></TextFieldComponet>
-            <TextFieldComponet label={"Contact No."}></TextFieldComponet>
+            <TextFieldComponet
+              type={"email"}
+              label={"Email"}
+            ></TextFieldComponet>
+            <TextFieldComponet
+              type={"number"}
+              label={"Contact No."}
+            ></TextFieldComponet>
             <Selection
               inputLabel={"User Type"}
               valueSelect={user}

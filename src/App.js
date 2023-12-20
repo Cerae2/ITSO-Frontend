@@ -9,20 +9,22 @@ import {
   useLocation as useReactRouterLocation,
 } from "react-router-dom";
 import { AuthProvider } from "./AuthContext";
-import Dashboard from "./Pages/PRIVATE/Dashboard/Dashboard";
-import Landing from "./Pages/PUBLIC/Landing/Landing";
-import Services from "./Pages/PRIVATE/Services/Services";
-import Submit from "./Pages/PRIVATE/Submit/Submit";
-import Downloadable from "./Pages/PRIVATE/Downloadable/Downloadable";
-import Home from "./Pages/PRIVATE/Home/Home";
-import Search from "./Pages/PUBLIC/Search/Search";
-import DetailsPage from "./Pages/PUBLIC/Search/DetailsPage/DetailsPage";
-import Profile from "./Pages/PRIVATE/Profile/Profile";
-import DetailsDash from "./Pages/PRIVATE/Dashboard/DetailsDash/DetailsDash";
-import DashboardAdmin from "./Pages/ADMIN/Dashboard/DashboardAdmin";
-import AddUser from "./Pages/ADMIN/AddUser/AddUser";
-import UserList from "./Pages/ADMIN/UserList/UserList";
-import DetailsAdminDash from "./Pages/ADMIN/Dashboard/DetailsAdminDash/DetailsAdminDash";
+
+import Dashboard from "./pages/PRIVATE/Dashboard/Dashboard";
+import Landing from "./pages/PUBLIC/Landing/Landing";
+import Services from "./pages/PRIVATE/Services/Services";
+import Submit from "./pages/PRIVATE/Submit/Submit";
+import Downloadable from "./pages/PRIVATE/Downloadable/Downloadable";
+import Home from "./pages/PRIVATE/Home/Home";
+import Search from "./pages/PUBLIC/Search/Search";
+import DetailsPage from "./pages/PUBLIC/Search/DetailsPage/DetailsPage";
+import Profile from "./pages/PRIVATE/Profile/Profile";
+import DetailsDash from "./pages/PRIVATE/Dashboard/DetailsDash/DetailsDash";
+import DashboardAdmin from "./pages/ADMIN/Dashboard/DashboardAdmin";
+import AddUser from "./pages/ADMIN/AddUser/AddUser";
+import UserList from "./pages/ADMIN/UserList/UserList";
+import DetailsAdminDash from "./pages/ADMIN/Dashboard/DetailsAdminDash/DetailsAdminDash";
+
 function App() {
   return (
     <AuthProvider>
