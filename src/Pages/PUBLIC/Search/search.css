@@ -42,12 +42,12 @@
   left: 2%;
   flex-direction: row;
   display: flex;
-  width: 100vh;
+  width: 90%;
 }
 
 .invention-title {
   color: white;
-  font-size: 7vh;
+  font-size: 6vh;
   font-weight: 500;
   font-family: "Times New Roman", Times, serif;
   right: 0;
@@ -188,4 +188,28 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+@media (max-width: 600px) {
+  .patent-container {
+    flex-direction: column;
+  }
+  .filter-cotainer {
+    flex-direction: column;
+  }
+  .archive-container {
+    width: 100%;
+    padding: 10px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .waves {
+    margin-top: 70px;
+  }
+  .title-search {
+    margin-top: 45px;
+  }
+  .search-message {
+    text-align: center;
+  }
 }
