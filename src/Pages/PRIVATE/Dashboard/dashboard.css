@@ -104,3 +104,9 @@ td {
 .link-dash:hover {
   color: rgb(11, 10, 70);
 }
+
+@media (max-width: 600px) {
+  .dash-container{
+   padding-top: 10vh;
+  }
+}
