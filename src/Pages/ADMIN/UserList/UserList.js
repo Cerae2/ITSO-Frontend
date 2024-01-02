@@ -23,6 +23,8 @@ function UserList(props) {
     (user) => user["School Campus"] === selectedCampus
   );
 
+  
+
   const totalPages = Math.ceil(filteredUserList.length / itemsPerPage);
   const startIndex = currentPage * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
