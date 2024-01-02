@@ -44,6 +44,6 @@
 .input-container:focus-within .label {
   color: rgb(255, 255, 255);
   font-weight: 90;
-  top: -40px;
+  top: -30px;
   font-size: 14px;
 }

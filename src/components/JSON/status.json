@@ -1,6 +1,6 @@
 [
-  { "value": "Approved", "label": "Approved" },
   { "value": "Pending", "label": "Pending" },
+  { "value": "Approved", "label": "Approved" },
   { "value": "Under Review", "label": "Under Review" },
   { "value": "Rejected", "label": "Rejected" }
 ]

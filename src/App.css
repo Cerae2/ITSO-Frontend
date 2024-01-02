@@ -6,6 +6,7 @@
   flex: 1;
   display: flex;
   text-align: center;
+  z-index: 99999;
 }
 
 .ui-nav {
@@ -103,4 +104,76 @@
 .logout-con.bell {
   right: 10vh;
   border: none;
+}
+
+.drop-down-nav {
+  background-color: #201b51;
+  width: 100%;
+  height: 100%;
+  display: none;
+  position: fixed;
+  padding-top: 20%;
+  z-index: -1;
+  left: 0;
+}
+
+.drop-down-nav.active {
+  display: flex;
+  left: 0;
+}
+
+.logout-con.bar {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .nav {
+    position: fixed;
+  }
+
+  .title-nav {
+    display: none;
+  }
+
+  .ui-nav.main {
+    display: none;
+  }
+
+  .ui-nav.drop {
+    display: flex;
+    flex-direction: column;
+    margin-left: 0.5vh;
+  }
+
+  .logout-con.bar {
+    right: 1vh;
+    border: none;
+    display: flex;
+    
+  }
+
+  .logout-con.bell {
+    display: none;
+  }
+
+  .logout-con.drop {
+    display: none;
+  }
+
+  .logout {
+    margin-right: 100px;
+  }
+
+  .drop-down-nav {
+    display: flex;
+    flex-direction: column;
+    transform: translateY(-60rem);
+    transition: 0.5s ease-in-out;
+
+  }
+
+  .drop-down-nav.active {
+    transform: translateY(5rem);
+    left: 0;
+  }
 }

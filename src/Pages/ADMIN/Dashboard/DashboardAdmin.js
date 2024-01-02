@@ -50,14 +50,7 @@ function DashboardAdmin(props) {
       <div className="dash-container">
         <div className="dash-sub">
           <div className="dash-input-container">
-            <div
-              style={{
-                height: "100%",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
+            <div className="dashadmin-search-filter">
               <input
                 className="dash-input"
                 placeholder="Search"
@@ -66,28 +59,40 @@ function DashboardAdmin(props) {
             </div>
 
             <div className="dash-checklist-con">
-              <CheckBox
-                checked={selectedStatus.includes("Pending")}
-                onChange={(checked) => handleStatusChange("Pending", checked)}
-                label={"Pending"}
-              ></CheckBox>
-              <CheckBox
-                checked={selectedStatus.includes("Approved")}
-                onChange={(checked) => handleStatusChange("Approved", checked)}
-                label={"Approved"}
-              ></CheckBox>
-              <CheckBox
-                checked={selectedStatus.includes("Under Review")}
-                onChange={(checked) =>
-                  handleStatusChange("Under Review", checked)
-                }
-                label={"Under Review"}
-              ></CheckBox>
-              <CheckBox
-                checked={selectedStatus.includes("Rejected")}
-                onChange={(checked) => handleStatusChange("Rejected", checked)}
-                label={"Rejected"}
-              ></CheckBox>
+              <div>
+                <CheckBox
+                  checked={selectedStatus.includes("Pending")}
+                  onChange={(checked) => handleStatusChange("Pending", checked)}
+                  label={"Pending"}
+                ></CheckBox>
+              </div>
+              <div>
+                <CheckBox
+                  checked={selectedStatus.includes("Approved")}
+                  onChange={(checked) =>
+                    handleStatusChange("Approved", checked)
+                  }
+                  label={"Approved"}
+                ></CheckBox>
+              </div>
+              <div>
+                <CheckBox
+                  checked={selectedStatus.includes("Under Review")}
+                  onChange={(checked) =>
+                    handleStatusChange("Under Review", checked)
+                  }
+                  label={"Under Review"}
+                ></CheckBox>
+              </div>
+              <div>
+                <CheckBox
+                  checked={selectedStatus.includes("Rejected")}
+                  onChange={(checked) =>
+                    handleStatusChange("Rejected", checked)
+                  }
+                  label={"Rejected"}
+                ></CheckBox>
+              </div>
             </div>
           </div>
           {slicedData.length === 0 ? (

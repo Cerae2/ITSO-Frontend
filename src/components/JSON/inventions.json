@@ -11,7 +11,7 @@
     "Date_of_Submission": "2023-01-15",
     "Feedback": [
       {
-        "StatusFeedback": "Under Review",
+        "StatusFeedback": "Pending",
         "FileComment": "This version is currently under review. We appreciate the innovation in the Smart Home Automation System. Please provide additional details on the security protocols implemented to ensure the safety of the automated devices.",
         "File": {
           "FileName": "Example1.pdf",
@@ -27,7 +27,7 @@
         }
       },
       {
-        "StatusFeedback": "Under Review",
+        "StatusFeedback": "Approved",
         "FileComment": "The third version is pending further review. Emphasize the system's adaptability to diverse home environments, and provide any updates on compatibility with emerging technologies.",
         "File": {
           "FileName": "Example1_v3.pdf",
@@ -106,7 +106,7 @@
     "Date_of_Submission": "2023-04-05",
     "Feedback": [
       {
-        "StatusFeedback": "Under Review",
+        "StatusFeedback": "Pending",
         "FileComment": "The Augmented Reality Educational App is under review. We see potential, but further details are needed on the accessibility features. Ensure that the app is inclusive for students with diverse needs.",
         "File": {
           "FileName": "Example2.pdf",
