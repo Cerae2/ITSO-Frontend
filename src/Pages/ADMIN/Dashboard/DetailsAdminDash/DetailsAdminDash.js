@@ -183,13 +183,16 @@ function DetailsAdminDash(props) {
                         {feedbackItem.StatusFeedback}
                       </p>
                     </div>
-                    <Button
-                      style={{ color: "#0D0359" }}
-                      onClick={handleOpenModal}
-                    >
-                      <Undo></Undo>
-                    </Button>
-                    <Button style={{ color: "#00B050", marginLeft: -20 }}>
+                    <div className="modal-btn-arrow">
+                      <Button
+                        style={{ color: "#0D0359" }}
+                        onClick={handleOpenModal}
+                      >
+                        <Undo></Undo>
+                      </Button>
+                    </div>
+
+                    <Button style={{ color: "#00B050", marginLeft: -30 }}>
                       <Download></Download>
                     </Button>
                   </div>
@@ -197,7 +200,11 @@ function DetailsAdminDash(props) {
               ))}
 
               <Modal
-                style={{ backgroundColor: "white", borderRadius: 10 }}
+                style={{
+                  backgroundColor: "white",
+                  borderRadius: 10,
+                  marginTop: 90,
+                }}
                 width={"100vh"}
                 height={"10vh"}
                 visible={isModalOpen}

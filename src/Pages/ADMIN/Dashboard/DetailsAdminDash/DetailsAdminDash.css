@@ -63,3 +63,12 @@
 .con-stat-details {
   min-width: 15vh;
 }
+.file-style {
+  min-width: 130px;
+}
+
+@media (max-width: 600px) {
+  .con-stat-details {
+    margin-left: 10px;
+  }
+}
