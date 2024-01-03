@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../../../Navbar";
 import "./userliist.css";
 import { Button, Typography } from "@mui/material";
@@ -9,10 +9,10 @@ function UserList(props) {
   const [selectedCampus, setSelectedCampus] = useState("Cagayan de Oro");
   const itemsPerPage = 20;
   const [currentPage, setCurrentPage] = useState(0);
-
+  const [buttonWidth, setButtonWidth] = useState(17);
   const handleCampusChange = (campus) => {
     setSelectedCampus(campus);
-    setCurrentPage(0); // Reset to the first page when the campus changes
+    setCurrentPage(0);
   };
 
   const handlePageChange = (newPage) => {
@@ -23,17 +23,28 @@ function UserList(props) {
     (user) => user["School Campus"] === selectedCampus
   );
 
-  
-
   const totalPages = Math.ceil(filteredUserList.length / itemsPerPage);
   const startIndex = currentPage * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
 
   const visibleUserList = filteredUserList.slice(startIndex, endIndex);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setButtonWidth(window.innerWidth <= 600 ? 10 : 17);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
-    <div>
-      <Navbar></Navbar>
+    <>
+      <div className="nav-bar-cont">
+        <Navbar></Navbar>
+      </div>
       <div className="userlist-cont">
         <div className="btn-cont-userlist">
           {[
@@ -48,6 +59,7 @@ function UserList(props) {
             <Button
               key={campus}
               style={{
+                fontSize: buttonWidth,
                 backgroundColor:
                   selectedCampus === campus ? "#FFC000" : "#201b51",
                 color: selectedCampus === campus ? "#201b51" : "#FFC000",
@@ -104,14 +116,14 @@ function UserList(props) {
           ) : (
             <Typography variant="body1" color="textSecondary">
               <div className="nothing-con">
-                <img src={nothing} alt="Nothing" />
+                <img className="nothing-img" src={nothing} alt="Nothing" />
                 <p className="nothing-p">No user registered in this campus.</p>
               </div>
             </Typography>
           )}
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

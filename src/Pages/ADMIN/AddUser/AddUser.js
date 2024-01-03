@@ -51,11 +51,11 @@ function UserProfile(props) {
         userData,
         {
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
         }
       );
-  
+
       console.log(response.data); // Log the response data if needed
     } catch (error) {
       console.error("Error adding user:", error);
@@ -92,8 +92,8 @@ function UserProfile(props) {
           </div>
           <div className="row2">
             <DatePickers
-            value={birthdate} //
-            onChange={(date) => setBirthdate(date)} 
+              value={birthdate} //
+              onChange={(date) => setBirthdate(date)}
             />
             <Selection
               inputLabel={"School Campus"}
@@ -135,7 +135,7 @@ function UserProfile(props) {
               content={"label"}
             />
           </div>
-          <div>
+          <div className="add-user-btn-cont">
             <Button
               style={{ backgroundColor: "#00B050", color: "white" }}
               onClick={handleAddUser}

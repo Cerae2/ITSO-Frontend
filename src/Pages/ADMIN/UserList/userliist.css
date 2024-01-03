@@ -61,3 +61,52 @@
   bottom: 0;
   width: 86.5%;
 }
+
+@media (max-width: 600px) {
+  .table-cont-userlist {
+    width: 100%;
+    padding: 10px;
+    border: 10px solid #201b51;
+    height: 100%;
+    overflow-y: auto;
+  }
+
+  .pagination.userlist-page {
+    left: 62%;
+    width: auto;
+  }
+
+  .nav-bar-cont {
+    position: fixed;
+    width: 100%;
+    z-index: 1000; /* Ensure it is on top of other elements */
+  }
+
+  .drop-down-nav {
+    display: flex;
+    flex-direction: column;
+    transform: translateY(-60rem);
+    transition: 0.5s ease-in-out;
+    height: 100%;
+    position: fixed;
+  }
+
+  .drop-down-nav.active {
+    transform: translateY(5rem);
+    left: 0;
+  }
+  .userlist-cont {
+    padding-top: 13vh;
+    height: 100vh;
+  }
+  .userlist-table {
+    font-size: 13px;
+  }
+  .nothing-img {
+    width: 13vh;
+    height: 13vh;
+  }
+  .nothing-con {
+    padding: 2vh;
+  }
+}

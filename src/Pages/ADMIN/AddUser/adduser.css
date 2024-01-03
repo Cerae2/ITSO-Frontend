@@ -29,3 +29,29 @@
   height: 60vh;
   width: 60vh;
 }
+
+@media (max-width: 600px) {
+  .add-user-cont {
+    flex-direction: column;
+    align-items: center;
+  }
+  .input-cont-add {
+    align-items: center;
+    justify-content: center;
+  }
+  .account-cont {
+    margin-top: 10vh;
+  }
+  .account {
+    height: 30vh;
+    width: 30vh;
+  }
+  .row1,
+  .row2,
+  .row3 {
+    flex-direction: column;
+  }
+  .add-user-btn-cont {
+    margin-bottom: 20px;
+  }
+}
