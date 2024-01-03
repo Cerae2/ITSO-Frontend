@@ -128,7 +128,6 @@
 .file-btn {
   display: flex;
   align-items: center;
-  justify-content: center;
 }
 .file-btn-2 {
   display: flex;
@@ -152,4 +151,73 @@
 .btn-add {
   display: flex;
   align-items: flex-start;
+}
+
+@media (max-width: 600px) {
+  .file-btn {
+  }
+  .box-1 {
+    flex-direction: column;
+    height: auto;
+  }
+  .sub-details-dash-con {
+    flex-direction: column;
+    padding: 10px;
+    margin-top: 17vh;
+  }
+  .box-1-1,
+  .box-1-2,
+  .box-2-1,
+  .box-2-2 {
+    padding: 0px;
+  }
+  .box-1,
+  .box-2 {
+    padding: 0px;
+  }
+  .details-dash-con {
+    padding: 5px;
+  }
+  .box-1 {
+    width: 100%;
+  }
+  .box-2 {
+    width: 100%;
+  }
+  .box-1-1 {
+    width: 100%;
+    justify-content: center;
+  }
+  .box-2-2 {
+    margin-top: -10vh;
+    padding: 10px;
+  }
+  .detail-dash-td {
+    width: 100%;
+    display: flex;
+  }
+  .feedback-con {
+    height: auto;
+  }
+  .box-2-1 {
+    margin-top: 2vh;
+    padding: 10px;
+    min-height: 8vh;
+  }
+  .box-1-2 {
+    margin-bottom: 2vh;
+  }
+  .feedback-p {
+    border: 1px solid rgb(255, 166, 0);
+    display: flex;
+    padding: 3px 8px;
+    border-radius: 12px;
+    width: 100%;
+    height: 35;
+    align-items: center;
+    justify-content: center;
+  }
+  .feedback-title {
+    margin-bottom: 10vh;
+  }
 }

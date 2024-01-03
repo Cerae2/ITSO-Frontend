@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import bg from "./../../../assets/building.jpg";
 import "./landing.css";
 import logo from "./../../../assets/logo-white.png";
@@ -13,6 +13,7 @@ function Landing(props) {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const { login, setUser } = useAuth();
+  const [buttonWidth, setButtonWidth] = useState("100%");
 
   const handleLogin = () => {
     // Simulate authentication logic
@@ -34,6 +35,17 @@ function Landing(props) {
       alert("Invalid username or password. Please try again.");
     }
   };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setButtonWidth(window.innerWidth <= 600 ? "77%" : "90%");
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <>
@@ -66,13 +78,20 @@ function Landing(props) {
                 Forgot Password?
               </Button>
             </div>
-            <div style={{ width: "35vh" }}>
+            <div
+              style={{
+                width: "35vh",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
               <Button
                 style={{
                   border: "1px solid #FFC000",
                   color: "white",
                   fontSize: 15,
-                  width: "100%",
+                  width: buttonWidth,
                 }}
                 onClick={handleLogin}
               >

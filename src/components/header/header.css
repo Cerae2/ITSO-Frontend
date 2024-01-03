@@ -62,7 +62,15 @@
     right: 0;
     transition: transform 0.3s ease-in-out;
   }
-
+  .link-campus:hover {
+    color: rgb(255, 187, 0);
+  }
+  .link-about:hover {
+    color: rgb(255, 187, 0);
+  }
+  .link-contact:hover {
+    color: rgb(255, 187, 0);
+  }
   .cam-cont-head {
     display: flex;
     flex-direction: column;

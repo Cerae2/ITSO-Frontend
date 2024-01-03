@@ -165,15 +165,8 @@ function DetailsDash(props) {
                     }}
                   >
                     <p
+                      className="feedback-p"
                       style={{
-                        border: "1px solid rgb(255, 166, 0)",
-                        display: "flex",
-                        padding: "3px 8px",
-                        borderRadius: "12px",
-                        width: "100%",
-                        height: 35,
-                        alignItems: "center",
-                        justifyContent: "center",
                         background:
                           feedbackItem.StatusFeedback === "Under Review"
                             ? "#ffa600a1"

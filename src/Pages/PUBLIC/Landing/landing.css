@@ -40,7 +40,6 @@ html {
   height: 100%;
   object-fit: cover;
 }
-
 .login-container {
   background-color: #201b518f;
   display: flex;
@@ -51,13 +50,12 @@ html {
   align-items: center;
   justify-content: center;
 }
-
 .box-login {
   background-color: rgba(0, 0, 0, 0.493);
   height: auto;
   padding: 20px;
   padding-bottom: 70px;
-  width: 400px;
+  width: 25%;
   align-items: center;
   display: flex;
   flex-direction: column;
