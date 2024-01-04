@@ -9,7 +9,7 @@ import { Button } from "@mui/material";
 import DatePickers from "../../../components/DatePickers";
 import Selection from "../../../components/Selection";
 import TextFieldComponet from "../../../components/TextFieldComponet";
-import axios from "axios";
+// import axios from "axios";
 
 function UserProfile(props) {
   const [firstName, setFirstName] = useState("");
@@ -31,35 +31,35 @@ function UserProfile(props) {
   };
 
   const handleAddUser = async () => {
-    try {
-      const userData = {
-        first_name: firstName,
-        middle_name: middleName,
-        last_name: lastName,
-        email: email,
-        birth_date: birthdate,
-        contact_number: contactNo,
-        school_campus: campus,
-        department_type: college,
-        user_role: userType,
-        // Add other fields as needed...
-      };
+    // try {
+    //   const userData = {
+    //     first_name: firstName,
+    //     middle_name: middleName,
+    //     last_name: lastName,
+    //     email: email,
+    //     birth_date: birthdate,
+    //     contact_number: contactNo,
+    //     school_campus: campus,
+    //     department_type: college,
+    //     user_role: userType,
+    //     // Add other fields as needed...
+    //   };
 
-      // Axios POST request to send user data to the backend
-      const response = await axios.post(
-        "http://localhost:8000/auth/register/",
-        userData,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+    //   // Axios POST request to send user data to the backend
+    //   const response = await axios.post(
+    //     "http://localhost:8000/auth/register/",
+    //     userData,
+    //     {
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //     }
+    //   );
 
-      console.log(response.data); // Log the response data if needed
-    } catch (error) {
-      console.error("Error adding user:", error);
-    }
+    //   console.log(response.data); // Log the response data if needed
+    // } catch (error) {
+    //   console.error("Error adding user:", error);
+    // }
   };
 
   return (
