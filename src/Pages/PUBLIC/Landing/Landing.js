@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import bg from "./../../../assets/building.jpg";
+import axios from "../../plugins/axios";
 import "./landing.css";
 import logo from "./../../../assets/logo-white.png";
 import { Button } from "@mui/material";
@@ -8,6 +9,7 @@ import PasswordField from "../../../components/LoginComponent/PasswordField";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "./../../../AuthContext";
 
+
 function Landing(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -15,27 +17,47 @@ function Landing(props) {
   const { login, setUser } = useAuth();
   const [buttonWidth, setButtonWidth] = useState("100%");
 
-  const handleLogin = () => {
-    // Simulate authentication logic
-    const userRole = login(username, password);
+  // ... (existing code)
 
-    console.log("User role after login:", userRole);
+const handleLogin = async () => {
+  try {
+    const response = await axios.post('accounts/token/login/', {
+      username: username,
+      password: password,
+    });
 
-    if (userRole) {
-      // Set a token or identifier in local storage
-      localStorage.setItem("userToken", userRole.role);
+    console.log("Login API response:", response);
 
-      if (userRole.role === "admin") {
-        navigate("/dashboardadmin");
-      } else if (userRole.role === "user") {
-        navigate("/dashboard");
+    if (response && response.data) {
+      const userRole = response.data;
+      console.log("User role after login:", userRole);
+
+      if (userRole) {
+        localStorage.setItem("userToken", userRole.role);
+        let destination = "/dashboard"; // Default destination
+
+        if (userRole.role === "admin") {
+          destination = "/dashboardadmin";
+        }
+
+        console.log("Navigating to:", destination);
+        navigate(destination);
+      } else {
+        alert("Invalid username or password. Please try again.");
       }
     } else {
-      // Show an alert for wrong username or password
-      alert("Invalid username or password. Please try again.");
+      console.error("Invalid response format:", response);
+      alert("Login failed. Unexpected response received.");
     }
-  };
+  } catch (error) {
+    console.error("Login failed:", error.response ? error.response.data : error.message);
+    alert("Login failed. Please check your credentials and try again.");
+  }
+};
 
+// ... (rest of your code)
+
+  
   useEffect(() => {
     const handleResize = () => {
       setButtonWidth(window.innerWidth <= 600 ? "77%" : "90%");
