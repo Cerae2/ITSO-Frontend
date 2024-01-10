@@ -27,22 +27,31 @@ function Landing(props) {
 
       console.log("Login API response:", response);
 
-      if (response && response.data) {
-        const userRole = response.data;
-        console.log("User role after login:", userRole);
+      if (response && response.data && response.data.auth_token) {
+        const userToken = response.data.auth_token;
+        console.log("User token after login:", userToken);
+
+        const userResponse = await axios.get("accounts/users/me/", {
+          headers: { Authorization: `token ${userToken}` },
+        });
+
+        const userRole = userResponse.data.user_role;
 
         if (userRole) {
-          localStorage.setItem("userToken", userRole.role);
+          localStorage.setItem("userToken", userToken);
           let destination = "/dashboard"; // Default destination
 
-          if (userRole.role === "admin") {
+          if (userRole === "admin") {
             destination = "/dashboardadmin";
           }
 
+          // Add this line to ensure the user is set
+          setUser({ role: userRole });
+
           console.log("Navigating to:", destination);
 
-          // Add this line to ensure the user is set
-          setUser({ role: userRole.role });
+          // Display alert with user's role
+          alert(`Login successful. You are logged in as a ${userRole}.`);
 
           navigate(destination);
         } else {
