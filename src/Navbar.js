@@ -1,19 +1,29 @@
 import React, { useState, useRef } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import { Dropdown, Menu } from "antd";
 import { Notifications, Person, ViewHeadline } from "@mui/icons-material";
 import logo from "./assets/logo-blue.jpg";
 import "./App.css";
 import { Button } from "@mui/material";
-import { useAuth } from "./AuthContext";
+import { setLogout } from "./Pages/PUBLIC/Landing/authSlice";
 
 function Navbar() {
-  const { user, logout } = useAuth();
-  const location = useLocation();
   const [isMenuActive, setIsMenuActive] = useState(false);
+  const [isNavVisible, setNavVisibility] = useState(false);
+  const dispatch = useDispatch();
+  const Role = useSelector((state) => state.auth.role);
 
   const handleMenu = () => {
     setIsMenuActive(!isMenuActive);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("authToken");
+    localStorage.removeItem("userRole");
+
+    dispatch(setLogout());
+
   };
 
   const ProfileMenu = (
@@ -25,7 +35,7 @@ function Navbar() {
         <Link to="/profile">Profile</Link>
       </Menu.Item>
       <Menu.Item>
-        <Link to="/logout">Logout</Link>
+        <Link to="/">Logout</Link>
       </Menu.Item>
     </Menu>
   );
@@ -40,24 +50,22 @@ function Navbar() {
         </div>
       </div>
 
-      {user && (
-        <ul className={`ui-nav main table ${isMenuActive ? "active" : ""}`}>
-          {user.role === "admin" ? (
-            <>
-              <CustomLink to="/dashboardadmin">Dashboard</CustomLink>
-              <CustomLink to="/adduser">Add User</CustomLink>
-              <CustomLink to="/userlist">User List</CustomLink>
-            </>
-          ) : (
-            <>
-              <CustomLink to="/dashboard">Dashboard</CustomLink>
-              <CustomLink to="/service">Service</CustomLink>
-              <CustomLink to="/download">Downloadable Files</CustomLink>
-              <CustomLink to="/submit">Submit Request</CustomLink>
-            </>
-          )}
-        </ul>
-      )}
+      <ul className={`ui-nav main table ${isMenuActive ? "active" : ""}`}>
+        {Role === "admin" ? (
+          <>
+            <CustomLink to="/dashboardadmin">Dashboard</CustomLink>
+            <CustomLink to="/adduser">Add User</CustomLink>
+            <CustomLink to="/userlist">User List</CustomLink>
+          </>
+        ) : (
+          <>
+            <CustomLink to="/dashboard">Dashboard</CustomLink>
+            <CustomLink to="/service">Service</CustomLink>
+            <CustomLink to="/download">Downloadable Files</CustomLink>
+            <CustomLink to="/submit">Submit Request</CustomLink>
+          </>
+        )}
+      </ul>
 
       <li className="logout table">
         <div className="logout-con bell">
@@ -89,39 +97,47 @@ function Navbar() {
       </li>
 
       <div className={`drop-down-nav table ${isMenuActive ? "active" : ""}`}>
-        {user && (
-          <ul className={`ui-nav drop ${isMenuActive ? "active" : ""}`}>
-            {user.role === "client" ? (
-              <>
-                <CustomLink to="/dashboardadmin">Dashboard</CustomLink>
-                <CustomLink to="/adduser">Add User</CustomLink>
-                <CustomLink to="/userlist">User List</CustomLink>
-                <CustomLink to="/profile">Profile</CustomLink>
-                <CustomLink to="/logout">Logout</CustomLink>
-              </>
-            ) : (
-              <>
-                <CustomLink to="/dashboard">Dashboard</CustomLink>
-                <CustomLink to="/service">Service</CustomLink>
-                <CustomLink to="/download">Downloadable Files</CustomLink>
-                <CustomLink to="/submit">Submit Request</CustomLink>
-                <CustomLink to="/profile">Profile</CustomLink>
-                <CustomLink to="/logout">Logout</CustomLink>
-              </>
-            )}
-          </ul>
-        )}
+        <ul className={`ui-nav drop ${isMenuActive ? "active" : ""}`}>
+          {Role === "client" ? (
+            <>
+              <CustomLink to="/dashboardadmin">Dashboard</CustomLink>
+              <CustomLink to="/adduser">Add User</CustomLink>
+              <CustomLink to="/userlist">User List</CustomLink>
+              <CustomLink to="/profile">Profile</CustomLink>
+              <CustomLink to="/logout">Logout</CustomLink>
+            </>
+          ) : (
+            <>
+              <CustomLink to="/dashboard">Dashboard</CustomLink>
+              <CustomLink to="/service">Service</CustomLink>
+              <CustomLink to="/download">Downloadable Files</CustomLink>
+              <CustomLink to="/submit">Submit Request</CustomLink>
+              <CustomLink to="/profile">Profile</CustomLink>
+              <CustomLink
+                to="/logout"
+                onClick={() => {
+                  dispatch(setLogout());
+                }}
+              >
+                Logout
+              </CustomLink>
+            </>
+          )}
+        </ul>
       </div>
     </nav>
   );
 }
 
-function CustomLink({ to, children }) {
-  const isActive = useLocation().pathname === to;
+function CustomLink({ to, children, ...props }) {
+  const resolvedPath = useResolvedPath(to);
+  const isActive = useMatch({ path: resolvedPath.pathname, end: true });
 
   return (
     <li className={`nav-item ${isActive ? "active" : ""}`}>
-      <Link to={to}>{children}</Link>
+      <Link to={to} {...props}>
+        {children}
+      </Link>
     </li>
   );
 }

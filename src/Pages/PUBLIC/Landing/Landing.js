@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, getState } from "react";
 import bg from "./../../../assets/building.jpg";
 import axios from "../../plugins/axios";
 import "./landing.css";
@@ -7,29 +7,28 @@ import { Button } from "@mui/material";
 import InputField from "../../../components/LoginComponent/InputField";
 import PasswordField from "../../../components/LoginComponent/PasswordField";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "./../../../AuthContext";
+import { setLogin, setRole } from "./authSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 function Landing(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
-  const { login, setUser } = useAuth();
+  const dispatch = useDispatch();
   const [buttonWidth, setButtonWidth] = useState("100%");
+  const navigate = useNavigate();
 
-  // ... (existing code)
+  const isAuthenticated = useSelector((state) => state.auth.isLoggedIn);
+  const userRole = useSelector((state) => state.auth.role);
 
-  const handleLogin = async () => {
+  const handleLogin = async (username, password) => {
     try {
       const response = await axios.post("accounts/token/login/", {
         username: username,
         password: password,
       });
 
-      console.log("Login API response:", response);
-
       if (response && response.data && response.data.auth_token) {
         const userToken = response.data.auth_token;
-        console.log("User token after login:", userToken);
 
         const userResponse = await axios.get("accounts/users/me/", {
           headers: { Authorization: `token ${userToken}` },
@@ -37,29 +36,27 @@ function Landing(props) {
 
         const userRole = userResponse.data.user_role;
 
-        if (userRole) {
-          localStorage.setItem("userToken", userToken);
-          let destination = "/dashboard"; // Default destination
+        // Store token and role in local storage
+        localStorage.setItem("authToken", userToken);
+        localStorage.setItem("userRole", userRole);
 
-          if (userRole === "admin") {
-            destination = "/dashboardadmin";
-          }
+        // Update Redux state with userToken and userRole
+        dispatch(setLogin(userToken));
+        dispatch(setRole(userRole));
 
-          // Add this line to ensure the user is set
-          setUser({ role: userRole });
+        let destination = "/dashboard"; // Default destination
 
-          console.log("Navigating to:", destination);
-
-          // Display alert with user's role
-          alert(`Login successful. You are logged in as a ${userRole}.`);
-
-          navigate(destination);
-        } else {
-          alert("Invalid username or password. Please try again.");
+        if (userRole === "admin") {
+          destination = "/dashboardadmin";
         }
+
+        // Display alert with user's role
+        alert(`Login successful. You are logged in as a ${userRole}.`);
+
+        // Navigate to the destination
+        navigate(destination);
       } else {
-        console.error("Invalid response format:", response);
-        alert("Login failed. Unexpected response received.");
+        alert("Invalid username or password. Please try again.");
       }
     } catch (error) {
       console.error(
@@ -129,7 +126,7 @@ function Landing(props) {
                   fontSize: 15,
                   width: buttonWidth,
                 }}
-                onClick={handleLogin}
+                onClick={() => handleLogin(username, password)}
               >
                 LOGIN
               </Button>
