@@ -23,7 +23,6 @@ function Navbar() {
     localStorage.removeItem("userRole");
 
     dispatch(setLogout());
-
   };
 
   const ProfileMenu = (
@@ -51,7 +50,7 @@ function Navbar() {
       </div>
 
       <ul className={`ui-nav main table ${isMenuActive ? "active" : ""}`}>
-        {Role === "admin" ? (
+        {Role === "client" ? (
           <>
             <CustomLink to="/dashboardadmin">Dashboard</CustomLink>
             <CustomLink to="/adduser">Add User</CustomLink>
@@ -98,7 +97,7 @@ function Navbar() {
 
       <div className={`drop-down-nav table ${isMenuActive ? "active" : ""}`}>
         <ul className={`ui-nav drop ${isMenuActive ? "active" : ""}`}>
-          {Role === "client" ? (
+          {Role === "admin" ? (
             <>
               <CustomLink to="/dashboardadmin">Dashboard</CustomLink>
               <CustomLink to="/adduser">Add User</CustomLink>
