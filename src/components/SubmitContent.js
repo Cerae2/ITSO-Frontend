@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 import React from "react";
-import { Download } from "@mui/icons-material";
+import { Download, Upload } from "@mui/icons-material";
 
 export default function SubmitContent() {
   return (
@@ -50,6 +50,16 @@ export default function SubmitContent() {
         <h3>Submit Requirents</h3>
         <div className="upload-cont"></div>
         <div className="btn-option">
+          <Button
+            style={{
+              backgroundColor: "#9aa03a",
+              marginRight: 10,
+              color: "white",
+              borderRadius: 20,
+            }}
+          >
+            Upload <Upload></Upload>
+          </Button>
           <Button
             style={{
               backgroundColor: "#3aa03a",
