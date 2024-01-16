@@ -113,3 +113,8 @@ td {
     width: 100%;
   }
 }
+@media (max-width: 1000px) {
+  .dash-input-container {
+    flex-direction: column;
+  }
+}

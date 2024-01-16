@@ -125,7 +125,14 @@
 .logout-con.bar {
   display: none;
 }
-
+@media (max-width: 1000px) {
+  .title-nav {
+    display: none;
+  }
+  .ui-nav a {
+    min-width: 15vh;
+  }
+}
 @media (max-width: 600px) {
   .nav {
     position: fixed;
@@ -149,7 +156,6 @@
     right: 1vh;
     border: none;
     display: flex;
-    
   }
 
   .logout-con.bell {
@@ -169,7 +175,6 @@
     flex-direction: column;
     transform: translateY(-60rem);
     transition: 0.5s ease-in-out;
-
   }
 
   .drop-down-nav.active {

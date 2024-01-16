@@ -67,7 +67,6 @@ function Landing(props) {
     }
   };
 
-  // ... (rest of your code)
 
   useEffect(() => {
     const handleResize = () => {

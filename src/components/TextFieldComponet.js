@@ -1,14 +1,15 @@
 import React from "react";
 import { TextField } from "@mui/material";
 
-function TextFieldComponet({ label, onChange, type }) {
+function TextFieldComponet({ label, helperText, onChange, type, width }) {
   return (
     <div style={{ marginBottom: 25 }}>
       <TextField
         type={type}
         onChange={onChange}
         label={label}
-        style={{ marginRight: 15, width: "30vh" }}
+        helperText={helperText}
+        style={{ marginRight: 15, width: width || "30vh" }}
       ></TextField>
     </div>
   );
