@@ -3,10 +3,6 @@
   padding: 5vh;
   height: 80vh;
 }
-
-.account-cont {
-}
-
 .input-cont-add {
   display: flex;
   flex-direction: column;
@@ -25,11 +21,14 @@
 .row3 {
   display: flex;
 }
+.row4 {
+  flex-direction: row;
+  display: flex;
+}
 .account {
   height: 60vh;
   width: 60vh;
 }
-
 @media (max-width: 600px) {
   .add-user-cont {
     flex-direction: column;
@@ -48,7 +47,8 @@
   }
   .row1,
   .row2,
-  .row3 {
+  .row3,
+  .row4 {
     flex-direction: column;
   }
   .add-user-btn-cont {

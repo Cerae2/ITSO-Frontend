@@ -44,7 +44,6 @@ function UserProfile(props) {
     //     user_role: userType,
     //     // Add other fields as needed...
     //   };
-
     //   // Axios POST request to send user data to the backend
     //   const response = await axios.post(
     //     "http://localhost:8000/auth/register/",
@@ -55,7 +54,6 @@ function UserProfile(props) {
     //       },
     //     }
     //   );
-
     //   console.log(response.data); // Log the response data if needed
     // } catch (error) {
     //   console.error("Error adding user:", error);
@@ -134,6 +132,14 @@ function UserProfile(props) {
               value={"value"}
               content={"label"}
             />
+          </div>
+          <div className="row4">
+            <TextFieldComponet
+              label={"Email"}
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+            />
+            <TextFieldComponet label={"username"} />
           </div>
           <div className="add-user-btn-cont">
             <Button
