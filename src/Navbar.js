@@ -50,7 +50,7 @@ function Navbar() {
       </div>
 
       <ul className={`ui-nav main table ${isMenuActive ? "active" : ""}`}>
-        {Role === "client" ? (
+        {Role === "admin" ? (
           <>
             <CustomLink to="/dashboardadmin">Dashboard</CustomLink>
             <CustomLink to="/adduser">Add User</CustomLink>

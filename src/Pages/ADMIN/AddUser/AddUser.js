@@ -9,7 +9,7 @@ import { Button } from "@mui/material";
 import DatePickers from "../../../components/DatePickers";
 import Selection from "../../../components/Selection";
 import TextFieldComponet from "../../../components/TextFieldComponet";
-// import axios from "axios";
+import axios from "../../plugins/axios";
 
 function UserProfile(props) {
   const [firstName, setFirstName] = useState("");
@@ -31,33 +31,48 @@ function UserProfile(props) {
   };
 
   const handleAddUser = async () => {
-    // try {
-    //   const userData = {
-    //     first_name: firstName,
-    //     middle_name: middleName,
-    //     last_name: lastName,
-    //     email: email,
-    //     birth_date: birthdate,
-    //     contact_number: contactNo,
-    //     school_campus: campus,
-    //     department_type: college,
-    //     user_role: userType,
-    //     // Add other fields as needed...
-    //   };
-    //   // Axios POST request to send user data to the backend
-    //   const response = await axios.post(
-    //     "http://localhost:8000/auth/register/",
-    //     userData,
-    //     {
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //     }
-    //   );
-    //   console.log(response.data); // Log the response data if needed
-    // } catch (error) {
-    //   console.error("Error adding user:", error);
-    // }
+    try {
+      const userData = {
+        username: email, // Assuming email is not the username
+        email,
+        first_name: firstName,
+        middle_name: middleName,
+        last_name: lastName,
+        birth_date: birthdate,
+        contact_number: contactNo,
+        user_role: userType,
+        school_campus: campus,
+        department_type: college,
+      };
+
+      const response = await axios.post("accounts/users/", userData);
+      console.log('User added:', response.data);
+
+      // Clear input fields after successful addition
+      setFirstName('');
+      setMiddleName('');
+      setLastName('');
+      setEmail('');
+      setBirthdate('');
+      setContactNo('');
+      setUserType('');
+      setCampus('');
+      setCollege('');
+
+      // Optionally, show a success message or redirect the user
+    } catch (error) {
+      if (error.response) {
+        console.log('Server Error:', error.response.data);
+        console.log('Status:', error.response.status);
+        console.log('Headers:', error.response.headers);
+      } else if (error.request) {
+        console.log('Request Error:', error.request);
+      } else {
+        console.log('Error:', error.message);
+      }
+      console.error('Error adding user:', error);
+      // Handle error scenarios (e.g., display error message to the user)
+    }
   };
 
   return (
@@ -132,14 +147,6 @@ function UserProfile(props) {
               value={"value"}
               content={"label"}
             />
-          </div>
-          <div className="row4">
-            <TextFieldComponet
-              label={"Email"}
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-            />
-            <TextFieldComponet label={"username"} />
           </div>
           <div className="add-user-btn-cont">
             <Button
