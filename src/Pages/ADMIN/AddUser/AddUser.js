@@ -134,11 +134,6 @@ function UserProfile(props) {
             />
           </div>
           <div className="row4">
-            <TextFieldComponet
-              label={"Email"}
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-            />
             <TextFieldComponet label={"username"} />
           </div>
           <div className="add-user-btn-cont">
