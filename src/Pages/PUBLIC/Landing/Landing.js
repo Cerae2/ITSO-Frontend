@@ -26,35 +26,29 @@ function Landing(props) {
         username: username,
         password: password,
       });
-
+  
       if (response && response.data && response.data.auth_token) {
         const userToken = response.data.auth_token;
-
+  
         const userResponse = await axios.get("accounts/users/me/", {
           headers: { Authorization: `token ${userToken}` },
         });
-
+  
         const userRole = userResponse.data.user_role;
-
+  
         // Store token and role in local storage
         localStorage.setItem("authToken", userToken);
         localStorage.setItem("userRole", userRole);
-
+  
         // Update Redux state with userToken and userRole
         dispatch(setLogin(userToken));
         dispatch(setRole(userRole));
-
-        let destination = "/dashboard"; // Default destination
-
-        if (userRole === "admin") {
-          destination = "/dashboardadmin";
-        }
-
+  
+        // Redirect to the appropriate dashboard
+        navigate(userRole === "admin" ? "/dashboardadmin" : "/dashboard");
+  
         // Display alert with user's role
         alert(`Login successful. You are logged in as a ${userRole}.`);
-
-        // Navigate to the destination
-        navigate(destination);
       } else {
         alert("Invalid username or password. Please try again.");
       }
@@ -66,7 +60,8 @@ function Landing(props) {
       alert("Login failed. Please check your credentials and try again.");
     }
   };
-
+  
+  
 
   useEffect(() => {
     const handleResize = () => {

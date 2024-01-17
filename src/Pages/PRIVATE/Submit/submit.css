@@ -88,7 +88,8 @@
 
 @media (max-width: 600px) {
   .btn-cont-submit {
-    height: 140vh;
+    height: 160vh;
+    margin-top: 1vh;
     background-color: #201b51;
   }
   .submit-cont-main {
