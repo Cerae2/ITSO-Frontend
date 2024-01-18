@@ -1,21 +1,21 @@
 [
   {
-    "value": "College of Engineering and Architecture",
+    "value": "engineering_architecture",
     "label": "College of Engineering and Architecture"
   },
   {
-    "value": "College of Information Technology and Computing",
+    "value": "information_technology",
     "label": "College of Information Technology and Computing"
   },
   {
-    "value": "College of Science and Mathematics",
+    "value": "science_mathematics",
     "label": "College of Science and Mathematics"
   },
   {
-    "value": "College of Science and Technology Education",
+    "value": "science_tech_education",
     "label": "College of Science and Technology Education"
   },
-  { "value": "College of Technology", "label": "College of Technology" },
-  { "value": "College of Medicine", "label": "College of Medicine" },
-  { "value": "Senior High School", "label": "Senior High School" }
+  { "value": "technology", "label": "College of Technology" },
+  { "value": "medicine", "label": "College of Medicine" },
+  { "value": "senior_high_school", "label": "Senior High School" }
 ]

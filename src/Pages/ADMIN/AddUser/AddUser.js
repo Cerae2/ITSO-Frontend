@@ -6,10 +6,9 @@ import campusData from "./../../../components/JSON/campus.json";
 import collegeData from "./../../../components/JSON/colleges.json";
 import userData from "./../../../components/JSON/user.json";
 import { Button } from "@mui/material";
-import DatePickers from "../../../components/DatePickers";
 import Selection from "../../../components/Selection";
 import TextFieldComponet from "../../../components/TextFieldComponet";
-// import axios from "axios";
+import axios from "../../plugins/axios";
 
 function UserProfile(props) {
   const [firstName, setFirstName] = useState("");
@@ -21,6 +20,30 @@ function UserProfile(props) {
   const [userType, setUserType] = useState("");
   const [campus, setCampus] = useState("");
   const [college, setCollege] = useState("");
+  const [username, setUsername] = useState("");
+
+  const handleChangeBirthdate = (date) => {
+    try {
+      let birthdateISO = ''; // Default value for birthdate
+  
+      if (date) {
+        const birthdateDate = new Date(date);
+  
+        if (!isNaN(birthdateDate.getTime())) {
+          // Check if birthdateDate is a valid date object
+          birthdateISO = birthdateDate.toISOString().split('T')[0];
+        } else {
+          console.error('Invalid date format');
+          // Handle the case where the date is invalid (e.g., not a valid date)
+          return;
+        }
+      }
+  
+      setBirthdate(birthdateISO);
+    } catch (error) {
+      console.error('Error converting date:', error);
+    }
+  };
 
   const handleChangeCampus = (event) => {
     setCampus(event.target.value);
@@ -31,34 +54,38 @@ function UserProfile(props) {
   };
 
   const handleAddUser = async () => {
-    // try {
-    //   const userData = {
-    //     first_name: firstName,
-    //     middle_name: middleName,
-    //     last_name: lastName,
-    //     email: email,
-    //     birth_date: birthdate,
-    //     contact_number: contactNo,
-    //     school_campus: campus,
-    //     department_type: college,
-    //     user_role: userType,
-    //     // Add other fields as needed...
-    //   };
-    //   // Axios POST request to send user data to the backend
-    //   const response = await axios.post(
-    //     "http://localhost:8000/auth/register/",
-    //     userData,
-    //     {
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //       },
-    //     }
-    //   );
-    //   console.log(response.data); // Log the response data if needed
-    // } catch (error) {
-    //   console.error("Error adding user:", error);
-    // }
+    try {
+      const userData = {
+        first_name: firstName,
+        middle_name: middleName,
+        last_name: lastName,
+        email: email,
+        birth_date: birthdate, // Send the birthdate as a string
+        contact_number: contactNo,
+        school_campus: campus,
+        department_type: college,
+        user_role: userType,
+        username: username,
+        // Add other fields as needed...
+      };
+  
+      // Axios POST request to send user data to the backend
+      const response = await axios.post(
+        "accounts/users/",
+        userData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+  
+      console.log(response.data); // Log the response data if needed
+    } catch (error) {
+      console.error("Error adding user:", error);
+    }
   };
+
 
   return (
     <div>
@@ -89,10 +116,11 @@ function UserProfile(props) {
             />
           </div>
           <div className="row2">
-            <DatePickers
-              value={birthdate} //
-              onChange={(date) => setBirthdate(date)}
-            />
+          <input
+            type="date"
+            value={birthdate}
+            onChange={(event) => handleChangeBirthdate(event.target.value)}
+          />
             <Selection
               inputLabel={"School Campus"}
               valueSelect={campus}
@@ -133,13 +161,11 @@ function UserProfile(props) {
               content={"label"}
             />
           </div>
-          <div className="row4">
-            <TextFieldComponet
-              label={"Email"}
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
+          <TextFieldComponet
+              label={"Username"}
+              value={username}
+              onChange={(event) => setUsername(event.target.value)}
             />
-            <TextFieldComponet label={"username"} />
           </div>
           <div className="add-user-btn-cont">
             <Button
@@ -151,7 +177,6 @@ function UserProfile(props) {
           </div>
         </div>
       </div>
-    </div>
   );
 }
 
