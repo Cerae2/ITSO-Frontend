@@ -24,24 +24,24 @@ function UserProfile(props) {
 
   const handleChangeBirthdate = (date) => {
     try {
-      let birthdateISO = ''; // Default value for birthdate
-  
+      let birthdateISO = ""; // Default value for birthdate
+
       if (date) {
         const birthdateDate = new Date(date);
-  
+
         if (!isNaN(birthdateDate.getTime())) {
           // Check if birthdateDate is a valid date object
-          birthdateISO = birthdateDate.toISOString().split('T')[0];
+          birthdateISO = birthdateDate.toISOString().split("T")[0];
         } else {
-          console.error('Invalid date format');
+          console.error("Invalid date format");
           // Handle the case where the date is invalid (e.g., not a valid date)
           return;
         }
       }
-  
+
       setBirthdate(birthdateISO);
     } catch (error) {
-      console.error('Error converting date:', error);
+      console.error("Error converting date:", error);
     }
   };
 
@@ -60,32 +60,26 @@ function UserProfile(props) {
         middle_name: middleName,
         last_name: lastName,
         email: email,
-        birth_date: birthdate, // Send the birthdate as a string
+        birth_date: birthdate,
         contact_number: contactNo,
         school_campus: campus,
         department_type: college,
         user_role: userType,
         username: username,
-        // Add other fields as needed...
       };
-  
+
       // Axios POST request to send user data to the backend
-      const response = await axios.post(
-        "accounts/users/",
-        userData,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-  
+      const response = await axios.post("accounts/users/", userData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
       console.log(response.data); // Log the response data if needed
     } catch (error) {
       console.error("Error adding user:", error);
     }
   };
-
 
   return (
     <div>
@@ -116,11 +110,11 @@ function UserProfile(props) {
             />
           </div>
           <div className="row2">
-          <input
-            type="date"
-            value={birthdate}
-            onChange={(event) => handleChangeBirthdate(event.target.value)}
-          />
+            <TextFieldComponet
+              type="date"
+              value={birthdate}
+              onChange={(event) => handleChangeBirthdate(event.target.value)}
+            />
             <Selection
               inputLabel={"School Campus"}
               valueSelect={campus}
@@ -161,7 +155,8 @@ function UserProfile(props) {
               content={"label"}
             />
           </div>
-          <TextFieldComponet
+          <div className="row4">
+            <TextFieldComponet
               label={"Username"}
               value={username}
               onChange={(event) => setUsername(event.target.value)}
@@ -177,6 +172,7 @@ function UserProfile(props) {
           </div>
         </div>
       </div>
+    </div>
   );
 }
 
