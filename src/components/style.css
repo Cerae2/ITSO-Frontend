@@ -61,3 +61,19 @@
 .cam-label {
   font-size: 17px;
 }
+
+.buttonUpload {
+  background-color: rgb(255, 255, 255);
+  height: 100%;
+  width: 100%;
+  transition: 0.2s ease-in-out;
+  border-radius: 15px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.buttonUpload:hover {
+  background-color: rgba(23, 14, 67, 0.244);
+}

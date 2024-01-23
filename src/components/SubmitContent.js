@@ -4,28 +4,32 @@ import { Download, Upload } from "@mui/icons-material";
 import TextFieldComponet from "./TextFieldComponet";
 import { useDropzone } from "react-dropzone";
 import axios from "axios";
+import "./style.css";
 
-export default function SubmitContent({
-  onFileUpload,
-  type,
-  onChange,
-  onClick,
-}) {
-  const [uploadedFile, setUploadedFile] = useState(null);
+export default function SubmitContent({ onFileUpload, type, onChange }) {
+  const [uploadedFiles, setUploadedFiles] = useState([]);
+
+  const removeFile = (id) => {
+    setUploadedFiles((prevFiles) => prevFiles.filter((file) => file.id !== id));
+  };
 
   const onDrop = useCallback(
     (acceptedFiles) => {
-      const file = acceptedFiles[0];
-      onFileUpload(file);
-      setUploadedFile(file);
+      const newFiles = acceptedFiles.map((file) => ({
+        file,
+        id: Math.random().toString(36).substring(7),
+      }));
+
+      setUploadedFiles((prevFiles) => [...prevFiles, ...newFiles]);
+      onFileUpload([...uploadedFiles, ...newFiles]);
     },
-    [onFileUpload]
+    [onFileUpload, uploadedFiles]
   );
 
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
     accept: "application/pdf",
-    multiple: false,
+    multiple: true, // Allow multiple files
   });
 
   return (
@@ -89,22 +93,34 @@ export default function SubmitContent({
       </div>
       <div className="submit-request-subcont B">
         <h3>Submit Requirents</h3>
-        <div className="upload-cont" {...getRootProps()}>
-          <input {...getInputProps()} onChange={onChange} />
-          {uploadedFile ? (
-            <div>
-              <p>Uploaded File:</p>
-              <p>{uploadedFile.name}</p>
-              <p>Size: {uploadedFile.size} bytes</p>
-              {/* Add more details about the uploaded file if needed */}
+        <div className="upload-cont">
+          {uploadedFiles.length > 0 ? (
+            <div className="uploaded-name-cont">
+              <p>Uploaded Files:</p>
+              {uploadedFiles.map((uploadedFile) => (
+                <div className="uploaded-name" key={uploadedFile.id}>
+                  <p>{uploadedFile.file.name}</p>
+                  <p>Size: {uploadedFile.file.size} bytes</p>
+                  <Button onClick={() => removeFile(uploadedFile.id)}>
+                    Remove
+                  </Button>
+                </div>
+              ))}
+              <div {...getRootProps()}>
+                <input {...getInputProps()} onChange={onChange} />
+                <Button>UPLOAD</Button>
+              </div>
             </div>
           ) : (
-            <Button style={{ height: "100%", width: "100%" }}>
-              <div style={{}}>
-                <Upload size={600}></Upload>
-                <p>Drag or click to upload a file</p>
-              </div>
-            </Button>
+            <div className="uploaded-name-pre" {...getRootProps()}>
+              <input {...getInputProps()} onChange={onChange} />
+              <Button style={{ height: "100%", width: "100%", padding: 0 }}>
+                <div className="buttonUpload">
+                  <Upload size={600}></Upload>
+                  <p>Drag or click to upload files</p>
+                </div>
+              </Button>
+            </div>
           )}
         </div>
         <div className="btn-option">

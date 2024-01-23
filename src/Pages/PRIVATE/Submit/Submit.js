@@ -47,7 +47,7 @@ function Submit(props) {
             <h1 className="title-submit">PATENT</h1>
             <SubmitContent
               onChange={handleFileChange}
-              onClick={handleFileUpload}
+              onFileUpload={handleFileUpload}
             ></SubmitContent>
           </div>
         );
