@@ -4,11 +4,35 @@ import "./submit.css";
 import { Button } from "@mui/material";
 import { Download } from "@mui/icons-material";
 import SubmitContent from "../../../components/SubmitContent";
+import axios from "axios";
 
 function Submit(props) {
   const [selectForm, setSelectForm] = useState("Patent");
   const itemsPerPage = 20;
   const [currentPage, setCurrentPage] = useState(0);
+  const [file, setFile] = useState(null);
+
+  const handleFileChange = (event) => {
+    setFile(event.target.files[0]);
+  };
+
+  // Function to handle file upload
+  const handleFileUpload = async (file) => {
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+
+      // Replace 'your-upload-endpoint' with your actual file upload endpoint
+      const uploadEndpoint = "your-upload-endpoint";
+
+      const response = await axios.post(uploadEndpoint, formData);
+
+      console.log("Sample API Response:", response.data);
+      // Handle the response as needed
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
 
   const handleSelectForm = (form) => {
     setSelectForm(form);
@@ -21,7 +45,10 @@ function Submit(props) {
         return (
           <div className="submit-request-cont">
             <h1 className="title-submit">PATENT</h1>
-            <SubmitContent></SubmitContent>
+            <SubmitContent
+              onChange={handleFileChange}
+              onClick={handleFileUpload}
+            ></SubmitContent>
           </div>
         );
       case "Utility Model":

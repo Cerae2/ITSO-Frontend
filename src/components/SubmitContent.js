@@ -1,9 +1,33 @@
 import { Button } from "@mui/material";
-import React from "react";
+import React, { useState, useCallback } from "react";
 import { Download, Upload } from "@mui/icons-material";
 import TextFieldComponet from "./TextFieldComponet";
+import { useDropzone } from "react-dropzone";
+import axios from "axios";
 
-export default function SubmitContent() {
+export default function SubmitContent({
+  onFileUpload,
+  type,
+  onChange,
+  onClick,
+}) {
+  const [uploadedFile, setUploadedFile] = useState(null);
+
+  const onDrop = useCallback(
+    (acceptedFiles) => {
+      const file = acceptedFiles[0];
+      onFileUpload(file);
+      setUploadedFile(file);
+    },
+    [onFileUpload]
+  );
+
+  const { getRootProps, getInputProps } = useDropzone({
+    onDrop,
+    accept: "application/pdf",
+    multiple: false,
+  });
+
   return (
     <div className="submit-mainsub">
       <div className="submit-cont-main">
@@ -65,21 +89,25 @@ export default function SubmitContent() {
       </div>
       <div className="submit-request-subcont B">
         <h3>Submit Requirents</h3>
-        <div className="upload-cont"></div>
+        <div className="upload-cont" {...getRootProps()}>
+          <input {...getInputProps()} onChange={onChange} />
+          {uploadedFile ? (
+            <div>
+              <p>Uploaded File:</p>
+              <p>{uploadedFile.name}</p>
+              <p>Size: {uploadedFile.size} bytes</p>
+              {/* Add more details about the uploaded file if needed */}
+            </div>
+          ) : (
+            <Button style={{ height: "100%", width: "100%" }}>
+              <div style={{}}>
+                <Upload size={600}></Upload>
+                <p>Drag or click to upload a file</p>
+              </div>
+            </Button>
+          )}
+        </div>
         <div className="btn-option">
-          <Button
-            style={{
-              backgroundColor: "#9aa03a",
-              marginRight: 10,
-              marginTop: 10,
-              color: "white",
-              borderRadius: 20,
-              width: "100%",
-            }}
-          >
-            Upload <Upload></Upload>
-          </Button>
-
           <Button
             style={{
               backgroundColor: "#3aa03a",
