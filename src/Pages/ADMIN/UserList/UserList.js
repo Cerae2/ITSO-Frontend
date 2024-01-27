@@ -4,9 +4,38 @@ import "./userliist.css";
 import { Button, Typography } from "@mui/material";
 import userlistData from "./../../../components/JSON/userlist.json";
 import nothing from "./../../../assets/nothing.png";
+import axios from '../../plugins/axios'
 
 function UserList(props) {
-  const [selectedCampus, setSelectedCampus] = useState("Cagayan de Oro");
+  const [userDataList, setUserDataList] = useState([])
+
+  // get token
+  const authToken = localStorage.getItem('authToken')
+
+  useEffect(() => {
+
+    axios.get('accounts/users/', {
+      headers: {
+        Authorization: `token ${authToken}`
+      }
+    }).then((response) => {
+      const data = response.data
+
+      setUserDataList(data)
+      console.log(data)
+    }).catch((error) => {
+      console.log(error)
+    })
+
+  }, [])
+
+
+
+
+
+
+
+  const [selectedCampus, setSelectedCampus] = useState("ustp_cagayan_de_oro");
   const itemsPerPage = 20;
   const [currentPage, setCurrentPage] = useState(0);
   const [buttonWidth, setButtonWidth] = useState(17);
@@ -19,8 +48,8 @@ function UserList(props) {
     setCurrentPage(newPage);
   };
 
-  const filteredUserList = userlistData.filter(
-    (user) => user["School Campus"] === selectedCampus
+  const filteredUserList = userDataList.filter(
+    (user) => user["school_campus"] === selectedCampus
   );
 
   const totalPages = Math.ceil(filteredUserList.length / itemsPerPage);
@@ -48,13 +77,14 @@ function UserList(props) {
       <div className="userlist-cont">
         <div className="btn-cont-userlist">
           {[
-            "USTP Cagayan de Oro",
-            "USTP Claveria",
-            "USTP Balubal",
-            "USTP Jasaan",
-            "USTP Oroquieta",
-            "USTP Panaon",
-            "USTP Villanueva",
+            "ustp_alubijid",
+            "ustp_cagayan_de_oro",
+            "ustp_claveria",
+            "ustp_balubal",
+            "ustp_jasaan",
+            "ustp_oroquieta",
+            "ustp_panaon",
+            "ustp_villanueva"
           ].map((campus) => (
             <Button
               key={campus}
@@ -87,17 +117,17 @@ function UserList(props) {
                   <tr key={index.id}>
                     <td>{index.id}</td>
                     <td>
-                      {index["First Name"] +
+                      {index["first_name"] +
                         " " +
-                        index["Middle Name"] +
+                        index["middle_name"] +
                         " " +
-                        index["Last Name"]}
+                        index["last_name"]}
                     </td>
-                    <td>{index["Birth Date"]}</td>
-                    <td>{index["School Campus"]}</td>
-                    <td>{index.College}</td>
-                    <td>{index.Email}</td>
-                    <td>{index["Contact no"]}</td>
+                    <td>{index["birth_date"]}</td>
+                    <td>{index["school_campus"]}</td>
+                    <td>{index["department_type"]}</td>
+                    <td>{index["email"]}</td>
+                    <td>{index["contact_number"]}</td>
                   </tr>
                 ))}
               </table>
