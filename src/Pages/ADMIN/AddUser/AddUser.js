@@ -75,7 +75,20 @@ function UserProfile(props) {
         },
       });
 
-      console.log(response.data); // Log the response data if needed
+      // add alert
+      alert("Successfully Added User")
+
+      // delete all inputted data after adding 
+      setFirstName('')
+      setMiddleName('')
+      setLastName('')
+      setEmail('')
+      setBirthdate('')
+      setContactNo('')
+      setCampus('')
+      setUserType('')
+      setCollege('')
+      setUsername('')
     } catch (error) {
       console.error("Error adding user:", error);
     }
