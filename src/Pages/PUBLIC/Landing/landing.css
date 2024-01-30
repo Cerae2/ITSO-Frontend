@@ -89,6 +89,7 @@ html {
   }
   .box-login {
     margin-top: 40px;
+    width: 50%;
   }
 }
 @media (max-width: 600px) {
