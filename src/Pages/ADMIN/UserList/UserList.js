@@ -4,36 +4,33 @@ import "./userliist.css";
 import { Button, Typography } from "@mui/material";
 import userlistData from "./../../../components/JSON/userlist.json";
 import nothing from "./../../../assets/nothing.png";
-import axios from '../../plugins/axios'
+import axios from "../../plugins/axios";
+import { Cancel, Edit, Save } from "@mui/icons-material";
 
 function UserList(props) {
-  const [userDataList, setUserDataList] = useState([])
-
-  // get token
-  const authToken = localStorage.getItem('authToken')
+  const [userDataList, setUserDataList] = useState([]);
+  const [edit, setEditStates] = useState(true);
+  const [editedUserId, setEditedUserId] = useState(null);
+  const authToken = localStorage.getItem("authToken");
+  const userStatus = ["active", "deactivate"];
 
   useEffect(() => {
+    axios
+      .get("accounts/users/", {
+        headers: {
+          Authorization: `token ${authToken}`,
+        },
+      })
+      .then((response) => {
+        const data = response.data;
 
-    axios.get('accounts/users/', {
-      headers: {
-        Authorization: `token ${authToken}`
-      }
-    }).then((response) => {
-      const data = response.data
-
-      setUserDataList(data)
-      console.log(data)
-    }).catch((error) => {
-      console.log(error)
-    })
-
-  }, [])
-
-
-
-
-
-
+        setUserDataList(data);
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   const [selectedCampus, setSelectedCampus] = useState("ustp_cagayan_de_oro");
   const itemsPerPage = 20;
@@ -52,6 +49,13 @@ function UserList(props) {
     (user) => user["school_campus"] === selectedCampus
   );
 
+  const handleInputChange = (e, userId) => {
+    const updatedUserList = userDataList.map((user) =>
+      user.id === userId ? { ...user, user_role: e.target.value } : user
+    );
+    setUserDataList(updatedUserList);
+  };
+
   const totalPages = Math.ceil(filteredUserList.length / itemsPerPage);
   const startIndex = currentPage * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
@@ -69,6 +73,24 @@ function UserList(props) {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const capitalizeWords = (str) => {
+    return str.replace(/\w\S*/g, function (txt) {
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
+  };
+
+  const isAdmin = (user) => {
+    // Add your logic to check if the user is an admin
+    return user.user_role === "admin";
+  };
+
+  const handleEdit = (userId) => {
+    setEditStates((prevEditStates) => ({
+      ...prevEditStates,
+      [userId]: !prevEditStates[userId],
+    }));
+  };
+
   return (
     <>
       <div className="nav-bar-cont">
@@ -84,7 +106,7 @@ function UserList(props) {
             "ustp_jasaan",
             "ustp_oroquieta",
             "ustp_panaon",
-            "ustp_villanueva"
+            "ustp_villanueva",
           ].map((campus) => (
             <Button
               key={campus}
@@ -102,7 +124,7 @@ function UserList(props) {
         </div>
         <div className="table-cont-userlist">
           {visibleUserList.length > 0 ? (
-            <>
+            <div>
               <table className="userlist-table">
                 <tr>
                   <th>ID</th>
@@ -112,22 +134,57 @@ function UserList(props) {
                   <th>College</th>
                   <th>Email</th>
                   <th>Contact No.</th>
+                  <th>Role</th>
+                  <th>Status</th>
+                  <th>Action</th>
                 </tr>
                 {visibleUserList.map((index) => (
                   <tr key={index.id}>
                     <td>{index.id}</td>
                     <td>
-                      {index["first_name"] +
-                        " " +
-                        index["middle_name"] +
-                        " " +
-                        index["last_name"]}
+                      {`${index["first_name"]} ${index["middle_name"]} ${index["last_name"]}`}
                     </td>
                     <td>{index["birth_date"]}</td>
                     <td>{index["school_campus"]}</td>
                     <td>{index["department_type"]}</td>
                     <td>{index["email"]}</td>
                     <td>{index["contact_number"]}</td>
+                    <td>{index["user_role"]}</td>
+                    <td>
+                      {edit[index.id] ? (
+                        <select className="select-cont">
+                          <option value={userStatus}>active</option>
+                          <option value={userStatus}>deactivate</option>
+                        </select>
+                      ) : (
+                        <p>active</p>
+                      )}
+                    </td>
+                    <td>
+                      {edit[index.id] ? (
+                        <div className="action-btn">
+                          <button
+                            className="btn-css"
+                            onClick={() => handleEdit(index.id)}
+                          >
+                            <Save></Save>
+                          </button>
+                          <button
+                            className="btn-css"
+                            onClick={() => handleEdit(index.id)}
+                          >
+                            <Cancel></Cancel>
+                          </button>
+                        </div>
+                      ) : (
+                        <button
+                          className="btn-css"
+                          onClick={() => handleEdit(index.id)}
+                        >
+                          <Edit></Edit>
+                        </button>
+                      )}
+                    </td>
                   </tr>
                 ))}
               </table>
@@ -142,7 +199,7 @@ function UserList(props) {
                   </button>
                 ))}
               </div>
-            </>
+            </div>
           ) : (
             <Typography variant="body1" color="textSecondary">
               <div className="nothing-con">

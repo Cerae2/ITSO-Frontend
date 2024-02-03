@@ -24,7 +24,7 @@
   justify-content: center;
 }
 .account {
-  height: 50vh;
+  height: 30vh;
   width: auto;
 }
 .add-user-btn-cont {
@@ -34,7 +34,7 @@
   align-items: center;
   justify-content: center;
 }
-@media (max-width: 600px) {
+@media (max-width: 788px) {
   .add-user-cont {
     flex-direction: column;
     align-items: center;
