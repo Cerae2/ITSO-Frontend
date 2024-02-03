@@ -14,13 +14,13 @@
   list-style: none;
   text-decoration: none;
   align-items: center;
-  margin-left: 5vh;
+  width: 100%;
 }
 
 .nav-header {
   display: flex;
   flex-direction: row;
-  font-size: 2vh;
+  font-size: auto;
 }
 
 .ui-nav a {
@@ -71,6 +71,7 @@
 .title-nav {
   text-align: left;
   display: flex;
+  width: 45vh;
   flex-direction: column;
   justify-content: center;
   color: white;
@@ -80,13 +81,16 @@
 .nav-h3 {
   font-weight: 100;
 }
-
+.items-menu {
+  display: flex;
+  flex-direction: row;
+}
 .logout {
-  width: 5vh;
   align-items: center;
   justify-content: center;
   display: flex;
   list-style: none;
+  background-color: red;
 }
 
 .logout-con {
@@ -125,7 +129,7 @@
 .logout-con.bar {
   display: none;
 }
-@media (max-width: 1000px) {
+@media (max-width: 1145px) {
   .title-nav {
     display: none;
   }
@@ -133,7 +137,7 @@
     min-width: 15vh;
   }
 }
-@media (max-width: 600px) {
+@media (max-width: 630px) {
   .nav {
     position: fixed;
   }

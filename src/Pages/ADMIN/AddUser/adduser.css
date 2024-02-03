@@ -2,37 +2,43 @@
   display: flex;
   padding: 5vh;
   height: 80vh;
+  flex-wrap: wrap;
 }
 .input-cont-add {
   display: flex;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  width: 70%;
+  justify-content: center;
+}
+.cont-form {
+  display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.row0 {
+.account-cont {
+  width: 100%;
   display: flex;
-  margin-bottom: 20px;
-  margin-top: 5vh;
-}
-.row1 {
-  display: flex;
-}
-.row2 {
-  display: flex;
-}
-.row3 {
-  display: flex;
-}
-.row4 {
-  flex-direction: row;
-  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .account {
-  height: 60vh;
-  width: 60vh;
+  height: 50vh;
+  width: auto;
+}
+.add-user-btn-cont {
+  margin-bottom: 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 @media (max-width: 600px) {
   .add-user-cont {
     flex-direction: column;
     align-items: center;
+    flex-wrap: nowrap;
   }
   .input-cont-add {
     align-items: center;
@@ -44,12 +50,6 @@
   .account {
     height: 30vh;
     width: 30vh;
-  }
-  .row1,
-  .row2,
-  .row3,
-  .row4 {
-    flex-direction: column;
   }
   .add-user-btn-cont {
     margin-bottom: 20px;

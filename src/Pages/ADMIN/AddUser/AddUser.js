@@ -76,19 +76,19 @@ function UserProfile(props) {
       });
 
       // add alert
-      alert("Successfully Added User")
+      alert("Successfully Added User");
 
-      // delete all inputted data after adding 
-      setFirstName('')
-      setMiddleName('')
-      setLastName('')
-      setEmail('')
-      setBirthdate('')
-      setContactNo('')
-      setCampus('')
-      setUserType('')
-      setCollege('')
-      setUsername('')
+      // delete all inputted data after adding
+      setFirstName("");
+      setMiddleName("");
+      setLastName("");
+      setEmail("");
+      setBirthdate("");
+      setContactNo("");
+      setCampus("");
+      setUserType("");
+      setCollege("");
+      setUsername("");
     } catch (error) {
       console.error("Error adding user:", error);
     }
@@ -101,11 +101,16 @@ function UserProfile(props) {
         <div className="account-cont">
           <img className="account" src={account} alt="account" />
         </div>
-        <div className="input-cont-add">
-          <div className="row0">
-            <h2 style={{ fontSize: 30 }}>ADD USER</h2>
-          </div>
-          <div className="row1">
+        <div className="add-user-btn-cont">
+          <Button
+            style={{ backgroundColor: "#00B050", color: "white" }}
+            onClick={handleAddUser}
+          >
+            ADD USER
+          </Button>
+        </div>
+        <div className="cont-form">
+          <div className="input-cont-add">
             <TextFieldComponet
               label={"First Name"}
               value={firstName}
@@ -121,33 +126,35 @@ function UserProfile(props) {
               value={lastName}
               onChange={(event) => setLastName(event.target.value)}
             />
-          </div>
-          <div className="row2">
+
             <TextFieldComponet
               type="date"
               value={birthdate}
               onChange={(event) => handleChangeBirthdate(event.target.value)}
             />
-            <Selection
-              inputLabel={"School Campus"}
-              valueSelect={campus}
-              label={"School Campus"}
-              onChange={handleChangeCampus}
-              data={campusData}
-              value={"value"}
-              content={"label"}
-            />
-            <Selection
-              inputLabel={"College Department"}
-              valueSelect={college}
-              label={"College Department"}
-              onChange={handleChangeCollege}
-              data={collegeData}
-              value={"value"}
-              content={"label"}
-            />
-          </div>
-          <div className="row3">
+            <div>
+              <Selection
+                inputLabel={"School Campus"}
+                valueSelect={campus}
+                label={"School Campus"}
+                onChange={handleChangeCampus}
+                data={campusData}
+                value={"value"}
+                content={"label"}
+              />
+            </div>
+            <div>
+              <Selection
+                inputLabel={"College Department"}
+                valueSelect={college}
+                label={"College Department"}
+                onChange={handleChangeCollege}
+                data={collegeData}
+                value={"value"}
+                content={"label"}
+              />
+            </div>
+
             <TextFieldComponet
               label={"Email"}
               value={email}
@@ -158,30 +165,23 @@ function UserProfile(props) {
               value={contactNo}
               onChange={(event) => setContactNo(event.target.value)}
             />
-            <Selection
-              inputLabel={"User Type"}
-              valueSelect={userType}
-              label={"User Type"}
-              onChange={(event) => setUserType(event.target.value)}
-              data={userData}
-              value={"value"}
-              content={"label"}
-            />
-          </div>
-          <div className="row4">
+            <div>
+              <Selection
+                inputLabel={"User Type"}
+                valueSelect={userType}
+                label={"User Type"}
+                onChange={(event) => setUserType(event.target.value)}
+                data={userData}
+                value={"value"}
+                content={"label"}
+              />
+            </div>
+
             <TextFieldComponet
               label={"Username"}
               value={username}
               onChange={(event) => setUsername(event.target.value)}
             />
-          </div>
-          <div className="add-user-btn-cont">
-            <Button
-              style={{ backgroundColor: "#00B050", color: "white" }}
-              onClick={handleAddUser}
-            >
-              ADD USER
-            </Button>
           </div>
         </div>
       </div>

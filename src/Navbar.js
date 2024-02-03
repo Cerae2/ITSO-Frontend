@@ -99,14 +99,6 @@ function Navbar() {
         <ul className={`ui-nav drop ${isMenuActive ? "active" : ""}`}>
           {Role === "client" ? (
             <>
-              <CustomLink to="/dashboardadmin">Dashboard</CustomLink>
-              <CustomLink to="/adduser">Add User</CustomLink>
-              <CustomLink to="/userlist">User List</CustomLink>
-              <CustomLink to="/profile">Profile</CustomLink>
-              <CustomLink to="/logout">Logout</CustomLink>
-            </>
-          ) : (
-            <>
               <CustomLink to="/dashboard">Dashboard</CustomLink>
               <CustomLink to="/service">Service</CustomLink>
               <CustomLink to="/download">Downloadable Files</CustomLink>
@@ -120,6 +112,14 @@ function Navbar() {
               >
                 Logout
               </CustomLink>
+            </>
+          ) : (
+            <>
+              <CustomLink to="/dashboardadmin">Dashboard</CustomLink>
+              <CustomLink to="/adduser">Add User</CustomLink>
+              <CustomLink to="/userlist">User List</CustomLink>
+              <CustomLink to="/profile">Profile</CustomLink>
+              <CustomLink to="/logout">Logout</CustomLink>
             </>
           )}
         </ul>
