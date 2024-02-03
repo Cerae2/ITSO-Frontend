@@ -11,12 +11,13 @@ export default function Selection({
   onChange,
   label,
   inputLabel,
+  width,
 }) {
   return (
     <Box
       sx={{
-        maxWidth: "30vh",
-        width: "30vh",
+        // maxWidth: "30vh",
+        width: width,
         marginRight: 2,
         marginBottom: 2,
       }}

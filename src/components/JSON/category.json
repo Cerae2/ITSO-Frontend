@@ -1,0 +1,7 @@
+[
+  { "value": "patent", "label": "Patent" },
+  { "value": "copyright", "label": "Copyright" },
+  { "value": "utility_model", "label": "Utility Model" },
+  { "value": "industrial_design", "label": "Industrial Design" },
+  { "value": "trademark", "label": "Trademark" }
+]

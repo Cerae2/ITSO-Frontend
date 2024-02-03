@@ -2,9 +2,15 @@
   display: flex;
   width: 100%;
   height: 88vh;
+  align-items: center;
+  justify-content: center;
 }
 .submit-cont-main {
   width: 70%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
 }
 .btn-cont-submit {
   display: flex;
@@ -18,19 +24,15 @@
   padding: 10px;
   border: 10px solid #201b51;
 }
-.submit-request-cont {
+
+.selection-request {
   display: flex;
-  height: 100%;
-  width: 100%;
-  padding: 2%;
   flex-direction: column;
 }
-
 .submit-request-subcont {
   width: 50%;
   height: 50%;
   display: flex;
-  margin-right: 5%;
   padding: 15px;
   height: 33vh;
   background-color: #e2e2e2;
@@ -38,19 +40,22 @@
 }
 .submit-mainsub {
   display: flex;
+  flex-direction: column;
   height: 100%;
   width: 100%;
+  padding: 5%;
+  align-items: center;
 }
 .submit-request-subcont.B {
   height: 100%;
   display: flex;
   flex-direction: column;
-  width: 50vh;
+  background-color: #f4f4f4;
 }
 .submit-request-subcont.A {
   display: flex;
   flex-direction: column;
-  background-color: #e2e2e2;
+  background-color: #f4f4f4;
   min-width: 90%;
   height: auto;
 }
@@ -66,7 +71,8 @@
   display: flex;
   background-color: white;
   width: 100%;
-  height: 100%;
+  min-height: 20vh;
+  height: auto;
   margin-top: 30px;
   border-radius: 15px;
   align-items: center;
@@ -75,8 +81,8 @@
 .btn-option {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
   margin-top: 10px;
+  padding-bottom: 100px;
 }
 .title-submit {
   margin-bottom: 15px;
@@ -84,6 +90,7 @@
 .fill-up-form {
   margin-top: 3vh;
   width: 90%;
+  flex-wrap: wrap;
 }
 
 .uploaded-name-cont {
@@ -143,7 +150,6 @@
   }
   .upload-cont {
     display: flex;
-    background-color: white;
     width: 100%;
     height: 30vh;
     margin-top: 30px;

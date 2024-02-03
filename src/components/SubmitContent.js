@@ -5,6 +5,10 @@ import TextFieldComponet from "./TextFieldComponet";
 import { useDropzone } from "react-dropzone";
 import axios from "axios";
 import "./style.css";
+import Selection from "./../components/Selection";
+import category from "./../components/JSON/category.json";
+import dept from "./../components/JSON/colleges.json";
+import campus from "./../components/JSON/campus.json";
 
 export default function SubmitContent({ onFileUpload, type, onChange }) {
   const [uploadedFiles, setUploadedFiles] = useState([]);
@@ -35,8 +39,17 @@ export default function SubmitContent({ onFileUpload, type, onChange }) {
   return (
     <div className="submit-mainsub">
       <div className="submit-cont-main">
+        <div style={{ marginTop: 10, width: "90%" }}>
+          <Selection
+            inputLabel="Select Category"
+            label={"Select Category"}
+            data={category}
+            width={"100%"}
+          ></Selection>
+        </div>
         <div className="submit-request-subcont A">
           <h3>Requirements</h3>
+
           <div className="form-list-cont">
             <Button
               style={{
@@ -78,6 +91,20 @@ export default function SubmitContent({ onFileUpload, type, onChange }) {
         </div>
         <div className="fill-up-form">
           <TextFieldComponet width={"100%"} label={"Title"}></TextFieldComponet>
+          <div className="selection-request">
+            <Selection
+              data={dept}
+              label={"Department"}
+              inputLabel={"Department"}
+              width={"100%"}
+            ></Selection>
+            <Selection
+              data={campus}
+              label={"Campus"}
+              inputLabel={"Campus"}
+              width={"100%"}
+            ></Selection>
+          </div>
           <TextFieldComponet
             width={"100%"}
             label={"Summary"}
@@ -91,21 +118,30 @@ export default function SubmitContent({ onFileUpload, type, onChange }) {
           ></TextFieldComponet>
         </div>
       </div>
+
       <div className="submit-request-subcont B">
         <h3>Submit Requirents</h3>
         <div className="upload-cont">
           {uploadedFiles.length > 0 ? (
             <div className="uploaded-name-cont">
               <p>Uploaded Files:</p>
-              {uploadedFiles.map((uploadedFile) => (
-                <div className="uploaded-name" key={uploadedFile.id}>
-                  <p>{uploadedFile.file.name}</p>
-                  <p>Size: {uploadedFile.file.size} bytes</p>
-                  <Button onClick={() => removeFile(uploadedFile.id)}>
-                    Remove
-                  </Button>
-                </div>
-              ))}
+              {uploadedFiles.map((uploadedFile) => {
+                const fileName =
+                  uploadedFile.file.name.length > 30
+                    ? uploadedFile.file.name.slice(0, 30) + "..."
+                    : uploadedFile.file.name;
+
+                return (
+                  <div className="uploaded-name" key={uploadedFile.id}>
+                    <p>{fileName}</p>
+                    <p>Size: {uploadedFile.file.size} bytes</p>
+                    <Button onClick={() => removeFile(uploadedFile.id)}>
+                      Remove
+                    </Button>
+                  </div>
+                );
+              })}
+
               <div {...getRootProps()}>
                 <input {...getInputProps()} onChange={onChange} />
                 <Button>UPLOAD</Button>
@@ -123,33 +159,35 @@ export default function SubmitContent({ onFileUpload, type, onChange }) {
             </div>
           )}
         </div>
-        <div className="btn-option">
-          <Button
-            style={{
-              backgroundColor: "#3aa03a",
-              marginRight: 10,
-              marginTop: 10,
-              color: "white",
-              width: "100%",
-              borderRadius: 20,
-            }}
-          >
-            Submit
-          </Button>
+      </div>
+      <div className="btn-option">
+        <Button
+          style={{
+            backgroundColor: "#3aa03a",
+            width: "20vh",
+            marginRight: 10,
+            marginTop: 10,
+            color: "white",
+            height: "100%",
+            borderRadius: 20,
+          }}
+        >
+          Submit
+        </Button>
 
-          <Button
-            style={{
-              width: "100%",
-              display: "flex",
-              backgroundColor: "red",
-              marginTop: 10,
-              color: "white",
-              borderRadius: 20,
-            }}
-          >
-            Clear
-          </Button>
-        </div>
+        <Button
+          style={{
+            height: "100%",
+            width: "20vh",
+            display: "flex",
+            backgroundColor: "red",
+            marginTop: 10,
+            color: "white",
+            borderRadius: 20,
+          }}
+        >
+          Clear
+        </Button>
       </div>
     </div>
   );

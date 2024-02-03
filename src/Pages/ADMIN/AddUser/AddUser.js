@@ -140,6 +140,7 @@ function UserProfile(props) {
                 onChange={handleChangeCampus}
                 data={campusData}
                 value={"value"}
+                width={"30vh"}
                 content={"label"}
               />
             </div>
@@ -152,6 +153,7 @@ function UserProfile(props) {
                 data={collegeData}
                 value={"value"}
                 content={"label"}
+                width={"30vh"}
               />
             </div>
 
@@ -174,6 +176,7 @@ function UserProfile(props) {
                 data={userData}
                 value={"value"}
                 content={"label"}
+                width={"30vh"}
               />
             </div>
 
