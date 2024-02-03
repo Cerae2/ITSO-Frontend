@@ -165,7 +165,6 @@ export default function SubmitContent({ onFileUpload, type, onChange }) {
           style={{
             backgroundColor: "#3aa03a",
             width: "20vh",
-            marginRight: 10,
             marginTop: 10,
             color: "white",
             height: "100%",
