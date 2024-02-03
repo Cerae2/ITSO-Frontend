@@ -136,7 +136,6 @@ function Navbar() {
               <CustomLink to="/service">Service</CustomLink>
               <CustomLink to="/download">Downloadable Files</CustomLink>
               <CustomLink to="/submit">Submit Request</CustomLink>
-              <CustomLink to="/profile">Profile</CustomLink>
               <CustomLink
                 to="/logout"
                 onClick={() => {
@@ -151,7 +150,6 @@ function Navbar() {
               <CustomLink to="/dashboardadmin">Dashboard</CustomLink>
               <CustomLink to="/adduser">Add User</CustomLink>
               <CustomLink to="/userlist">User List</CustomLink>
-              <CustomLink to="/profile">Profile</CustomLink>
               <CustomLink to="/logout">Logout</CustomLink>
             </>
           )}
