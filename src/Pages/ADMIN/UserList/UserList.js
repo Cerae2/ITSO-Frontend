@@ -129,6 +129,7 @@ function UserList(props) {
                 <tr>
                   <th>ID</th>
                   <th>Name</th>
+                  <th>username</th>
                   <th>Birth Date</th>
                   <th>Campus</th>
                   <th>College</th>
@@ -144,6 +145,7 @@ function UserList(props) {
                     <td>
                       {`${index["first_name"]} ${index["middle_name"]} ${index["last_name"]}`}
                     </td>
+                    <td>{index["username"]}</td>
                     <td>{index["birth_date"]}</td>
                     <td>{index["school_campus"]}</td>
                     <td>{index["department_type"]}</td>
