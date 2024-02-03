@@ -136,68 +136,39 @@ function DetailsAdminDash(props) {
               <div className="form-title-feed">
                 <h2>SUBMITTED FORM</h2>
               </div>
-
-              {selectedInvention.Feedback.map((feedbackItem, index) => (
-                <div className="file-btn" key={index}>
-                  <div style={{ width: "100%" }}>
-                    <button
-                      className={`file-style ${
-                        selectedButton === index ? "selected" : ""
-                      }`}
-                      onClick={() => handleButtonClick(index)}
+              <div className="submission-cont">
+                <div className="modal-btn-arrow">
+                  <div>
+                    <Button
+                      style={{ color: "#0D0359" }}
+                      onClick={handleOpenModal}
                     >
-                      <p>{feedbackItem.File.FileName}</p>
-                    </button>
-                  </div>
-                  <div
-                    style={{
-                      marginBottom: 10,
-                      display: "flex",
-                    }}
-                  >
-                    <div
-                      className={`con-stat-details con-stat-details-${feedbackItem.StatusFeedback.toLowerCase()}`}
-                      style={{
-                        backgroundColor:
-                          feedbackItem.StatusFeedback === "Under Review"
-                            ? "#8383bd"
-                            : feedbackItem.StatusFeedback === "Approved"
-                            ? "#85e2af"
-                            : feedbackItem.StatusFeedback === "Rejected"
-                            ? "#ffb6b6"
-                            : "#ffe8a8",
-                      }}
-                    >
-                      <p
-                        style={{
-                          color:
-                            feedbackItem.StatusFeedback === "Under Review"
-                              ? "#1d1d47"
-                              : feedbackItem.StatusFeedback === "Approved"
-                              ? "#155f2d"
-                              : feedbackItem.StatusFeedback === "Rejected"
-                              ? "#ff0000"
-                              : "#503d0b",
-                        }}
-                      >
-                        {feedbackItem.StatusFeedback}
-                      </p>
-                    </div>
-                    <div className="modal-btn-arrow">
-                      <Button
-                        style={{ color: "#0D0359" }}
-                        onClick={handleOpenModal}
-                      >
-                        <Undo></Undo>
-                      </Button>
-                    </div>
-
+                      <Undo></Undo>
+                    </Button>
                     <Button style={{ color: "#00B050", marginLeft: -30 }}>
                       <Download></Download>
                     </Button>
                   </div>
+
+                  <p className="status-style">Pending</p>
                 </div>
-              ))}
+
+                <div className="button-feed-cont">
+                  {selectedInvention.Feedback.map((feedbackItem, index) => (
+                    <div className="file-btn" key={index}>
+                      <div>
+                        <p>{feedbackItem.File.FileName}</p>
+                      </div>
+                      <div
+                        style={{
+                          marginBottom: 10,
+                          display: "flex",
+                        }}
+                      ></div>
+                    </div>
+                  ))}
+                </div>
+              </div>
 
               <Modal
                 style={{
