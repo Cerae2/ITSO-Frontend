@@ -6,12 +6,14 @@ import { useDropzone } from "react-dropzone";
 import axios from "axios";
 import "./style.css";
 import Selection from "./../components/Selection";
-import category from "./../components/JSON/category.json";
-import dept from "./../components/JSON/colleges.json";
-import campus from "./../components/JSON/campus.json";
+import categoryData from "./../components/JSON/category.json";
 
-export default function SubmitContent({ onFileUpload, type, onChange }) {
+function SubmitContent({ onFileUpload, type, onChange }) {
   const [uploadedFiles, setUploadedFiles] = useState([]);
+  const [inventionTitle, setTitle] = useState(""); // Add title state
+  const [summary, setSummary] = useState(""); // Add summary state
+  const [authors, setAuthors] = useState(""); // Add authors state
+  const [category, setCategory] = useState("");
 
   const removeFile = (id) => {
     setUploadedFiles((prevFiles) => prevFiles.filter((file) => file.id !== id));
@@ -36,16 +38,56 @@ export default function SubmitContent({ onFileUpload, type, onChange }) {
     multiple: true, // Allow multiple files
   });
 
+
+  const handleChangeCategory = (event) => {
+    setCategory(event.target.value);
+  };
+
+
+  // Function to handle file upload
+  const handleFileUpload = async () => {
+    try {
+      const formData = {
+        invention_title: inventionTitle,
+        summary: summary,
+        authors: authors,
+      };
+
+      const uploadEndpoint = "uploadforms/forms/";
+      const response = await axios.post(uploadEndpoint, formData);
+
+      console.log("UploadForms Model Upload Response:", response.data);
+
+      const uploadFormId = response.data.id;
+
+      const formData2 = new FormData();
+      formData2.append("upload_form", uploadFormId);
+      formData2.append("files", response.data.file1);
+
+      const uploadEndpoint2 = "uploadforms/file/";
+      const response2 = await axios.post(uploadEndpoint2, formData2);
+
+      console.log("FileUploads Model Upload Response:", response2.data);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
+
   return (
     <div className="submit-mainsub">
       <div className="submit-cont-main">
         <div style={{ marginTop: 10, width: "90%" }}>
-          <Selection
-            inputLabel="Select Category"
-            label={"Select Category"}
-            data={category}
-            width={"100%"}
-          ></Selection>
+        <Selection
+                inputLabel={"Category"}
+                valueSelect={category}
+                label={"Category"}
+                onChange={handleChangeCategory}
+                data={categoryData}
+                value={"value"}
+                content={"label"}
+                width={"100%"}
+              />
         </div>
         <div className="submit-request-subcont A">
           <h3>Requirements</h3>
@@ -55,7 +97,7 @@ export default function SubmitContent({ onFileUpload, type, onChange }) {
               style={{
                 backgroundColor: "white",
                 borderRadius: 50,
-                marginTop: 20,
+                marginTop: 20,  
               }}
             >
               <Download></Download> FORM
@@ -90,31 +132,28 @@ export default function SubmitContent({ onFileUpload, type, onChange }) {
           </div>
         </div>
         <div className="fill-up-form">
-          <TextFieldComponet width={"100%"} label={"Title"}></TextFieldComponet>
-          <div className="selection-request">
-            <Selection
-              data={dept}
-              label={"Department"}
-              inputLabel={"Department"}
-              width={"100%"}
-            ></Selection>
-            <Selection
-              data={campus}
-              label={"Campus"}
-              inputLabel={"Campus"}
-              width={"100%"}
-            ></Selection>
-          </div>
-          <TextFieldComponet
-            width={"100%"}
-            label={"Summary"}
-          ></TextFieldComponet>
-          <TextFieldComponet
-            width={"100%"}
-            label={"Author/s"}
-            helperText={
-              "Separate it with comma if there are more than one author (ex. John Doe, Jane Doe)"
-            }
+        <TextFieldComponet
+          width={"100%"}
+          label={"Invention Title"}
+          value={inventionTitle}
+          onChange={(e) => setTitle(e.target.value)}
+        ></TextFieldComponet>
+        <div className="selection-request">
+        </div>
+        <TextFieldComponet
+          width={"100%"}
+          label={"Summary"}
+          value={summary}
+          onChange={(e) => setSummary(e.target.value)}
+        ></TextFieldComponet>
+        <TextFieldComponet
+          width={"100%"}
+          label={"Author/s"}
+          helperText={
+            "Separate it with comma if there are more than one author (ex. John Doe, Jane Doe)"
+          }
+          value={authors}
+          onChange={(e) => setAuthors(e.target.value)}
           ></TextFieldComponet>
         </div>
       </div>
@@ -161,18 +200,19 @@ export default function SubmitContent({ onFileUpload, type, onChange }) {
         </div>
       </div>
       <div className="btn-option">
-        <Button
-          style={{
-            backgroundColor: "#3aa03a",
-            width: "20vh",
-            marginTop: 10,
-            color: "white",
-            height: "100%",
-            borderRadius: 20,
-          }}
-        >
-          Submit
-        </Button>
+      <Button
+            onClick={handleFileUpload}
+            style={{
+              backgroundColor: "#3aa03a",
+              width: "20vh",
+              marginTop: 10,
+              color: "white",
+              height: "100%",
+              borderRadius: 20,
+            }}
+          >
+            Submit
+          </Button>
 
         <Button
           style={{
@@ -190,4 +230,5 @@ export default function SubmitContent({ onFileUpload, type, onChange }) {
       </div>
     </div>
   );
-}
+};
+export default SubmitContent;

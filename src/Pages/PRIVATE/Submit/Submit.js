@@ -23,7 +23,7 @@ function Submit(props) {
       formData.append("file", file);
 
       // Replace 'your-upload-endpoint' with your actual file upload endpoint
-      const uploadEndpoint = "your-upload-endpoint";
+      const uploadEndpoint = "uploadforms/file/";
 
       const response = await axios.post(uploadEndpoint, formData);
 
@@ -39,50 +39,6 @@ function Submit(props) {
     setCurrentPage(0);
   };
 
-  // const renderContent = () => {
-  //   switch (selectForm) {
-  //     case "Patent":
-  //       return (
-  //         <div className="submit-request-cont">
-  //           <h1 className="title-submit">PATENT</h1>
-  //           <SubmitContent
-  //             onChange={handleFileChange}
-  //             onFileUpload={handleFileUpload}
-  //           ></SubmitContent>
-  //         </div>
-  //       );
-  //     case "Utility Model":
-  //       return (
-  //         <div className="submit-request-cont">
-  //           <h1 className="title-submit">UTILITY MODEL</h1>
-  //           <SubmitContent></SubmitContent>
-  //         </div>
-  //       );
-  //     case "Industrial Design":
-  //       return (
-  //         <div className="submit-request-cont">
-  //           <h1 className="title-submit">INDUSTRIAL DESIGN</h1>
-  //           <SubmitContent></SubmitContent>
-  //         </div>
-  //       );
-  //     case "Trademark":
-  //       return (
-  //         <div className="submit-request-cont">
-  //           <h1 className="title-submit">TRADEMARK</h1>
-  //           <SubmitContent></SubmitContent>
-  //         </div>
-  //       );
-  //     case "Copyright":
-  //       return (
-  //         <div className="submit-request-cont">
-  //           <h1 className="title-submit">COPYRIGHT</h1>
-  //           <SubmitContent></SubmitContent>
-  //         </div>
-  //       );
-  //     default:
-  //       return null;
-  //   }
-  // };
 
   return (
     <div>
