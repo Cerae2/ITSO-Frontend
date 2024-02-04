@@ -230,5 +230,7 @@ function SubmitContent({ onFileUpload, type, onChange }) {
       </div>
     </div>
   );
-};
+}
 export default SubmitContent;
+
+/* aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa */
