@@ -14,8 +14,10 @@
 
 .table-cont-userlist {
   width: 100%;
-  padding: 10px;
   border: 10px solid #201b51;
+  display: flex;
+  flex-direction: column;
+  overflow-x: auto;
 }
 
 .userlist-table {
@@ -27,7 +29,7 @@
 
 .userlist-table td,
 .userlist-table th {
-  border: 1px solid #e7e7e7;
+  border: 1px solid #201b51;
   padding: 8px;
 }
 
@@ -57,19 +59,32 @@
 }
 
 .pagination.userlist-page {
-  position: absolute;
-  bottom: 0;
-  width: 86.5%;
+  width: 100%;
 }
-
-@media (max-width: 600px) {
-  .table-cont-userlist {
+.select-cont {
+  border: 0;
+  outline: none;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 15px;
+}
+.action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-css {
+  background-color: transparent;
+  border: 0;
+  margin-right: 10px;
+}
+@media (max-width: 788px) {
+  /* .table-cont-userlist {
     width: 100%;
     padding: 10px;
     border: 10px solid #201b51;
     height: 100%;
     overflow-y: auto;
-  }
+  } */
 
   .pagination.userlist-page {
     left: 62%;
@@ -96,7 +111,7 @@
     left: 0;
   }
   .userlist-cont {
-    padding-top: 15vh;
+    padding-top: 13vh;
     height: 100vh;
   }
   .userlist-table {
