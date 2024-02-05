@@ -4,16 +4,20 @@ import { Download, Upload } from "@mui/icons-material";
 import TextFieldComponet from "./TextFieldComponet";
 import { useDropzone } from "react-dropzone";
 import axios from "axios";
+import FormData from "form-data"; // Add this line
 import "./style.css";
 import Selection from "./../components/Selection";
-import categoryData from "./../components/JSON/category.json";
+import formData from "./../components/JSON/category.json";
+
 
 function SubmitContent({ onFileUpload, type, onChange }) {
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [inventionTitle, setTitle] = useState(""); // Add title state
   const [summary, setSummary] = useState(""); // Add summary state
   const [authors, setAuthors] = useState(""); // Add authors state
-  const [category, setCategory] = useState("");
+  const [formType, setFormType] = useState("");
+  const [uploadForm, setUploadForm] = useState("");
+  const [files, setFiles] = useState("")
 
   const removeFile = (id) => {
     setUploadedFiles((prevFiles) => prevFiles.filter((file) => file.id !== id));
@@ -39,51 +43,65 @@ function SubmitContent({ onFileUpload, type, onChange }) {
   });
 
 
-  const handleChangeCategory = (event) => {
-    setCategory(event.target.value);
+  const handleChangeForm = (event) => {
+    setFormType(event.target.value);
   };
 
-
-  // Function to handle file upload
   const handleFileUpload = async () => {
     try {
-      const formData = {
-        invention_title: inventionTitle,
-        summary: summary,
-        authors: authors,
-      };
-
-      const uploadEndpoint = "uploadforms/forms/";
-      const response = await axios.post(uploadEndpoint, formData);
-
-      console.log("UploadForms Model Upload Response:", response.data);
-
-      const uploadFormId = response.data.id;
-
+      // Step 1: Upload form data
+      const formData1 = new FormData();
+      formData1.append("invention_title", inventionTitle);
+      formData1.append("summary", summary);
+      formData1.append("authors", authors);
+      formData1.append("form_type", formType);
+  
+      const uploadEndpoint1 = "uploadforms/forms/";
+      const response1 = await axios.post(uploadEndpoint1, formData1);
+  
+      console.log("UploadForms Model Upload Response:", response1.data);
+  
+      const uploadFormId = response1.data.id;
+  
+      // Step 2: Upload files
       const formData2 = new FormData();
+      formData2.append("files", files);
+      formData2.append("upload_form", uploadForm);
+  
+      // Append upload form ID
       formData2.append("upload_form", uploadFormId);
-      formData2.append("files", response.data.file1);
-
+  
+      // Append files
+      uploadedFiles.forEach((file) => {
+        formData2.append("files", file.file);
+      });
+  
       const uploadEndpoint2 = "uploadforms/file/";
       const response2 = await axios.post(uploadEndpoint2, formData2);
-
+  
       console.log("FileUploads Model Upload Response:", response2.data);
+  
+      // Update uploadForm state
+      setUploadForm(uploadFormId);
+  
+      // Update files state
+      setFiles(uploadedFiles);
     } catch (error) {
       console.error("Error:", error);
     }
   };
-
+  
 
   return (
     <div className="submit-mainsub">
       <div className="submit-cont-main">
         <div style={{ marginTop: 10, width: "90%" }}>
         <Selection
-                inputLabel={"Category"}
-                valueSelect={category}
-                label={"Category"}
-                onChange={handleChangeCategory}
-                data={categoryData}
+                inputLabel={"Form Type"}
+                valueSelect={formType}
+                label={"Form Type"}
+                onChange={handleChangeForm}
+                data={formData}
                 value={"value"}
                 content={"label"}
                 width={"100%"}
