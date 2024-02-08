@@ -7,8 +7,8 @@ import { Button } from "@mui/material";
 import InputField from "../../../components/LoginComponent/InputField";
 import PasswordField from "../../../components/LoginComponent/PasswordField";
 import { useNavigate } from "react-router-dom";
-import { setLogin, setRole } from "./authSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { fetchPersonalInfo } from "../../plugins/slices/personalInfoSlices";
 
 function Landing(props) {
   const [username, setUsername] = useState("");
@@ -17,8 +17,6 @@ function Landing(props) {
   const [buttonWidth, setButtonWidth] = useState("100%");
   const navigate = useNavigate();
 
-  const isAuthenticated = useSelector((state) => state.auth.isLoggedIn);
-  const userRole = useSelector((state) => state.auth.role);
 
   const handleLogin = async (username, password) => {
     try {
@@ -35,14 +33,13 @@ function Landing(props) {
         });
   
         const userRole = userResponse.data.user_role;
-  
+        console.log(userResponse.data)
         // Store token and role in local storage
         localStorage.setItem("authToken", userToken);
-        localStorage.setItem("userRole", userRole);
+       
   
         // Update Redux state with userToken and userRole
-        dispatch(setLogin(userToken));
-        dispatch(setRole(userRole));
+        dispatch(fetchPersonalInfo(userResponse.data))
   
         // Redirect to the appropriate dashboard
         navigate(userRole === "admin" ? "/dashboardadmin" : "/dashboard");
@@ -55,7 +52,7 @@ function Landing(props) {
     } catch (error) {
       console.error(
         "Login failed:",
-        error.response ? error.response.data : error.message
+        error
       );
       alert("Login failed. Please check your credentials and try again.");
     }

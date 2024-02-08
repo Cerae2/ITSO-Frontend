@@ -8,14 +8,18 @@ import "./App.css";
 import { Button } from "@mui/material";
 import { setLogout } from "./Pages/PUBLIC/Landing/authSlice";
 import axios from "axios";
+import { clearUserData } from "./Pages/plugins/actions/userActions";
 
 function Navbar() {
   const [isMenuActive, setIsMenuActive] = useState(false);
   const dispatch = useDispatch();
-  const Role = useSelector((state) => state.auth.role);
   const [userData, setUserData] = useState(null);
   const authToken = localStorage.getItem("authToken");
+  const personalInfo = useSelector(
+    (state) => state.personalInfo.data 
+  );
 
+  const Role= personalInfo?.user_role;
   useEffect(() => {
     axios
       .get("accounts/users/", {
@@ -52,6 +56,11 @@ function Navbar() {
     setIsMenuActive(!isMenuActive);
   };
 
+  const handleLogout = () => {
+    localStorage.removeItem("authToken")
+    dispatch(clearUserData())
+  }
+
   const ProfileMenu = () => {
     const username = userData ? userData.username : "";
 
@@ -64,7 +73,7 @@ function Navbar() {
           <Menu.Item>
             <p>{username}</p>
           </Menu.Item>
-          <Menu.Item>
+          <Menu.Item onClick={handleLogout}>
             <Link to="/">Logout</Link>
           </Menu.Item>
         </React.Fragment>

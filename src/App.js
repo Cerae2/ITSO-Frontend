@@ -21,12 +21,15 @@ import AddUser from "./Pages/ADMIN/AddUser/AddUser";
 import UserList from "./Pages/ADMIN/UserList/UserList";
 import DetailsAdminDash from "./Pages/ADMIN/Dashboard/DetailsAdminDash/DetailsAdminDash";
 
+
 function App() {
-  const isAuthenticated = useSelector((state) => state.auth.setIsLoggedIn);
-  const Token = useSelector((state) => state.auth.token);
+  // const isAuthenticated = useSelector((state) => state.auth.setIsLoggedIn);
+  // const Token = useSelector((state) => state.auth.token);
 
   return (
     <div className="container">
+      
+       
       <Router>
         <Routes>
           <Route path="/" element={<Search></Search>}></Route>
@@ -58,6 +61,7 @@ function App() {
           <Route path="/submit" element={<Submit></Submit>}></Route>
         </Routes>
       </Router>
+
     </div>
   );
 }
