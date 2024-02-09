@@ -1,16 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../../../Navbar";
 import empty from "./../../../assets/empty_state.png";
 import CheckBox from "../../../components/Checkbox";
 import { Link } from "react-router-dom";
-import inventionData from "./../../../components/JSON/inventions.json";
 import "./dashadmin.css";
+import axios from "axios";
 
 function DashboardAdmin(props) {
   const itemsPerPage = 5;
   const [currentPage, setCurrentPage] = useState(0);
   const [selectedStatus, setSelectedStatus] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [inventionData, setInventionData] = useState([])
+
+  useEffect(() =>{
+    const authToken = localStorage.getItem('authToken')
+    axios.get('uploadforms/forms/',{
+    params: {
+      select_invention: false,
+      is_admin: true
+    },
+    headers: {
+      Authorization:  `Token ${authToken}`,
+      "Content-Type": 'application/json'
+    }
+    }).then((response) => {
+      console.log(response.data)
+      setInventionData(response.data)
+    })
+  }, [])
+
 
   const handleStatusChange = (status, checked) => {
     if (checked) {
@@ -30,12 +49,9 @@ function DashboardAdmin(props) {
       selectedStatus.length === 0 || selectedStatus.includes(invention.Status);
 
     const searchTermFilter =
-      invention.Title_of_Invention.toLowerCase().includes(
+      invention.invention_title.toLowerCase().includes(
         searchTerm.toLowerCase()
-      ) ||
-      invention.Inventors.some((author) =>
-        author.toLowerCase().includes(searchTerm.toLowerCase())
-      );
+      ) 
 
     return statusFilter && searchTermFilter;
   });
@@ -116,32 +132,32 @@ function DashboardAdmin(props) {
                           }}
                         >
                           <p className="link-dash">
-                            {index.Title_of_Invention}
+                            {index.invention_title}
                           </p>
                         </Link>
                       </td>
                     </tr>
                     <tr>
                       <td className="dash-title">Status</td>
-                      <td className="dash-data">{index.Status}</td>
+                      <td className="dash-data">{index.upload_status}</td>
                     </tr>
                     <tr>
-                      <td className="dash-title">{index.Category}</td>
+                      <td className="dash-title">{index.form_type}</td>
                       <td className="dash-data">
                         Intelectual Property (IP) Type
                       </td>
                     </tr>
                     <tr>
                       <td className="dash-title">Authors</td>
-                      <td className="dash-data">{index.Inventors}</td>
+                      <td className="dash-data">{index.authors}</td>
                     </tr>
                     <tr>
                       <td className="dash-title">Department</td>
-                      <td className="dash-data">{index.Department}</td>
+                      <td className="dash-data">{index.department_type}</td>
                     </tr>
                     <tr>
                       <td className="dash-title">Campus</td>
-                      <td className="dash-data">{index.Campus}</td>
+                      <td className="dash-data">{index.school_campus}</td>
                     </tr>
                   </table>
                 </div>

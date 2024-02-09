@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../../../../Navbar";
 import { useParams } from "react-router-dom";
 import "./DetailsAdminDash.css";
@@ -16,17 +16,15 @@ import {
   FormControl,
   MenuItem,
 } from "@mui/material";
-import inventionData from "./../../../../components/JSON/inventions.json";
 import { Dropdown, Menu, Modal, Space } from "antd";
 import statusData from "./../../../../components/JSON/status.json";
 import feedback from "./../../../../assets/fedback.png";
+import axios from "axios";
 
 function DetailsAdminDash(props) {
   const { id } = useParams();
-  const selectedInvention = inventionData.find(
-    (invention) => invention.id === Number(id)
-  );
-
+  
+    const [selectedInvention, setSelectedInvention] = useState([])
   const [selectedButton, setSelectedButton] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [status, setStatus] = useState("");
@@ -34,6 +32,24 @@ function DetailsAdminDash(props) {
   const handleButtonClick = (index) => {
     setSelectedButton((prevIndex) => (prevIndex === index ? null : index));
   };
+
+  useEffect(() =>{
+    const authToken = localStorage.getItem('authToken')
+    axios.get('uploadforms/forms/',{
+    params: {
+      id: id,
+      select_invention: true,
+      is_admin: true
+    },
+    headers: {
+      Authorization:  `Token ${authToken}`,
+      "Content-Type": 'application/json'
+    }
+    }).then((response) => {
+      console.log(response.data)
+      setSelectedInvention(response.data)
+    })
+  }, [])
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -59,6 +75,10 @@ function DetailsAdminDash(props) {
     setStatus(event.target.value);
   };
 
+  const handleDownloadFile = () => {
+
+  }
+
   return (
     <div>
       <Navbar></Navbar>
@@ -70,40 +90,40 @@ function DetailsAdminDash(props) {
                 <tr className="detail-dash-tr">
                   <td className="detail-dash-td title">Invention Title</td>
                   <td className="detail-dash-td">
-                    {selectedInvention.Title_of_Invention}
+                    {selectedInvention[0]?.invention_title}
                   </td>
                 </tr>
                 <tr className="detail-dash-tr" r>
                   <td className="detail-dash-td title">Status</td>
-                  <td className="detail-dash-td">{selectedInvention.Status}</td>
+                  <td className="detail-dash-td">{selectedInvention[0]?.upload_status}</td>
                 </tr>
                 <tr className="detail-dash-tr">
                   <td className="detail-dash-td title">IP Type</td>
                   <td className="detail-dash-td">
-                    {selectedInvention.Category}
+                    {selectedInvention[0]?.form_type}
                   </td>
                 </tr>
                 <tr className="detail-dash-tr">
                   <td className="detail-dash-td title">Authors</td>
                   <td className="detail-dash-td">
-                    {selectedInvention.Inventors}
+                    {selectedInvention[0]?.authors}
                   </td>
                 </tr>
                 <tr className="detail-dash-tr">
                   <td className="detail-dash-td title">Department</td>
                   <td className="detail-dash-td">
-                    {selectedInvention.Department}
+                    {selectedInvention[0]?.department_type}
                   </td>
                 </tr>
                 <tr className="detail-dash-tr">
                   <td className="detail-dash-td title">Date of Submisson</td>
                   <td className="detail-dash-td">
-                    {selectedInvention.Date_of_Submission}
+                    {selectedInvention[0]?.uploaded_at}
                   </td>
                 </tr>
                 <tr className="detail-dash-tr">
                   <td className="detail-dash-td title">Campus</td>
-                  <td className="detail-dash-td">{selectedInvention.Campus}</td>
+                  <td className="detail-dash-td">{selectedInvention[0]?.school_campus}</td>
                 </tr>
               </table>
             </div>
@@ -145,7 +165,7 @@ function DetailsAdminDash(props) {
                     >
                       <Undo></Undo>
                     </Button>
-                    <Button style={{ color: "#00B050", marginLeft: -30 }}>
+                    <Button onClick={handleDownloadFile} style={{ color: "#00B050", marginLeft: -30 }}>
                       <Download></Download>
                     </Button>
                   </div>
@@ -154,11 +174,11 @@ function DetailsAdminDash(props) {
                 </div>
 
                 <div className="button-feed-cont">
-                  {selectedInvention.Feedback.map((feedbackItem, index) => (
+                  {selectedInvention[0]?.file_uploads.map((file, index) => (
                     <div className="file-btn" key={index}>
-                      <div>
-                        <p>{feedbackItem.File.FileName}</p>
-                      </div>
+                      <a href={file.file}>
+                        <p>{file.file_name}</p>
+                      </a>
                       <div
                         style={{
                           marginBottom: 10,

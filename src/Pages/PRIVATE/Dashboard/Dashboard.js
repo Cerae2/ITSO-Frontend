@@ -17,6 +17,10 @@ function Dashboard(props) {
   useEffect(() => {
     const authToken = localStorage.getItem('authToken')
     axios.get('uploadforms/forms/',{
+      params: {
+        select_invention: false,
+        is_admin: false
+      },
     headers: {
       Authorization:  `Token ${authToken}`,
       "Content-Type": 'application/json'

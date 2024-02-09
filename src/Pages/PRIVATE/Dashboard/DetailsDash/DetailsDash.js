@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import Navbar from "../../../../Navbar";
 import { useParams } from "react-router-dom";
 import "./DetailsDash.css";
@@ -6,11 +6,14 @@ import feedback from "./../../../../assets/fedback.png";
 import { Add, Delete, Upload } from "@mui/icons-material";
 import { Button } from "@mui/material";
 import axios from "axios";
+import { useDropzone } from "react-dropzone";
 
 function DetailsDash(props) {
   const { id } = useParams();
   const [selectedButton, setSelectedButton] = useState(null);
   const [selectedInvention, setSelectedInvention] = useState([])
+  const [selectedInventionID, setSelectedInventioID] = useState(0)
+  const [uploadedFiles, setUploadedFiles] = useState([]);
 
   const handleButtonClick = (index) => {
     setSelectedButton((prevIndex) => (prevIndex === index ? null : index));
@@ -21,7 +24,8 @@ function DetailsDash(props) {
     axios.get('uploadforms/forms/',{
     params: {
       id: id,
-      select_invention: true
+      select_invention: true,
+      is_admin: false
     },
     headers: {
       Authorization:  `Token ${authToken}`,
@@ -33,8 +37,70 @@ function DetailsDash(props) {
     })
   }, [])
 
+  const handleDeleteFile = (fileId) => {
+    const authToken = localStorage.getItem('authToken')
+    axios.delete(`uploadforms/file/${fileId}`, {
+      headers: {
+        Authorization:  `Token ${authToken}`,
+      "Content-Type": 'application/json'
+      }
+    }).then((response) => {
+      console.log(response.data)
+      window.location.reload()
+    })
+  }
 
-  console.log("selected invention", selectedInvention)
+
+  // useEffect(() => {
+  //   if(selectedInvention[0]?.id) {
+  //     setSelectedInventioID(selectedInvention[0]?.id)
+  //   }
+  // }, [selectedInvention[0]?.id])
+
+  console.log("iddd", selectedInvention[0]?.id)
+  
+
+  const onDrop = useCallback(
+    (acceptedFiles) => {
+      const formData2 = new FormData();
+      if (!selectedInvention[0]?.id) {
+        console.error('selectedInvention[0]?.id is undefined');
+        return;
+      }
+      const authToken = localStorage.getItem('authToken')
+      console.log("accepted", acceptedFiles)
+      const newFiles = acceptedFiles.map((file) => ({
+        file,
+        id: Math.random().toString(36).substring(7),
+      }));
+      console.log("new files", newFiles)
+      formData2.append("upload_form", selectedInvention[0]?.id);
+      newFiles.forEach((newFile, index) => {
+        formData2.append("files", newFile.file);
+      });
+      setUploadedFiles((prevFiles) => [...prevFiles, ...newFiles]);
+
+      const uploadEndpoint2 = "uploadforms/file/";
+      axios.post(uploadEndpoint2, formData2, {
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+          'Content-Type': 'multipart/form-data'
+        }
+      }).then(() => {
+        window.location.reload()
+      })
+      
+    },
+    [selectedInvention]
+  );
+
+  
+  
+  const { getRootProps, getInputProps } = useDropzone({
+    onDrop,
+    accept: "application/pdf",
+    multiple: true, // Allow multiple files
+  });
 
   return (
     <div>
@@ -114,7 +180,7 @@ function DetailsDash(props) {
                 <h2>SUBMITTED FORM</h2>
               </div>
 
-              {/* {selectedInvention.Feedback.map((feedbackItem, index) => (
+              {selectedInvention[0]?.file_uploads.map((file, index) => (
                 <div className="file-btn">
                   <div style={{ width: "100%" }}>
                     <button
@@ -125,7 +191,9 @@ function DetailsDash(props) {
                       }`}
                       onClick={() => handleButtonClick(index)}
                     >
-                      <p>{feedbackItem.File.FileName}</p>
+                      <a href={file.file}>
+                        <p>{file.file_name}</p>
+                      </a>
                     </button>
                   </div>
                   <div
@@ -134,14 +202,15 @@ function DetailsDash(props) {
                       marginBottom: 10,
                     }}
                   >
-                    <Button style={{ color: "red" }} className="del-btn">
+                    <Button onClick={() => {handleDeleteFile(file.id)}} style={{ color: "red" }} className="del-btn">
                       <Delete></Delete>
                     </Button>
                   </div>
                 </div>
               ))}
-              <div className="btn-add">
-                <Button
+              <div className="btn-add"  {...getRootProps()} >
+              <input {...getInputProps()} />
+              <Button
                   style={{
                     backgroundColor: "transparent",
                     marginLeft: 10,
@@ -151,11 +220,14 @@ function DetailsDash(props) {
                     color: "#0b9912",
                   }}
                 >
-                  <Upload></Upload>Add File
+                  <Upload >
+                    
+                    </Upload>Add File
                 </Button>
+    
               </div>
             </div>
-            <div className="box-2-1">
+            {/* <div className="box-2-1">
               <h2 style={{ marginBottom: 10 }}>RETURNED FORM</h2>
               {selectedInvention.Feedback.filter(
                 (feedbackItem) =>
@@ -195,15 +267,15 @@ function DetailsDash(props) {
                     </p>
                   </div>
                 </div>
-              ))} */}
-              {/* {selectedInvention.Feedback.length === 0 &&
+              ))}
+              {selectedInvention.Feedback.length === 0 &&
                 selectedInvention.Status !== "Under Review" &&
                 selectedInvention.Status !== "Rejected" && (
                   <p style={{ textAlign: "center", marginTop: 10 }}>
                     No returned files.
                   </p>
-                )} */}
-            </div>
+                )}
+            </div> */}
           </div>
         </div>
       </div>
