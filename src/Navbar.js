@@ -2,13 +2,14 @@ import React, { useState, useRef, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import { Dropdown, Menu } from "antd";
-import { Notifications, Person, ViewHeadline } from "@mui/icons-material";
+import {  Person, ViewHeadline } from "@mui/icons-material";
 import logo from "./assets/logo-blue.jpg";
 import "./App.css";
 import { Button } from "@mui/material";
 import { setLogout } from "./Pages/PUBLIC/Landing/authSlice";
 import axios from "axios";
 import { clearUserData } from "./Pages/plugins/actions/userActions";
+import NotificationMenu from "./Pages/plugins/Notification/notification";
 
 function Navbar() {
   const [isMenuActive, setIsMenuActive] = useState(false);
@@ -20,6 +21,7 @@ function Navbar() {
   );
 
   const Role= personalInfo?.user_role;
+  const userName= personalInfo?.username;
   useEffect(() => {
     axios
       .get("accounts/users/", {
@@ -62,7 +64,7 @@ function Navbar() {
   }
 
   const ProfileMenu = () => {
-    const username = userData ? userData.username : "";
+
 
     return (
       <Menu
@@ -71,7 +73,7 @@ function Navbar() {
       >
         <React.Fragment>
           <Menu.Item>
-            <p>{username}</p>
+            <p>{userName}</p>
           </Menu.Item>
           <Menu.Item onClick={handleLogout}>
             <Link to="/">Logout</Link>
@@ -117,7 +119,7 @@ function Navbar() {
               border: "none",
             }}
           >
-            <Notifications />
+            <NotificationMenu />
           </Button>
         </div>
         <div className="logout-con drop">

@@ -12,6 +12,7 @@ function DetailsDash(props) {
   const { id } = useParams();
   const [selectedButton, setSelectedButton] = useState(null);
   const [selectedInvention, setSelectedInvention] = useState([])
+  const [fetchFeedBacks, setFetchFeedBacks] = useState([])
   const [selectedInventionID, setSelectedInventioID] = useState(0)
   const [uploadedFiles, setUploadedFiles] = useState([]);
 
@@ -50,6 +51,29 @@ function DetailsDash(props) {
     })
   }
 
+  function formatDateTime(dateTimeString) {
+    // Create a Date object from the input string
+    const date = new Date(dateTimeString);
+  
+   
+    const formattedDate = date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit'
+    });
+  
+    // Format the time part to HH:MM
+    const formattedTime = date.toLocaleTimeString('en-US', {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true // Use  24-hour format
+    });
+  
+    // Combine the date and time parts
+    return `${formattedDate}, ${formattedTime}`;
+  }
+  
+
 
   // useEffect(() => {
   //   if(selectedInvention[0]?.id) {
@@ -57,8 +81,21 @@ function DetailsDash(props) {
   //   }
   // }, [selectedInvention[0]?.id])
 
-  console.log("iddd", selectedInvention[0]?.id)
-  
+  useEffect(() =>{
+    const authToken = localStorage.getItem('authToken')
+    axios.get('uploadforms/feedbacks/', {
+    params: {
+      upload_form: id
+    },
+    headers: {
+      Authorization:  `Token ${authToken}`,
+      "Content-Type": 'application/json'
+    }
+    }).then((response) => {
+      console.log("feedbackdata", response.data)
+      setFetchFeedBacks(response.data)
+    })
+  }, [])
 
   const onDrop = useCallback(
     (acceptedFiles) => {
@@ -141,7 +178,7 @@ function DetailsDash(props) {
                 <tr className="detail-dash-tr">
                   <td className="detail-dash-td title">Date of Submisson</td>
                   <td className="detail-dash-td">
-                    {selectedInvention[0]?.uploaded_at}
+                    {formatDateTime(selectedInvention[0]?.uploaded_at)}
                   </td>
                 </tr>
                 <tr className="detail-dash-tr">
@@ -160,16 +197,13 @@ function DetailsDash(props) {
                 <h3>Feedback</h3>
               </div>
               <div className="feedback-comment">
-                {selectedButton !== null && (
+              {fetchFeedBacks.map((feedback) => (
                   <div className="feedback-file">
-                    <p className="feedback-title">
-                      {selectedInvention.Feedback[selectedButton].FileComment}
-                    </p>
-                  </div>
-                )}
-                {selectedButton === null && (
-                  <p className="feedback-title">No file selected.</p>
-                )}
+                  <p className="feedback-title">
+                    {feedback.feedback_text}
+                  </p>
+                </div>
+                ))}
               </div>
             </div>
           </div>

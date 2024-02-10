@@ -1,10 +1,10 @@
 [
-  { "value": "ustp_alubijid", "label": "USTP Alubijid" },
-  { "value": "ustp_cagayan_de_oro", "label": "USTP Cagayan de Oro" },
-  { "value": "ustp_claveria", "label": "USTP Claveria" },
-  { "value": "ustp_balubal", "label": "USTP Balubal" },
-  { "value": "ustp_jasaan", "label": "USTP Jasaan" },
-  { "value": "ustp_oroquieta", "label": "USTP Oroquieta" },
-  { "value": "ustp_panaon", "label": "USTP Panaon" },
-  { "value": "ustp_villanueva", "label": "USTP Villanueva" }
+  { "value": "USTP Alubijid", "label": "USTP Alubijid" },
+  { "value": "USTP Cagayan de Oro", "label": "USTP Cagayan de Oro" },
+  { "value": "USTP Claveria", "label": "USTP Claveria" },
+  { "value": "USTP Balubal", "label": "USTP Balubal" },
+  { "value": "USTP Jasaan", "label": "USTP Jasaan" },
+  { "value": "USTP Oroquieta", "label": "USTP Oroquieta" },
+  { "value": "USTP Panaon", "label": "USTP Panaon" },
+  { "value": "USTP Villanueva", "label": "USTP Villanueva" }
 ]

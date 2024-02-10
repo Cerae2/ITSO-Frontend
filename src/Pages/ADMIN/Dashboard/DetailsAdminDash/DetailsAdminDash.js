@@ -24,7 +24,13 @@ import axios from "axios";
 function DetailsAdminDash(props) {
   const { id } = useParams();
   
-    const [selectedInvention, setSelectedInvention] = useState([])
+  const [selectedInvention, setSelectedInvention] = useState([])
+  const [feedBackData, setFeedBackData] = useState({
+    upload_form: "",
+    file_status: "",
+    feedback_text: ""
+  })
+  const [fetchFeedBacks, setFetchFeedBacks] = useState([])
   const [selectedButton, setSelectedButton] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [status, setStatus] = useState("");
@@ -51,6 +57,22 @@ function DetailsAdminDash(props) {
     })
   }, [])
 
+  useEffect(() =>{
+    const authToken = localStorage.getItem('authToken')
+    axios.get('uploadforms/feedbacks/', {
+    params: {
+      upload_form: id
+    },
+    headers: {
+      Authorization:  `Token ${authToken}`,
+      "Content-Type": 'application/json'
+    }
+    }).then((response) => {
+      console.log("feedbackdata", response.data)
+      setFetchFeedBacks(response.data)
+    })
+  }, [])
+
   const handleOpenModal = () => {
     setIsModalOpen(true);
   };
@@ -59,25 +81,50 @@ function DetailsAdminDash(props) {
     setIsModalOpen(false);
   };
 
-  const statusMenu = (
-    <Menu style={{ width: 250 }}>
-      {statusData.map((status) => (
-        <Menu.Item key={status.value}>
-          <a href={status.link} target="_blank" rel="noopener noreferrer">
-            {status.label}
-          </a>
-        </Menu.Item>
-      ))}
-    </Menu>
-  );
+  const handleSubmitFeedback = () =>{
+    const authToken = localStorage.getItem('authToken')
+    axios.post('uploadforms/feedbacks/', feedBackData, {
+      headers: {
+        Authorization:  `Token ${authToken}`,
+        "Content-Type": 'application/json'
+      }
+    }).then(() => {
+      window.location.reload()
+    })
+  }
+
+  function formatDateTime(dateTimeString) {
+    // Create a Date object from the input string
+    const date = new Date(dateTimeString);
+  
+   
+    const formattedDate = date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit'
+    });
+  
+    // Format the time part to HH:MM
+    const formattedTime = date.toLocaleTimeString('en-US', {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true // Use  24-hour format
+    });
+  
+    // Combine the date and time parts
+    return `${formattedDate}, ${formattedTime}`;
+  }
+  
 
   const handleChange = (event) => {
     setStatus(event.target.value);
+    setFeedBackData((prevData) => ({
+      ...prevData,
+      upload_form: selectedInvention[0]?.id,
+      file_status: event.target.value
+    }))
   };
 
-  const handleDownloadFile = () => {
-
-  }
 
   return (
     <div>
@@ -118,7 +165,7 @@ function DetailsAdminDash(props) {
                 <tr className="detail-dash-tr">
                   <td className="detail-dash-td title">Date of Submisson</td>
                   <td className="detail-dash-td">
-                    {selectedInvention[0]?.uploaded_at}
+                    {formatDateTime(selectedInvention[0]?.uploaded_at)}
                   </td>
                 </tr>
                 <tr className="detail-dash-tr">
@@ -137,16 +184,19 @@ function DetailsAdminDash(props) {
                 <h3>Feedback</h3>
               </div>
               <div className="feedback-comment">
-                {selectedButton !== null && (
+                {/* {selectedButton !== null && ( */}
+                {fetchFeedBacks.map((feedback) => (
                   <div className="feedback-file">
-                    <p className="feedback-title">
-                      {selectedInvention.Feedback[selectedButton].FileComment}
-                    </p>
-                  </div>
-                )}
+                  <p className="feedback-title">
+                    {feedback.feedback_text}
+                  </p>
+                </div>
+                ))}
+                  
+                {/* )}
                 {selectedButton === null && (
                   <p className="feedback-title">No file selected.</p>
-                )}
+                )} */}
               </div>
             </div>
           </div>
@@ -165,12 +215,9 @@ function DetailsAdminDash(props) {
                     >
                       <Undo></Undo>
                     </Button>
-                    <Button onClick={handleDownloadFile} style={{ color: "#00B050", marginLeft: -30 }}>
-                      <Download></Download>
-                    </Button>
                   </div>
 
-                  <p className="status-style">Pending</p>
+                  <p className="status-style">{selectedInvention[0]?.upload_status}</p>
                 </div>
 
                 <div className="button-feed-cont">
@@ -215,10 +262,10 @@ function DetailsAdminDash(props) {
                   <Button
                     style={{ backgroundColor: "green", color: "white" }}
                     key="submit"
-                    onClick={handleCloseModal}
+                    onClick={handleSubmitFeedback}
                   >
                     Submit
-                  </Button>,
+                  </Button>
                 ]}
               >
                 <div className="status-cont">
@@ -244,7 +291,12 @@ function DetailsAdminDash(props) {
 
                   <div className="feedback-cont-ad">
                     <h3>Leave Feedback</h3>
-                    <textarea className="text-feedback"></textarea>
+                    <textarea value={feedBackData.feedback_text} onChange={(event) => {
+                      setFeedBackData((prevData) => ({
+                        ...prevData,
+                        feedback_text: event.target.value
+                      }))
+                    }} className="text-feedback"></textarea>
                   </div>
                   <dic className="admin-feed-btn"></dic>
                 </div>

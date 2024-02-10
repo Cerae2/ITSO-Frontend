@@ -1,7 +1,7 @@
 [
-  { "value": "patent_upload", "label": "Patent" },
-  { "value": "copy_right", "label": "Copyright" },
-  { "value": "utility_model", "label": "Utility Model" },
-  { "value": "industrial_design", "label": "Industrial Design" },
-  { "value": "trade_mark", "label": "Trademark" }
+  { "value": "Patent", "label": "Patent" },
+  { "value": "Copyright", "label": "Copyright" },
+  { "value": "Utility Model", "label": "Utility Model" },
+  { "value": "Industrial Design", "label": "Industrial Design" },
+  { "value": "Trademark", "label": "Trademark" }
 ]

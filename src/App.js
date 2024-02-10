@@ -26,6 +26,12 @@ function App() {
   // const isAuthenticated = useSelector((state) => state.auth.setIsLoggedIn);
   // const Token = useSelector((state) => state.auth.token);
 
+  const personalInfo = useSelector(
+    (state) => state.personalInfo.data 
+  );
+
+  const userRole = personalInfo?.user_role;
+    
   return (
     <div className="container">
       

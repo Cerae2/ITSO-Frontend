@@ -46,7 +46,7 @@ function Dashboard(props) {
 
   const filteredData = inventionData.filter((invention) => {
     const statusFilter =
-      selectedStatus.length === 0 || selectedStatus.includes(invention.Status);
+      selectedStatus.length === 0 || selectedStatus.includes(invention.upload_status);
 
     const searchTermFilter =
       invention.invention_title.toLowerCase().includes(
@@ -145,9 +145,9 @@ function Dashboard(props) {
                         <td className="dash-data">{index.upload_status}</td>
                       </tr>
                       <tr>
-                        <td className="dash-title">{index.form_type}</td>
+                        <td className="dash-title">Intelectual Property (IP) Type</td>
                         <td className="dash-data">
-                          Intelectual Property (IP) Type
+                        {index.form_type}
                         </td>
                       </tr>
                       <tr>

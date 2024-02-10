@@ -46,7 +46,7 @@ function DashboardAdmin(props) {
 
   const filteredData = inventionData.filter((invention) => {
     const statusFilter =
-      selectedStatus.length === 0 || selectedStatus.includes(invention.Status);
+      selectedStatus.length === 0 || selectedStatus.includes(invention.upload_status);
 
     const searchTermFilter =
       invention.invention_title.toLowerCase().includes(
