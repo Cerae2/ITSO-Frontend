@@ -1,0 +1,70 @@
+.blackSquare {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+    min-height: 200px;
+    background-color: white;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid black;
+  }
+  
+  .title {
+    font-size: 20px;
+    margin-bottom: 10px;
+    text-align: left;
+    color: rgb(255, 196, 0);
+    font-weight: bold;
+  }
+  
+  .description {
+    font-size: 15px;
+    margin-bottom: 10px;
+    text-align: left;
+    color: black;
+  }
+
+  /* Add this to BlackSquare.css */
+
+.moreButton {
+    padding: 10px;
+    background-color: #D9D9D9;
+    color: black;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.7s, color 0.7s;
+  }
+  
+  .moreButton:hover {
+    background-color: #0f0c36;
+    color: white;
+  }
+
+  .patentSquare {
+    margin-top: 20px;
+  }
+  
+  @media screen and (max-width: 600px) {
+    .blackSquare {
+      margin-top: 10px; /* Adjust this value based on your navigation bar height */
+      /* You might need to use a higher margin-top value to make it appear below the navigation bar */
+      z-index: 2; /* Make sure it is above the navigation bar */
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .patentSquare {
+      margin-top: 125px; /* Adjust this value based on your navigation bar height */
+      /* You might need to use a higher margin-top value to make it appear below the navigation bar */
+      z-index: 2; /* Make sure it is above the navigation bar */
+    }
+  }

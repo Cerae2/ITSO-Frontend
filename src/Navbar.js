@@ -119,7 +119,7 @@ function Navbar() {
               border: "none",
             }}
           >
-            <NotificationMenu />
+            <NotificationMenu />``
           </Button>
         </div>
         <div className="logout-con drop">

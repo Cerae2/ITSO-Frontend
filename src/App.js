@@ -21,6 +21,11 @@ import AddUser from "./Pages/ADMIN/AddUser/AddUser";
 import UserList from "./Pages/ADMIN/UserList/UserList";
 import DetailsAdminDash from "./Pages/ADMIN/Dashboard/DetailsAdminDash/DetailsAdminDash";
 
+import Patent from "./Pages/PRIVATE/Services/1patent/Patent"
+import UtilityModel from "./Pages/PRIVATE/Services/2utilitymodel/UtilityModel"
+import IndustrialDesign from "./Pages/PRIVATE/Services/3industrialdesign/IndustrialDesign"
+import Trademark from "./Pages/PRIVATE/Services/4trademark/Trademark"
+import Copyright from "./Pages/PRIVATE/Services/5copyright/Copyright"
 
 function App() {
   // const isAuthenticated = useSelector((state) => state.auth.setIsLoggedIn);
@@ -55,6 +60,13 @@ function App() {
           <Route path="/adduser" element={<AddUser></AddUser>}></Route>
           <Route path="/userlist" element={<UserList></UserList>}></Route>
           <Route path="/service" element={<Services></Services>}></Route>
+
+          <Route path="/patent" element={<Patent></Patent>}></Route>
+          <Route path="/utilitymodel" element={<UtilityModel></UtilityModel>}></Route>
+          <Route path="/industrialdesign" element={<IndustrialDesign></IndustrialDesign>}></Route>
+          <Route path="/trademark" element={<Trademark></Trademark>}></Route>
+          <Route path="/copyright" element={<Copyright></Copyright>}></Route>
+
           <Route path="/home" element={<Home></Home>}></Route>
           <Route path="/profile" element={<Profile></Profile>}></Route>
           <Route path="/detailsPage/:id" element={<DetailsPage />} />
