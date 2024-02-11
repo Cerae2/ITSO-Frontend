@@ -188,7 +188,7 @@ function DetailsAdminDash(props) {
                 {fetchFeedBacks.map((feedback) => (
                   <div className="feedback-file">
                   <p className="feedback-title">{feedback.feedback_text}</p>
-                  <p className="feedback-timestamp">{formatDateTime(feedback.uploaded_at)}</p>
+                  <p className="feedback-timestamp">{formatDateTime(feedback.created_at)}</p>
                 </div>
                 ))}
                   

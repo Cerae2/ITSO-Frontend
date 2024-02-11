@@ -18,7 +18,7 @@ function UserList(props) {
     axios
       .get("accounts/users/", {
         headers: {
-          Authorization: `token ${authToken}`,
+          Authorization: `Token ${authToken}`,
         },
       })
       .then((response) => {
@@ -32,7 +32,7 @@ function UserList(props) {
       });
   }, []);
 
-  const [selectedCampus, setSelectedCampus] = useState("ustp_cagayan_de_oro");
+  const [selectedCampus, setSelectedCampus] = useState("USTP Cagayan de Oro");
   const itemsPerPage = 20;
   const [currentPage, setCurrentPage] = useState(0);
   const [buttonWidth, setButtonWidth] = useState(17);
@@ -99,14 +99,14 @@ function UserList(props) {
       <div className="userlist-cont">
         <div className="btn-cont-userlist">
           {[
-            "ustp_alubijid",
-            "ustp_cagayan_de_oro",
-            "ustp_claveria",
-            "ustp_balubal",
-            "ustp_jasaan",
-            "ustp_oroquieta",
-            "ustp_panaon",
-            "ustp_villanueva",
+            "USTP Alubijid",
+            "USTP Cagayan de Oro",
+            "USTP Claveria",
+            "USTP Balubal",
+            "USTP Jasaan",
+            "USTP Oroquieta",
+            "USTP Panaon",
+            "USTP Villanueva",
           ].map((campus) => (
             <Button
               key={campus}

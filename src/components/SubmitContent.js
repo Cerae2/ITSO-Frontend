@@ -102,13 +102,13 @@ function SubmitContent({ onFileUpload, type, onChange }) {
       formData2.append("upload_form", uploadFormId);
   
       // Append each file from the uploadedFiles array
-      
+      formData2.append("add_new_file", false);
       
       // Endpoint for uploading files
       const uploadEndpoint2 = "uploadforms/file/";
       const response2 = await axios.post(uploadEndpoint2, formData2, {
         headers: {
-          Authorization: `Bearer ${authToken}`,
+          Authorization: `Token ${authToken}`,
           'Content-Type': 'multipart/form-data'
         }
       });
@@ -121,7 +121,7 @@ function SubmitContent({ onFileUpload, type, onChange }) {
   
       // Update files state if needed
       // setFiles(uploadedFiles);
-      
+      alert(`You have successfully added a form thank you`);
     } catch (error) {
       // Handle errors
       console.error("Error:", error);
@@ -268,19 +268,6 @@ function SubmitContent({ onFileUpload, type, onChange }) {
           Submit
         </Button>
 
-        <Button
-          style={{
-            height: "100%",
-            width: "20vh",
-            display: "flex",
-            backgroundColor: "red",
-            marginTop: 10,
-            color: "white",
-            borderRadius: 20,
-          }}
-        >
-          Clear
-        </Button>
       </div>
     </div>
   );

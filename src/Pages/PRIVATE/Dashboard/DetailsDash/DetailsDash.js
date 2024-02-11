@@ -115,12 +115,13 @@ function DetailsDash(props) {
       newFiles.forEach((newFile, index) => {
         formData2.append("files", newFile.file);
       });
+      formData2.append("add_new_file", true);
       setUploadedFiles((prevFiles) => [...prevFiles, ...newFiles]);
 
       const uploadEndpoint2 = "uploadforms/file/";
       axios.post(uploadEndpoint2, formData2, {
         headers: {
-          Authorization: `Bearer ${authToken}`,
+          Authorization: `Token ${authToken}`,
           'Content-Type': 'multipart/form-data'
         }
       }).then(() => {
@@ -202,6 +203,7 @@ function DetailsDash(props) {
                   <p className="feedback-title">
                     {feedback.feedback_text}
                   </p>
+                  <p className="feedback-timestamp">{formatDateTime(feedback.created_at)}</p>
                 </div>
                 ))}
               </div>

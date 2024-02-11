@@ -2,16 +2,17 @@ import React, { useState, useEffect } from "react";
 import Header from "../../../components/header/Header";
 import "./search.css";
 import SearchBar from "../../../components/SearchBar/SearchBar";
-import inventionData from "./../../../components/JSON/inventions.json";
 import CheckBox from "../../../components/Checkbox";
 import empty from "./../../../assets/empty_state.png";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 function Search(props) {
   const [selectedCampuses, setSelectedCampuses] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [inventionData, setInventionData] = useState([])
   const navigate = useNavigate();
   const [selectedInvention, setSelectedInvention] = useState(null);
   const handleCampusChange = (campus, checked) => {
@@ -22,6 +23,22 @@ function Search(props) {
       setSelectedCampuses(newSelectedCampuses);
     }
   };
+
+  useEffect(() => {
+  
+    axios.get('uploadforms/forms/',{
+      params: {
+        select_invention: false,
+        is_admin: true
+      },
+
+    }).then((response) => {
+      console.log(response.data)
+      const filteredData = response.data.filter(item => item.upload_status === 'Approved');
+      console.log(filteredData);
+      setInventionData(filteredData);
+    })
+  }, [])
 
   const handleDetailsPage = (invention) => {
     console.log("Selected Invention:", invention);
@@ -49,20 +66,18 @@ function Search(props) {
   const filteredData = inventionData.filter((invention) => {
     const campusFilter =
       selectedCampuses.length === 0 ||
-      selectedCampuses.includes(invention.Campus);
+      selectedCampuses.includes(invention.school_campus);
 
     const categoryFilter =
       selectedCategories.length === 0 ||
-      selectedCategories.includes(invention.Category);
+      selectedCategories.includes(invention.form_type);
 
     const searchTermFilter =
-      invention.Title_of_Invention.toLowerCase().includes(
+      invention.invention_title.toLowerCase().includes(
         searchTerm.toLowerCase()
       );
 
-    console.log(
-      `Invention: ${invention.Title_of_Invention}, Campus: ${invention.Campus}, Category: ${invention.Category}, Campus Filter: ${campusFilter}, Category Filter: ${categoryFilter}, Search Term Filter: ${searchTermFilter}`
-    );
+   
 
     return campusFilter && categoryFilter && searchTermFilter;
   });
@@ -206,7 +221,7 @@ function Search(props) {
                     className="title-btn"
                   >
                     <h1 className="title-css">
-                      {invention.Title_of_Invention}
+                      {invention.invention_title}
                     </h1>
                   </Link>
                   <div className="row-line">
@@ -214,26 +229,26 @@ function Search(props) {
                       <p className="title-sub inventors">Inventors:</p>
                     </div>
                     <p className="title-main inventors">
-                      {invention.Inventors.join(", ")}
+                      {invention.authors}
                     </p>
                   </div>
                   <div className="row-line">
                     <div className="title-sub-container Summary">
                       <p className="title-sub Summary">Summary:</p>
                     </div>
-                    <p className="title-main Summary">{invention.Summary}</p>
+                    <p className="title-main Summary">{invention.summary}</p>
                   </div>
                   <div className="row-line">
                     <div className="title-sub-container Campus">
                       <p className="title-sub Campus">Campus:</p>
                     </div>
-                    <p className="title-main Campus">{invention.Campus}</p>
+                    <p className="title-main Campus">{invention.school_campus}</p>
                   </div>
                   <div className="row-line">
                     <div className="title-sub-container Category">
                       <p className="title-sub Category">Category:</p>
                     </div>
-                    <p className="title-main Category">{invention.Category}</p>
+                    <p className="title-main Category">{invention.form_type}</p>
                   </div>
                 </div>
               </>
