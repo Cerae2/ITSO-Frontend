@@ -7,6 +7,15 @@ import axios from "axios";
 import { DownOutlined } from "@ant-design/icons";
 import { Dropdown, Menu, Space } from "antd";
 
+const getYearRange = (startYear) => {
+  const years = [];
+  const currentYear = new Date().getFullYear();
+  for (let year = startYear; year <= currentYear; year++) {
+    years.push(year);
+  }
+  return years;
+};
+
 function GenerateReports(props) {
   const itemsPerPage = 5;
   const [currentPage, setCurrentPage] = useState(0);
@@ -17,6 +26,8 @@ function GenerateReports(props) {
   const [selectedCampus, setSelectedCampus] = useState(null);
   const [selectedDepartment, setSelectedDepartment] = useState(null);
   const [departments, setDepartments] = useState([]);
+  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
+
 
   useEffect(() => {
     const authToken = localStorage.getItem("authToken");
@@ -97,12 +108,16 @@ function GenerateReports(props) {
   };
 
   const yearMenu = (
-    <Menu style={{ width: 250, color: "black" }}>
-      <Menu.Item>
-        <input value={new Date().getFullYear()} readOnly />
-      </Menu.Item>
+    <Menu style={{ width:  250, color: "black" }}>
+      {getYearRange(new Date().getFullYear()).map((year) => (
+        <Menu.Item key={year} onClick={() => handleYearSelection(year)}>
+          {year}
+        </Menu.Item>
+      ))}
     </Menu>
   );
+  
+  
 
   const campusMenu = (
     <Menu style={{ width:  250, color: "black" }}>
@@ -124,28 +139,54 @@ function GenerateReports(props) {
     </Menu>
   );
 
+  const handleYearSelection = (year) => {
+    setSelectedYear(year);
+    handleYearChange(year);
+  };
+
+  const handleYearChange = (year) => {
+    // Fetch uploads for the selected year
+    axios
+      .get(`http://localhost:8000/api/v1/accounts/by_year/?year=${year}`)
+      .then((response) => {
+        const { uploads } = response.data;
+        setInventionData(uploads); // Update the invention data with the fetched uploads
+        console.log('Selected Year:', year);
+        console.log('Uploads:', uploads);
+      })
+      .catch((error) => {
+        console.error(`Error fetching uploads for year ${year}:`, error);
+      });
+  };
+  
+
   const filteredData = inventionData.filter((invention) => {
     const statusFilter =
-      selectedStatus.length === 0 ||
+      selectedStatus.length ===  0 ||
       selectedStatus.includes(invention.upload_status);
-
+  
     const searchTermFilter = invention.invention_title
       .toLowerCase()
       .includes(searchTerm.toLowerCase());
-
+  
     const campusFilter = !selectedCampus || invention.school_campus === selectedCampus.name;
   
     const departmentFilter = !selectedDepartment || invention.department_type === selectedDepartment;
-
-      // Log relevant data for debugging
-  console.log('Invention:', invention);
-  console.log('Selected Campus:', selectedCampus);
-  console.log('Selected Department:', selectedDepartment);
-  console.log('Campus Filter:', campusFilter);
-  console.log('Department Filter:', departmentFilter);
-
-    return statusFilter && searchTermFilter && campusFilter && departmentFilter;
+  
+    // Check if the upload was made within the selected year
+    const yearFilter = !selectedYear || new Date(invention.uploaded_at).getFullYear() === selectedYear;
+  
+    // Log relevant data for debugging
+    console.log('Invention:', invention);
+    console.log('Selected Campus:', selectedCampus);
+    console.log('Selected Department:', selectedDepartment);
+    console.log('Campus Filter:', campusFilter);
+    console.log('Department Filter:', departmentFilter);
+    console.log('Year Filter:', yearFilter);
+  
+    return statusFilter && searchTermFilter && campusFilter && departmentFilter && yearFilter;
   });
+  
 
   const startIndex = currentPage * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
@@ -166,15 +207,16 @@ function GenerateReports(props) {
             </div>
 
             <div style={{ position: "relative" }}>
-              <Dropdown overlay={yearMenu} trigger={["click"]}>
-                <a
-                  className="ant-dropdown-link"
-                  onClick={(e) => e.preventDefault()}
-                  style={{ color: "black", marginLeft: "20px" }}
-                >
-                  Year <DownOutlined />
-                </a>
-              </Dropdown>
+            <Dropdown overlay={yearMenu} trigger={["click"]}>
+              <a
+                className="ant-dropdown-link"
+                onClick={(e) => e.preventDefault()}
+                style={{ color: "black", marginLeft: "20px" }}
+              >
+                {selectedYear} <DownOutlined />
+              </a>
+            </Dropdown>
+
 
               <Dropdown overlay={campusMenu} trigger={["click"]}>
                 <a
