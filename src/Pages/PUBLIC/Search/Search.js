@@ -215,7 +215,7 @@ function Search(props) {
           ) : (
             filteredData.map((invention) => (
               <>
-                <div className="container-data">
+                <div className="container-data" >
                   <Link
                     to={`/detailsPage/${invention.id}`}
                     className="title-btn"
@@ -232,11 +232,11 @@ function Search(props) {
                       {invention.authors}
                     </p>
                   </div>
-                  <div className="row-line">
-                    <div className="title-sub-container Summary">
+                  <div className="row-line" >
+                    <div className="title-sub-container Summary" >
                       <p className="title-sub Summary">Summary:</p>
                     </div>
-                    <p className="title-main Summary">{invention.summary}</p>
+                    <p className="title-main Summary" style={{wordBreak:'break-word'}}>{invention.summary}</p>
                   </div>
                   <div className="row-line">
                     <div className="title-sub-container Campus">

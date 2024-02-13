@@ -19,6 +19,25 @@ function SubmitContent({ onFileUpload, type, onChange }) {
   const [uploadForm, setUploadForm] = useState("");
   const [files, setFiles] = useState("");
 
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' && e.shiftKey) {
+      e.preventDefault(); // Prevent the default behavior of adding a new line
+      
+      // Get the current cursor position in the summary field
+      const startPos = e.target.selectionStart;
+      const endPos = e.target.selectionEnd;
+  
+      // Insert a newline character at the cursor position
+      setSummary(summary.substring(0, startPos) + '\n' + summary.substring(endPos));
+  
+      // Move the cursor position to after the inserted newline character
+      e.target.selectionStart = startPos + 1;
+      e.target.selectionEnd = startPos + 1;
+    }
+  };
+  
+
   const removeFile = (id) => {
     setUploadedFiles((prevFiles) => prevFiles.filter((file) => file.id !== id));
   };
@@ -143,7 +162,7 @@ function SubmitContent({ onFileUpload, type, onChange }) {
             width={"100%"}
           />
         </div>
-        <div className="submit-request-subcont A">
+        {/* <div className="submit-request-subcont A">
           <h3>Requirements</h3>
 
           <div className="form-list-cont">
@@ -184,7 +203,7 @@ function SubmitContent({ onFileUpload, type, onChange }) {
               <Download></Download> FORM
             </Button>
           </div>
-        </div>
+        </div> */}
         <div className="fill-up-form">
           <TextFieldComponent
             width={"100%"}
@@ -194,12 +213,7 @@ function SubmitContent({ onFileUpload, type, onChange }) {
           ></TextFieldComponent>
           <div className="selection-request">
           </div>
-          <TextFieldComponent
-            width={"100%"}
-            label={"Summary"}
-            value={summary}
-            onChange={(e) => setSummary(e.target.value)}
-          ></TextFieldComponent>
+          
           <TextFieldComponent
             width={"100%"}
             label={"Author/s"}
@@ -209,12 +223,26 @@ function SubmitContent({ onFileUpload, type, onChange }) {
             value={authors}
             onChange={(e) => setAuthors(e.target.value)}
           ></TextFieldComponent>
+
+          <div style={{ width: "55vw", height: "15vh", marginBottom: '5vh'}}>
+          <p>Summary</p>
+          <textarea
+            style={{ width: "100%", height: "100%",fontSize:"130%" }}
+            value={summary}
+            onChange={(e) => setSummary(e.target.value)}
+            onKeyDown={handleKeyDown}
+          >
+         
+          </textarea>
+       
+          </div>
+
         </div>
       </div>
 
       <div className="submit-request-subcont B">
         <h3>Submit Requirements</h3>
-        <div className="upload-cont">
+        <div className="upload-cont" style={{overflowY:'scroll'}}>
           {uploadedFiles.length > 0 ? (
             <div className="uploaded-name-cont">
               <p>Uploaded Files:</p>

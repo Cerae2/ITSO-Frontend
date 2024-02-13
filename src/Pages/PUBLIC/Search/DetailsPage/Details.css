@@ -23,6 +23,11 @@
   font-size: 25px;
   padding-top: 10vh;
   flex-direction: column;
+  
+}
+
+.title-details p:nth-child(3){
+  word-wrap: break-word
 }
 @media (max-width: 600px) {
   .details-sub {

@@ -99,6 +99,7 @@ function Navbar() {
             <CustomLink to="/dashboardadmin">Dashboard</CustomLink>
             <CustomLink to="/adduser">Add User</CustomLink>
             <CustomLink to="/userlist">User List</CustomLink>
+            <CustomLink to="/generate">Generate Reports</CustomLink>
           </>
         ) : (
           <>
@@ -119,7 +120,7 @@ function Navbar() {
               border: "none",
             }}
           >
-            <NotificationMenu />``
+            <NotificationMenu />
           </Button>
         </div>
         <div className="logout-con drop">
@@ -161,6 +162,7 @@ function Navbar() {
               <CustomLink to="/dashboardadmin">Dashboard</CustomLink>
               <CustomLink to="/adduser">Add User</CustomLink>
               <CustomLink to="/userlist">User List</CustomLink>
+              <CustomLink to="/generate">Generate Reports</CustomLink>
               <CustomLink to="/logout">Logout</CustomLink>
             </>
           )}

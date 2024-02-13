@@ -8,6 +8,7 @@ function TextFieldComponet({
   type,
   width,
   value,
+  height
 }) {
   return (
     <div style={{ marginBottom: 25 }}>

@@ -26,6 +26,7 @@ import UtilityModel from "./Pages/PRIVATE/Services/2utilitymodel/UtilityModel"
 import IndustrialDesign from "./Pages/PRIVATE/Services/3industrialdesign/IndustrialDesign"
 import Trademark from "./Pages/PRIVATE/Services/4trademark/Trademark"
 import Copyright from "./Pages/PRIVATE/Services/5copyright/Copyright"
+import GenerateReports from "./Pages/ADMIN/GenerateReports/GenerateReports";
 
 function App() {
   // const isAuthenticated = useSelector((state) => state.auth.setIsLoggedIn);
@@ -60,6 +61,7 @@ function App() {
           <Route path="/adduser" element={<AddUser></AddUser>}></Route>
           <Route path="/userlist" element={<UserList></UserList>}></Route>
           <Route path="/service" element={<Services></Services>}></Route>
+          <Route path="/generate" element={<GenerateReports></GenerateReports>}></Route>
 
           <Route path="/patent" element={<Patent></Patent>}></Route>
           <Route path="/utilitymodel" element={<UtilityModel></UtilityModel>}></Route>
