@@ -6,17 +6,24 @@ import "./generatereps.css";
 import axios from "axios";
 import { DownOutlined } from "@ant-design/icons";
 import { Dropdown, Menu, Space } from "antd";
+import * as XLSX from 'xlsx';
+
 
 function GenerateReports(props) {
-  const itemsPerPage = 5;
+  const itemsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(0);
-  const [selectedStatus, setSelectedStatus] = useState(["Approved"]);
+  const [selectedStatus, setSelectedStatus] = useState(["Granted"]);
   const [searchTerm, setSearchTerm] = useState("");
   const [inventionData, setInventionData] = useState([]);
   const [campuses, setCampuses] = useState([]);
   const [selectedCampus, setSelectedCampus] = useState(null);
   const [selectedDepartment, setSelectedDepartment] = useState(null);
   const [departments, setDepartments] = useState([]);
+  const [campusLabel, setCampusLabel] = useState("Campus");
+  const [departmentLabel, setDepartmentLabel] = useState("Department");
+  const [selectedYear, setSelectedYear] = useState("Year");
+
+  
 
   useEffect(() => {
     const authToken = localStorage.getItem("authToken");
@@ -61,6 +68,31 @@ function GenerateReports(props) {
     }
   };
 
+  const handleDownload = () => {
+    // Check if there is any filtered data
+    if (slicedData.length ===  0) {
+      // Show an alert if no data is found
+      alert("No Matching Invention Found. Please adjust your filters.");
+    } else {
+      // Create a new array from slicedData where each object has the 'summary' attribute removed
+      const dataWithoutSummary = slicedData.map(item => {
+        const { summary, ...rest } = item; // Destructure and exclude 'summary'
+        return rest; // Return the rest of the object
+      });
+  
+      // Convert the new array to a worksheet
+      const ws = XLSX.utils.json_to_sheet(dataWithoutSummary);
+  
+      // Create a new workbook and append the worksheet
+      const wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+  
+      // Write the workbook to a file
+      XLSX.writeFile(wb, "Report.xlsx");
+    }
+  };
+  
+
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
   };
@@ -68,7 +100,8 @@ function GenerateReports(props) {
   const handleCampusChange = (campus) => {
     // Set selected campus
     setSelectedCampus(campus);
-  
+    // Update the campus label
+    setCampusLabel(campus.name);
     // Encode the campus name before appending it to the URL
     const encodedCampus = encodeURIComponent(campus.name);
   
@@ -94,16 +127,25 @@ function GenerateReports(props) {
   const handleDepartmentChange = (department) => {
     // Set the selected department
     setSelectedDepartment(department);
+    // Update the department label
+    setDepartmentLabel(department);
   };
+  
+  
 
   const yearMenu = (
-    <Menu style={{ width: 250, color: "black" }}>
-      <Menu.Item>
-        <input value={new Date().getFullYear()} readOnly />
-      </Menu.Item>
+    <Menu style={{ width:  250, color: "black" }}>
+      {[...Array(21).keys()].map((_, i) => {
+        const year = new Date().getFullYear() - i;
+        return (
+          <Menu.Item key={year}>
+            <a onClick={() => setSelectedYear(year)}>{year}</a>
+          </Menu.Item>
+        );
+      })}
     </Menu>
   );
-
+  
   const campusMenu = (
     <Menu style={{ width:  250, color: "black" }}>
       {campuses.filter(Boolean).map((campus, index) => (
@@ -123,6 +165,20 @@ function GenerateReports(props) {
       ))}
     </Menu>
   );
+  
+  const departmentDropdownText = selectedDepartment ? selectedDepartment : "department";
+  
+  const dropdownDepartmentMenu = (
+    <Dropdown overlay={departmentMenu} trigger={["click"]}>
+      <a
+        className="ant-dropdown-link"
+        onClick={(e) => e.preventDefault()}
+        style={{ color: "black", marginLeft: "20px" }}
+      >
+        {departmentLabel} <DownOutlined />
+      </a>
+    </Dropdown>
+  );
 
   const filteredData = inventionData.filter((invention) => {
     const statusFilter =
@@ -137,6 +193,8 @@ function GenerateReports(props) {
   
     const departmentFilter = !selectedDepartment || invention.department_type === selectedDepartment;
 
+    const yearFilter = !selectedYear || selectedYear ==="Year" || new Date(invention.uploaded_at).getFullYear() === Number(selectedYear);
+
       // Log relevant data for debugging
   console.log('Invention:', invention);
   console.log('Selected Campus:', selectedCampus);
@@ -144,7 +202,7 @@ function GenerateReports(props) {
   console.log('Campus Filter:', campusFilter);
   console.log('Department Filter:', departmentFilter);
 
-    return statusFilter && searchTermFilter && campusFilter && departmentFilter;
+    return statusFilter && searchTermFilter && campusFilter && departmentFilter && yearFilter;
   });
 
   const startIndex = currentPage * itemsPerPage;
@@ -154,25 +212,32 @@ function GenerateReports(props) {
   return (
     <div>
       <Navbar></Navbar>
-      <div className="dash-container">
-        <div className="dash-sub">
-          <div className="dash-input-container">
-            <div className="dashadmin-search-filter">
-              <input
-                className="dash-input"
-                placeholder="Search"
-                onChange={(e) => setSearchTerm(e.target.value)}
-              ></input>
-            </div>
+      <div className="reports-container">
+        <div className="reports-sub">
+          <div className="repots-input-container">
+     
 
             <div style={{ position: "relative" }}>
+
+            <div className="submenu-dropdown">
+            <div className="reports-search-filter">
+                <input
+                  className="reports-input"
+                  placeholder="Search"
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                ></input>
+            </div>    
+            <button className="downlaodButton" onClick={handleDownload}>
+             Download
+            </button>
+
               <Dropdown overlay={yearMenu} trigger={["click"]}>
                 <a
                   className="ant-dropdown-link"
                   onClick={(e) => e.preventDefault()}
                   style={{ color: "black", marginLeft: "20px" }}
                 >
-                  Year <DownOutlined />
+                  {selectedYear} <DownOutlined />
                 </a>
               </Dropdown>
 
@@ -183,20 +248,21 @@ function GenerateReports(props) {
                   onClick={(e) => e.preventDefault()}
                   style={{ color: "black", marginLeft: "20px" }}
                 >
-                  Campus <DownOutlined />
+                  {campusLabel} <DownOutlined />
                 </a>
               </Dropdown>
-
               <Dropdown overlay={departmentMenu} trigger={["click"]}>
                 <a
                   className="ant-dropdown-link"
                   onClick={(e) => e.preventDefault()}
                   style={{ color: "black", marginLeft: "20px" }}
                 >
-                  Department<DownOutlined />
+                  {departmentLabel}<DownOutlined />
                 </a>
-              </Dropdown>
+              </Dropdown>   
+
             </div>
+          </div>
           </div>
           {slicedData.length === 0 ? (
             <div className="empty-state">
@@ -204,15 +270,16 @@ function GenerateReports(props) {
               <p>No matching inventions found.</p>
             </div>
           ) : (
-            <table>
+          <div classname='reports'>
+            <table classname="reports-table">
               <thead>
-                <tr>
-                  <th>Invention Title</th>
-                  <th>Status</th>
-                  <th>Intelectual Property (IP) Type</th>
-                  <th>Authors</th>
-                  <th>Department</th>
-                  <th>Campus</th>
+                <tr className="width-tr">
+                  <th className="style-th">Invention Title</th>
+                  <th className="style-th">Status</th>
+                  <th className="style-th">Intelectual Property (IP) Type</th>
+                  <th className="style-th">Authors</th>
+                  <th className="style-th">Department</th>
+                  <th className="style-th">Campus</th>
                 </tr>
               </thead>
               <tbody>
@@ -230,7 +297,7 @@ function GenerateReports(props) {
                       </Link>
                     </td>
                     <td>{index.upload_status}</td>
-                    <td>Intelectual Property (IP) Type</td>
+                    <td>{index.form_type}</td>
                     <td>{index.authors}</td>
                     <td>{index.department_type}</td>
                     <td>{index.school_campus}</td>
@@ -238,7 +305,9 @@ function GenerateReports(props) {
                 ))}
               </tbody>
             </table>
+          </div>
           )}
+          
           <div className="pagination">
             {Array.from(
               { length: Math.ceil(filteredData.length / itemsPerPage) },

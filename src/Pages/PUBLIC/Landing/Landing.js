@@ -95,13 +95,14 @@ function Landing(props) {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
-            <div style={{}}>
+            {/* <div style={{}}>
               <Button
                 style={{ fontSize: 12, color: "white", marginBottom: 20 }}
               >
-                Forgot Password?
+                Forgot Password? 
               </Button>
-            </div>
+            </div> */}
+
             <div
               style={{
                 width: "35vh",

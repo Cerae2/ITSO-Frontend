@@ -86,8 +86,8 @@ const BlackSquare = ({ title, description, files, onButtonClick }) => {
       </TitleContainer>
       <DescriptionText>{description}</DescriptionText>
       <ButtonContainer>
-        {files.map(({ fileName, buttonLabel }, index) => (
-          <StyledButton key={index} onClick={() => onButtonClick(fileName)}>
+        {files.map(({ link, buttonLabel }, index) => (
+          <StyledButton key={index} onClick={() => onButtonClick(link)}>
             {buttonLabel}
           </StyledButton>
         ))}
@@ -99,16 +99,8 @@ const BlackSquare = ({ title, description, files, onButtonClick }) => {
 const Downloadable = () => {
   const navigate = useNavigate();
 
-  const onButtonClick = (pdfFileName) => {
-    fetch(pdfFileName).then((response) => {
-      response.blob().then((blob) => {
-        const fileURL = window.URL.createObjectURL(blob);
-        let link = document.createElement('a');
-        link.href = fileURL;
-        link.download = pdfFileName;
-        link.click();
-      });
-    });
+  const onButtonClick = (link) => {
+    window.open(link, '_blank');
   };
 
   return (
@@ -118,11 +110,8 @@ const Downloadable = () => {
         <BlackSquare
           title="Patent"
           files={[
-            { fileName: 'patent1.pdf', buttonLabel: 'Application Form 1' },
-            { fileName: 'patent2.pdf', buttonLabel: 'Application Form 2' },
-            { fileName: 'patent3.pdf', buttonLabel: 'Application Form 3' },
-            { fileName: 'patent4.pdf', buttonLabel: 'Application Form 4' },
-            { fileName: 'patent5.pdf', buttonLabel: 'Application Form 5' },
+            { link: 'https://drive.google.com/file/d/1fGZyB1lOo9r3q0EoNBHzfuqvvmZD-HFj/view', buttonLabel: 'Request Form' },
+            { link: 'https://drive.google.com/file/d/1WQ5AYbUtOiwSvqz-H42CfK1fRQuJz800/view', buttonLabel: 'Supplemental Sheet' },
           ]}
           onButtonClick={onButtonClick}
         >
@@ -132,10 +121,8 @@ const Downloadable = () => {
         <BlackSquare
           title="Utility Model"
           files={[
-            { fileName: 'utility_model1.pdf', buttonLabel: 'Application Form 1' },
-            { fileName: 'utility_model2.pdf', buttonLabel: 'Application Form 2' },
-            { fileName: 'utility_model3.pdf', buttonLabel: 'Application Form 3' },
-            { fileName: 'utility_model4.pdf', buttonLabel: 'Application Form 4' },
+            { link: 'https://drive.google.com/file/d/1JDQn53IgQ9gOTyfmF3r4FWThcDEmjZNE/view', buttonLabel: 'Registration Form' },
+            { link: 'https://drive.google.com/file/d/1yau2FXxO8tHm5xE3RfWMIP0h7Uxi2gh-/view', buttonLabel: 'Assignmen of Application for Letters Patent' },
           ]}
           onButtonClick={onButtonClick}
         >
@@ -144,10 +131,8 @@ const Downloadable = () => {
         <BlackSquare
           title="Industrial Design"
           files={[
-            { fileName: 'industrial_design1.pdf', buttonLabel: 'Application Form 1' },
-            { fileName: 'industrial_design2.pdf', buttonLabel: 'Application Form 2' },
-            { fileName: 'industrial_design3.pdf', buttonLabel: 'Application Form 3' },
-            { fileName: 'industrial_design4.pdf', buttonLabel: 'Application Form 4' },
+            { link: 'https://drive.google.com/file/d/1f4MnnItVb5kKrCNuocQ4d4U0eszEpzuc/view', buttonLabel: 'Registration Form' },
+            { link: 'https://drive.google.com/file/d/1IZk-z2Q-XFzdZWnRq4wQi3m44ShibNzH/view', buttonLabel: 'Assignmen of Application for Letters Patent' },
           ]}
           onButtonClick={onButtonClick}
         >
@@ -156,11 +141,8 @@ const Downloadable = () => {
         <BlackSquare
           title="Trademark"
           files={[
-            { fileName: 'trademark1.pdf', buttonLabel: 'Application Form 1' },
-            { fileName: 'trademark2.pdf', buttonLabel: 'Application Form 2' },
-            { fileName: 'trademark3.pdf', buttonLabel: 'Application Form 3' },
-            { fileName: 'trademark4.pdf', buttonLabel: 'Application Form 4' },
-            { fileName: 'trademark5.pdf', buttonLabel: 'Application Form 5' },
+            { link: 'https://drive.google.com/file/d/1ZSq6q_iOMzp40dfaaBGcwNRiwFCJQqtL/view', buttonLabel: 'Registration Form' },
+            { link: 'https://drive.google.com/file/d/1IVF-3-l6zkjHGQiPLA6ng8umnemBMEpq/view', buttonLabel: 'Declaration of Actual Use' },
           ]}
           onButtonClick={onButtonClick}
         >
@@ -169,10 +151,8 @@ const Downloadable = () => {
         <BlackSquare
           title="Copyright"
           files={[
-            { fileName: 'copyright1.pdf', buttonLabel: 'Application Form 1' },
-            { fileName: 'copyright2.pdf', buttonLabel: 'Application Form 2' },
-            { fileName: 'copyright3.pdf', buttonLabel: 'Application Form 3' },
-            { fileName: 'copyright4.pdf', buttonLabel: 'Application Form 4' },
+            { link: 'https://drive.google.com/file/d/1HL2yMBNfa2ATmf9Py1QVgUwItb4p60_u/view', buttonLabel: 'Registration Form' },
+            { link: 'https://drive.google.com/file/d/1oBPqRoKfCXzSlrDazeeYXzWbSCdGuwsX/view', buttonLabel: 'Supplemental Sheet' },
           ]}
           onButtonClick={onButtonClick}
         >

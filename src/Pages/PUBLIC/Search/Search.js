@@ -34,7 +34,7 @@ function Search(props) {
 
     }).then((response) => {
       console.log(response.data)
-      const filteredData = response.data.filter(item => item.upload_status === 'Approved');
+      const filteredData = response.data.filter(item => item.upload_status === 'Granted');
       console.log(filteredData);
       setInventionData(filteredData);
     })

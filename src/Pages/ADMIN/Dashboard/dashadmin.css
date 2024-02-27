@@ -10,6 +10,10 @@
   flex-direction: row;
 }
 
+.dash-input::placeholder {
+  color: #555; 
+}
+
 @media (max-width: 600px) {
   .dash-checklist-con {
     display: flex;

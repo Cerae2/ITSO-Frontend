@@ -111,11 +111,19 @@ function DetailsDash(props) {
         id: Math.random().toString(36).substring(7),
       }));
       console.log("new files", newFiles)
+
+      const nonPDFFile = newFiles.find(file => file.file.type !== 'application/pdf');
+       if (nonPDFFile) {
+         alert('File should be in PDF format');
+         return;
+       }
+
       formData2.append("upload_form", selectedInvention[0]?.id);
       newFiles.forEach((newFile, index) => {
         formData2.append("files", newFile.file);
       });
       formData2.append("add_new_file", true);
+      formData2.append("add_new_file_admin", false)
       setUploadedFiles((prevFiles) => [...prevFiles, ...newFiles]);
 
       const uploadEndpoint2 = "uploadforms/file/";

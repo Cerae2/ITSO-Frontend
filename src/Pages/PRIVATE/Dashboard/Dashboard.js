@@ -89,28 +89,28 @@ function Dashboard(props) {
                 <CheckBox
                   checked={selectedStatus.includes("Pending")}
                   onChange={(checked) => handleStatusChange("Pending", checked)}
-                  label={"Pending"}
+                  label={"Pending for Evaluation"}
                 ></CheckBox>
                 <CheckBox
                   checked={selectedStatus.includes("Approved")}
                   onChange={(checked) =>
                     handleStatusChange("Approved", checked)
                   }
-                  label={"Approved"}
+                  label={"Granted"}
                 ></CheckBox>
                 <CheckBox
                   checked={selectedStatus.includes("Under Review")}
                   onChange={(checked) =>
                     handleStatusChange("Under Review", checked)
                   }
-                  label={"Under Review"}
+                  label={"Published"}
                 ></CheckBox>
                 <CheckBox
                   checked={selectedStatus.includes("Rejected")}
                   onChange={(checked) =>
                     handleStatusChange("Rejected", checked)
                   }
-                  label={"Rejected"}
+                  label={"Return with Remarks"}
                 ></CheckBox>
               </div>
             </div>

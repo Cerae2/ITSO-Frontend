@@ -1,6 +1,6 @@
 [
-  { "value": "Pending", "label": "Pending" },
-  { "value": "Approved", "label": "Approved" },
-  { "value": "Under Review", "label": "Under Review" },
-  { "value": "Rejected", "label": "Rejected" }
+  { "value": "Pending for Evaluation", "label": "Pending for Evaluation" },
+  { "value": "Granted", "label": "Granted" },
+  { "value": "Published", "label": "Published" },
+  { "value": "Return With Remarks", "label": "Return With Remarks" }
 ]

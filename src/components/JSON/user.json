@@ -1,4 +1,4 @@
 [
   { "value": "admin", "label": "Admin" },
-  { "value": "client", "label": "Client" }
+  { "value": "researcher", "label": "Researcher" }
 ]

@@ -77,36 +77,36 @@ function DashboardAdmin(props) {
             <div className="dash-checklist-con">
               <div>
                 <CheckBox
-                  checked={selectedStatus.includes("Pending")}
-                  onChange={(checked) => handleStatusChange("Pending", checked)}
-                  label={"Pending"}
+                  checked={selectedStatus.includes("Pending for Evaluation")}
+                  onChange={(checked) => handleStatusChange("Pending for Evaluation", checked)}
+                  label={"Pending for Evaluation"}
                 ></CheckBox>
               </div>
               <div>
                 <CheckBox
-                  checked={selectedStatus.includes("Approved")}
+                  checked={selectedStatus.includes("Granted")}
                   onChange={(checked) =>
-                    handleStatusChange("Approved", checked)
+                    handleStatusChange("Granted", checked)
                   }
-                  label={"Approved"}
+                  label={"Granted"}
                 ></CheckBox>
               </div>
               <div>
                 <CheckBox
-                  checked={selectedStatus.includes("Under Review")}
+                  checked={selectedStatus.includes("Published")}
                   onChange={(checked) =>
-                    handleStatusChange("Under Review", checked)
+                    handleStatusChange("Published", checked)
                   }
-                  label={"Under Review"}
+                  label={"Published"}
                 ></CheckBox>
               </div>
               <div>
                 <CheckBox
-                  checked={selectedStatus.includes("Rejected")}
+                  checked={selectedStatus.includes("Return with Remarks")}
                   onChange={(checked) =>
-                    handleStatusChange("Rejected", checked)
+                    handleStatusChange("Return with Remarks", checked)
                   }
-                  label={"Rejected"}
+                  label={"Return With Remarks"}
                 ></CheckBox>
               </div>
             </div>

@@ -91,7 +91,31 @@ function SubmitContent({ onFileUpload, type, onChange }) {
   const userId = personalInfo?.id;
 
   const handleFileUpload = async () => {
+  // Check if no IP type is selected
+  if (!formType) {
+    alert("Please Select IP Type");
+    return; // Prevent form submission if no type is selected
+  }
+
+  if (!inventionTitle || !authors || !summary) {
+    alert("Please fill in all required fields: Invention Title, Authors, and Summary.");
+    return; // Prevent form submission if required fields are not filled
+  }
+
+   // Check if any files have been uploaded
+   if (uploadedFiles.length ===  0) {
+    alert("Please upload at least one file.");
+    return; // Prevent form submission if no files are uploaded
+  }
+
     try {
+       // Check if any file uploaded is not a PDF
+    const nonPDFFile = uploadedFiles.find(file => file.file.type !== 'application/pdf');
+    if (nonPDFFile) {
+      alert('File should be in PDF format');
+      return;
+    }
+
       // Step 1: Upload form data
       const formData1 = new FormData();
       const authToken = localStorage.getItem("authToken")
@@ -137,6 +161,13 @@ function SubmitContent({ onFileUpload, type, onChange }) {
   
       // Update uploadForm state with the uploaded form ID
       setUploadForm(uploadFormId);
+      // Clear all state values after successful submission
+      setUploadedFiles([]);
+      setTitle("");
+      setSummary("");
+      setAuthors("");
+      setFormType("");
+      setFiles("");
   
       // Update files state if needed
       // setFiles(uploadedFiles);
@@ -152,7 +183,7 @@ function SubmitContent({ onFileUpload, type, onChange }) {
       <div className="submit-cont-main">
         <div style={{ marginTop: 10, width: "90%" }}>
           <Selection
-            inputLabel={"Form Type"}
+            inputLabel={"Intellectual Property Type"}
             valueSelect={formType}
             label={"Form Type"}
             onChange={handleChangeForm}
