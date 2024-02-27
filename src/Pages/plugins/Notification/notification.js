@@ -134,17 +134,12 @@ const NotificationMenu = () => {
               >
                 <span className="notification-message">{notification.subject}</span>
                 <span className="notification-timestamp">{formatDateTime(notification.created_at)}</span>
-                {/* {!notification.read_status && (
-                  <button className="notification-action-button mark-read-button" onClick={() => markAsRead(notification.id)}>Mark as Read</button>
-                )} */}
               </li>
               </Link>
               </>
             ))}
           </ul>
           <div className="notification-actions">
-            {/* <button className="clear-notifications-button" onClick={clearNotifications}>Clear Notifications</button> */}
-            {/* <button className="add-notification-button" onClick={addNotification}>Add Notification</button> */}
           </div>
         </div>
       )}

@@ -9,6 +9,7 @@ import { Dropdown, Menu, Space } from "antd";
 import * as XLSX from 'xlsx';
 
 
+
 function GenerateReports(props) {
   const itemsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(0);
@@ -24,6 +25,7 @@ function GenerateReports(props) {
   const [selectedYear, setSelectedYear] = useState("Year");
 
   
+
 
   useEffect(() => {
     const authToken = localStorage.getItem("authToken");
@@ -133,6 +135,7 @@ function GenerateReports(props) {
   
   
 
+<<<<<<< HEAD
   const yearMenu = (
     <Menu style={{ width:  250, color: "black" }}>
       {[...Array(21).keys()].map((_, i) => {
@@ -146,6 +149,12 @@ function GenerateReports(props) {
     </Menu>
   );
   
+=======
+
+  
+  
+
+>>>>>>> 5142618b3a5b8663513611d1133df97dda4c1703
   const campusMenu = (
     <Menu style={{ width:  250, color: "black" }}>
       {campuses.filter(Boolean).map((campus, index) => (
@@ -180,18 +189,21 @@ function GenerateReports(props) {
     </Dropdown>
   );
 
+
+
   const filteredData = inventionData.filter((invention) => {
     const statusFilter =
-      selectedStatus.length === 0 ||
+      selectedStatus.length ===  0 ||
       selectedStatus.includes(invention.upload_status);
-
+  
     const searchTermFilter = invention.invention_title
       .toLowerCase()
       .includes(searchTerm.toLowerCase());
-
+  
     const campusFilter = !selectedCampus || invention.school_campus === selectedCampus.name;
   
     const departmentFilter = !selectedDepartment || invention.department_type === selectedDepartment;
+<<<<<<< HEAD
 
     const yearFilter = !selectedYear || selectedYear ==="Year" || new Date(invention.uploaded_at).getFullYear() === Number(selectedYear);
 
@@ -203,7 +215,21 @@ function GenerateReports(props) {
   console.log('Department Filter:', departmentFilter);
 
     return statusFilter && searchTermFilter && campusFilter && departmentFilter && yearFilter;
+=======
+  
+    // Check if the upload was made within the selected year
+  
+    // Log relevant data for debugging
+    console.log('Invention:', invention);
+    console.log('Selected Campus:', selectedCampus);
+    console.log('Selected Department:', selectedDepartment);
+    console.log('Campus Filter:', campusFilter);
+    console.log('Department Filter:', departmentFilter);
+  
+    return statusFilter && searchTermFilter && campusFilter && departmentFilter;
+>>>>>>> 5142618b3a5b8663513611d1133df97dda4c1703
   });
+  
 
   const startIndex = currentPage * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
@@ -218,6 +244,7 @@ function GenerateReports(props) {
      
 
             <div style={{ position: "relative" }}>
+<<<<<<< HEAD
 
             <div className="submenu-dropdown">
             <div className="reports-search-filter">
@@ -240,6 +267,8 @@ function GenerateReports(props) {
                   {selectedYear} <DownOutlined />
                 </a>
               </Dropdown>
+=======
+>>>>>>> 5142618b3a5b8663513611d1133df97dda4c1703
 
               <Dropdown overlay={campusMenu} trigger={["click"]}>
                 <a
