@@ -64,6 +64,10 @@ function Header(props) {
     navigate("/landing");
   };
 
+  const handleRegisterClick = () => {
+    navigate("/registration");
+  }
+
   return (
     <div>
       <div className="header-container">
@@ -109,13 +113,18 @@ function Header(props) {
           <button onClick={handleLoginClick} className="button-login">
             Login
           </button>
+          <button onClick={handleRegisterClick} className="button-login">
+            Register
+          </button>
         </div>
+
         <div className="header-selection">
           <Button onClick={handleMenu}>
             <ViewHeadline></ViewHeadline>
           </Button>
         </div>
       </div>
+
       <div ref={contSelectionRef} className="cont-selection">
         <div className="cam-cont-head">
           <h1 className="title-head-drop">Campuses</h1>
@@ -169,6 +178,12 @@ function Header(props) {
           >
             LOGIN<Login></Login>
           </Button>
+          <Button
+            onClick={handleRegisterClick}
+            style={{ backgroundColor: "#45c045", color: "white" }}
+          >
+            REGISTER<Login></Login>
+          </Button>          
         </div>
       </div>
     </div>

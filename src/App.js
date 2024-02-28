@@ -19,6 +19,7 @@ import DetailsDash from "./Pages/PRIVATE/Dashboard/DetailsDash/DetailsDash";
 import DashboardAdmin from "./Pages/ADMIN/Dashboard/DashboardAdmin";
 import AddUser from "./Pages/ADMIN/AddUser/AddUser";
 import UserList from "./Pages/ADMIN/UserList/UserList";
+import Registration from "./Pages/PUBLIC/Registration/Registration";
 import DetailsAdminDash from "./Pages/ADMIN/Dashboard/DetailsAdminDash/DetailsAdminDash";
 
 import Patent from "./Pages/PRIVATE/Services/1patent/Patent"
@@ -49,6 +50,7 @@ function App() {
 
         <Routes>
           <Route path="/landing" element={<Landing></Landing>}></Route>
+          <Route path="/registration" element={<Registration></Registration>}></Route>
           <Route path="/dashboard" element={<Dashboard></Dashboard>}></Route>
           <Route
             path="/dashboardadmin"

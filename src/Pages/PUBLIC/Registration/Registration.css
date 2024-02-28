@@ -1,0 +1,58 @@
+.add-user-cont {
+    display: flex;
+    padding: 5vh;
+    height: 80vh;
+    flex-wrap: wrap;
+  }
+  .input-cont-add {
+    display: flex;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    width: 70%;
+    justify-content: center;
+  }
+  .cont-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .account-cont {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .account {
+    height: 30vh;
+    width: auto;
+  }
+  .add-user-btn-cont {
+    margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  @media (max-width: 788px) {
+    .add-user-cont {
+      flex-direction: column;
+      align-items: center;
+      flex-wrap: nowrap;
+    }
+    .input-cont-add {
+      align-items: center;
+      justify-content: center;
+    }
+    .account-cont {
+      margin-top: 10vh;
+    }
+    .account {
+      height: 30vh;
+      width: 30vh;
+    }
+    .add-user-btn-cont {
+      margin-bottom: 20px;
+    }
+  }
+  
