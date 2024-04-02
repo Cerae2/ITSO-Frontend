@@ -1,0 +1,56 @@
+.footer {
+    background-color: #201B51;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Center the content horizontally */
+    align-items: center; /* Center the content vertically */
+}
+
+.contact-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the content horizontally */
+    margin-left: 150vh; /* This seems unusually large for responsive design. Consider adjusting or removing it. */
+}
+
+.contact-us {
+    margin-bottom: 10px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center; /* Center the icons horizontally */
+    width: 100px; /* Adjust the width as needed */
+    align-items: baseline;
+    gap: 10px;
+}
+
+.social-icons > * {
+    color: white;
+    font-size: 24px; /* Adjust the size as needed */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .footer {
+        padding: 10px; /* Reduce padding on smaller screens */
+    }
+
+    .contact-section {
+        margin-left: 0; /* Reset or adjust margin for smaller screens */
+    }
+
+    .social-icons {
+        gap: 5px; /* Reduce gap between icons on smaller screens */
+        width: auto; /* Allow the container to adjust its width based on content */
+    }
+
+    .social-icons > * {
+        font-size: 18px; /* Reduce icon size on smaller screens */
+    }
+}

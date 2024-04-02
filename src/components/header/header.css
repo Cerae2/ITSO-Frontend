@@ -36,7 +36,12 @@
   font-family: "Times New Roman", Times, serif;
   font-size: 2vh;
   cursor: pointer;
+  
 }
+.button-login.clicked {
+  background-color: #007bff; /* Change to your preferred color */
+  color: white; /* Change text color if needed */
+ }
 .cont-selection {
   display: none;
 }

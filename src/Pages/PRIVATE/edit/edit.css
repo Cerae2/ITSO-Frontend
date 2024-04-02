@@ -1,0 +1,73 @@
+
+.sidebar-container {
+    width: 200px;
+    height: 85%;
+    position: fixed;
+    top: 115px;
+    left: 0;
+    background-color: #201b51;
+    color: rgb(147, 77, 6);
+    padding: 20px;
+    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+}
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    cursor: pointer; /* Make the profile image clickable */
+}
+
+.user-icon {
+    width: 150px;
+    height: 150px;
+    fill: #ccc; /* Change the color of the user icon */
+    cursor: pointer; /* Make the user icon clickable */
+    transition: fill 0.3s ease; /* Add transition effect for color change */
+}
+
+.user-icon:hover {
+    fill: #aaa; /* Change color on hover */
+}
+
+/* Styles for the file input */
+input[type="file"] {
+    display: none;
+}
+
+.file-upload-label {
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.file-upload-label:hover {
+    background-color: #45a049;
+}
+.buttons-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Optional: Center the buttons horizontally */
+    margin-top: 20px;
+   }
+   
+   .profile-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color:#FAB417;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px; /* Add some space between buttons */
+   }
+   
+   .profile-button:hover {
+    background-color: #f0e9e9;
+   }

@@ -43,21 +43,24 @@
   flex-direction: row;
   display: flex;
   width: 90%;
+ 
 }
-
 .invention-title {
   color: white;
   font-size: 6vh;
   font-weight: 500;
   font-family: "Times New Roman", Times, serif;
   right: 0;
+  
+
 }
 .sub-title {
   color: white;
   font-family: "Times New Roman", Times, serif;
   font-weight: lighter;
-  font-size: 2vh;
+  font-size: 3vh;
   right: 0;
+  
 }
 
 .patent-container {
@@ -77,11 +80,12 @@
   margin-right: 5vh;
   padding: 20px;
   height: 100%;
-
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   display: flex;
   flex-direction: column;
+  margin-bottom: 80px;
+
 }
 
 .filter-subcotainer {
@@ -115,6 +119,7 @@
   width: 60%;
   padding: 10px;
   padding-top: 50px;
+  padding-bottom: 100vh; 
   padding-left: 50px;
   padding-right: 50px;
   border-top: 15px solid #1a103f;
@@ -122,6 +127,7 @@
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   flex-direction: column;
+  
 }
 
 .row-line {
@@ -168,8 +174,94 @@
 
 .search-message {
   font-family: "Times New Roman", Times, serif;
+  margin-top: 100px;
+  margin-bottom: 10px;
+}
+.TPCO-container {
+  margin-bottom: 100px;
+  /* Adjustments for smaller screens */
+@media (max-width: 768px) {
+  .TPCO-container {
+     margin-bottom: 50px; /* Reduced margin for medium screens */
+  }
+ }
+ 
+ @media (max-width: 480px) {
+  .TPCO-container {
+     margin-bottom: 20px; /* Further reduced margin for small screens */
+  }
+ }
+
+}
+.aboutus-container {
+  background-color: #1a103f;
+  width: 92%;
+  margin: 0 auto;
+  height: 50px;
+  text-align: center;
+  color: #f9f9f9;
+  
+
+ 
+}
+.aboutus-text {
+  color: black;
+  text-align: justify;
+  width: 90%;
+  margin-top: 20px;
+  font-size: large;
+  font-style: italic;
+
+}
+.ourpartner-container {
+  background-color: #1a103f;
+  width: 92%;
+  margin: 0 auto;
+  margin-top: 20px;
+  height: 50px;
+  text-align: center;
+  color: #f9f9f9;
+}
+.ourpartner-text {
+  color: black;
+  text-align: justify;
+  width: 90%;
+  margin-top: 20px;
+  font-size: large;
+  font-style: italic;
+}
+.main-container {
+  display: flex;
+  align-items: center; 
+  width: 100%;
+  height: 50%;
+  justify-content: center;
+  padding: 10px;
+  
+ 
 }
 
+.dost-container, .dostlogo-container, .oro-container, .orobest-container, .dti-container, .usaid-container, .rti-container, .food-container{
+  margin-bottom: 20px; 
+  margin-top: 10px;
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+}
+
+.dost, .dostlogo, .oro, .orobest, .dti,  .food{
+  max-width: 100%; /* Make images responsive */
+  height: 150px; /* Maintain aspect ratio */
+  align-content: center;
+}
+.rti{
+  height: 150px;
+  width: 100%;
+}
+.usaid{
+  height:150px;
+  width: 100%;
+}
 .category-label {
   font-weight: bold;
   font-size: 40px;
@@ -213,3 +305,76 @@
     text-align: center;
   }
 }
+/* Container for the text fields */
+.text-fields-container {
+  margin-top: 20px; /* Add some space above the container */
+  padding: 20px; /* Add some padding inside the container */
+  border: 1px solid #ccc; /* Add a border around the container */
+  border-radius: 5px; /* Round the corners of the container */
+  background-color: #f9f9f9; /* Light background color for the container */
+ }
+ 
+ /* Style for the labels and inputs inside the container */
+ .text-fields-container label,
+ .text-fields-container input {
+  display: block; /* Make the label and input block elements */
+  margin-bottom: 10px; /* Add some space below each label and input */
+ }
+ 
+ /* Style for the input fields */
+ .text-fields-container input[type="text"] {
+  width: 100%; /* Make the input fields take up the full width of the container */
+  padding: 10px; /* Add some padding inside the input fields */
+  border: 1px solid #ccc; /* Add a border around the input fields */
+  border-radius: 5px; /* Round the corners of the input fields */
+  color: #333; /* Set the text color */
+ }
+ 
+ /* Optional: Add some hover effects for the input fields */
+ .text-fields-container input[type="text"]:hover {
+  border-color: #999;
+ }
+ 
+ .text-fields-container input[type="text"]:focus {
+  border-color: #007bff;
+  outline: none;
+ }
+ 
+ /* Style for the select elements */
+ .text-fields-container select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+ }
+ 
+ /* Style for the placeholder text */
+ .text-fields-container input[type="text"]::placeholder {
+  color: #999; /* Change the color of the placeholder text */
+  opacity: 1; /* Ensure the placeholder text is fully visible */
+ }
+ 
+ /* Optional: Add some hover effects for the placeholder text */
+ .text-fields-container input[type="text"]:hover::placeholder {
+  color: #666; /* Change the color of the placeholder text on hover */
+ }
+ 
+ /* Optional: Add some focus effects for the placeholder text */
+ .text-fields-container input[type="text"]:focus::placeholder {
+  color: #333; /* Change the color of the placeholder text when the input is focused */
+ }
+ 
+ .custom-input {
+  width: 100%; /* Adjust as needed */
+  padding: 10px;
+  margin: 5px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  border-color: #007bff;
+  outline: none;
+ }
+ 
+ 

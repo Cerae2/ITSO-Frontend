@@ -1,10 +1,10 @@
 [
-  { "value": "USTP Alubijid", "label": "USTP Alubijid" },
-  { "value": "USTP Cagayan de Oro", "label": "USTP Cagayan de Oro" },
-  { "value": "USTP Claveria", "label": "USTP Claveria" },
-  { "value": "USTP Balubal", "label": "USTP Balubal" },
-  { "value": "USTP Jasaan", "label": "USTP Jasaan" },
-  { "value": "USTP Oroquieta", "label": "USTP Oroquieta" },
-  { "value": "USTP Panaon", "label": "USTP Panaon" },
-  { "value": "USTP Villanueva", "label": "USTP Villanueva" }
+  {  "label": "USTP Alubijid", "value": "alubijid", "link": "https://www.ustp.edu.ph/alubijid/"  },
+  { "value": "USTP Cagayan de Oro", "label": "USTP Cagayan de Oro", "link": "https://www.ustp.edu.ph/cdeo/" },
+  { "value": "USTP Claveria", "label": "USTP Claveria", "link": "https://www.ustp.edu.ph/claveria/" },
+  { "value": "USTP Balubal", "label": "USTP Balubal", "link":"https://www.ustp.edu.ph/balubal/" },
+  { "value": "USTP Jasaan", "label": "USTP Jasaan", "link":"https://www.ustp.edu.ph/jasaan/" },
+  { "value": "USTP Oroquieta", "label": "USTP Oroquieta", "link":"https://www.ustp.edu.ph/oroquieta/" },
+  { "value": "USTP Panaon", "label": "USTP Panaon", "link":"https://www.ustp.edu.ph/panaon/" },
+  { "value": "USTP Villanueva", "label": "USTP Villanueva", "link":"https://www.ustp.edu.ph/villanueva/" }
 ]
