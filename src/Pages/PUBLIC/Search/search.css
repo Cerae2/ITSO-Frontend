@@ -179,20 +179,24 @@
 }
 .TPCO-container {
   margin-bottom: 100px;
-  /* Adjustments for smaller screens */
-@media (max-width: 768px) {
-  .TPCO-container {
+  padding: 20px; /* Example padding adjustment */
+  font-size: 16px; /* Example font size adjustment */
+  /* Additional responsive adjustments */
+  @media (max-width: 768px) {
      margin-bottom: 50px; /* Reduced margin for medium screens */
+     padding: 15px; /* Reduced padding for medium screens */
+     font-size: 14px; /* Reduced font size for medium screens */
   }
- }
- 
- @media (max-width: 480px) {
-  .TPCO-container {
+  @media (max-width: 480px) {
      margin-bottom: 20px; /* Further reduced margin for small screens */
+     padding: 10px; /* Further reduced padding for small screens */
+     font-size: 12px; /* Further reduced font size for small screens */
+     /* Example layout adjustment for very small screens */
+     display: flex;
+     flex-direction: column;
+     align-items: center;
   }
  }
-
-}
 .aboutus-container {
   background-color: #1a103f;
   width: 92%;
@@ -376,5 +380,159 @@
   border-color: #007bff;
   outline: none;
  }
+ /* Existing CSS */
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .banner {
+     height: 50vh; /* Reduce height for smaller screens */
+  }
+ 
+  .title-search {
+     flex-direction: column; /* Stack elements vertically on smaller screens */
+     align-items: center; /* Center elements horizontally */
+     text-align: center; /* Center text */
+  }
+ 
+  .invention-title {
+     font-size: 4vh; /* Reduce font size */
+  }
+ 
+  .sub-title {
+     font-size: 2vh; /* Reduce font size */
+  }
+ 
+  .patent-container {
+     flex-direction: column; /* Stack elements vertically */
+     padding: 2vh; /* Reduce padding */
+  }
+ 
+  .filter-cotainer {
+     width: 90%; /* Increase width */
+     margin-right: 0; /* Remove margin */
+  }
+ 
+  .archive-container {
+     width: 90%; /* Increase width */
+     padding: 2vh; /* Reduce padding */
+  }
+ 
+  .row-line {
+     flex-direction: column; /* Stack elements vertically */
+  }
+ 
+  .title-sub, .title-main {
+     font-size: 1.5vh; /* Reduce font size */
+  }
+ 
+  .container-data {
+     padding: 5px; /* Reduce padding */
+  }
+ 
+  .search-message {
+     font-size: 2.5vh; /* Reduce font size */
+  }
+ 
+  .TPCO-container, .aboutus-container, .ourpartner-container {
+     width: 100%; /* Full width */
+     padding: 10px; /* Adjust padding */
+  }
+ 
+  .dost, .dostlogo, .oro, .orobest, .dti, .food, .usaid, .rti {
+     height: 100px; /* Reduce height */
+  }
+ 
+  .category-label {
+     font-size: 30px; /* Reduce font size */
+  }
+ 
+  .empty-state {
+     padding: 20px; /* Adjust padding */
+  }
+ }
+ /* OurServices.css */
+
+.our-services {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+ }
+ 
+ .our-services h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+ }
+ 
+ .our-services ul {
+  list-style-type: none;
+  padding: 0;
+ }
+ 
+ .our-services li {
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+ }
+ 
+ .our-services li:last-child {
+  border-bottom: none;
+ }
+ 
+ .our-services h2 {
+  font-size: 1.2em;
+  margin-bottom: 5px;
+ }
+ 
+ .our-services p {
+  color: #666;
+  font-size: 0.9em; /* Adjust the font size of the descriptions */
+  line-height: 1.5; /* Adjust the line height for better readability */
+ }
+ .services-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+ }
+ 
+ .services-container h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+ }
+ 
+ .services-container ul {
+  list-style-type: none;
+  padding: 0;
+ }
+ 
+ .services-container li {
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+ }
+ 
+ .services-container li:last-child {
+  border-bottom: none;
+ }
+ 
+ .services-container h2 {
+  font-size: 1.2em;
+  margin-bottom: 5px;
+ }
+ 
+ .services-container p {
+  color: #0a0d5c;
+  font-size: 0.9em;
+  line-height: 1.5;
+ }
+ 
+ 
+
+ 
  
  

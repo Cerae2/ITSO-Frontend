@@ -9,9 +9,10 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { Login, ViewHeadline, WidgetsOutlined } from "@mui/icons-material";
 import { Link } from 'react-router-dom';
 
+
 function Header(props) {
  const contSelectionRef = useRef(null);
- const technologyRef = useRef(null);
+ const searchMessageRef = useRef(null);
 
  const handleMenu = () => {
     const contSelection = contSelectionRef.current;
@@ -20,7 +21,7 @@ function Header(props) {
       contSelection.classList.toggle("active");
     }
  };
- 
+
  const [lastClickedButton, setLastClickedButton] = useState(null);
  const navigate = useNavigate(); // Use the useNavigate hook
 
@@ -29,12 +30,21 @@ function Header(props) {
     switch (buttonId) {
       case 'home':
         navigate("/#");
+        window.scrollTo({ top: 0, behavior: 'smooth' });
         break;
       case 'services':
-        navigate("/Ourservices");
+        navigate("/search");
+        window.scrollTo({
+          top: document.getElementById('services').offsetTop,
+          behavior: 'smooth'
+        });
         break;
       case 'technology':
         navigate("/search-technologies");
+        window.scrollTo({
+          top: document.getElementById('search-message').offsetTop,
+          behavior: 'smooth'
+        });
         break;
       case 'login':
         navigate("/landing");
@@ -69,9 +79,11 @@ function Header(props) {
       <button onClick={() => handleButtonClick('home')} className={`button-login ${lastClickedButton === 'home' ? 'clicked' : ''}`}>
         Home
       </button>
+      <Link to="#services">
       <button onClick={() => handleButtonClick('services')} className={`button-login ${lastClickedButton === 'services' ? 'clicked' : ''}`}>
         Our Services
       </button>
+      </Link>
       <Link to="#search-message">
         <button onClick={() => handleButtonClick('technology')} className={`button-login ${lastClickedButton === 'technology' ? 'clicked' : ''}`}>
           Our Technologies
