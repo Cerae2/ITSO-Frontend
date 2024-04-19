@@ -86,7 +86,9 @@ function Navbar() {
   return (
     <nav className="nav table">
       <div className="nav-header table">
-        <img className="nav-logo table" src={logo} alt="Logo" />
+      <Link to="/#">
+          <img className="nav-logo table" src={logo} alt="Logo" />
+        </Link>
         <div className="title-nav">
           <h3 className="nav-h3">UNIVERSITY OF SCIENCE AND TECHNOLOGY</h3>
           <h3 className="nav-h3">OF SOUTHERN PHILIPPINES</h3>

@@ -15,27 +15,36 @@ function SubmitContent({ onFileUpload, type, onChange }) {
   const [inventionTitle, setTitle] = useState(""); // Add title state
   const [summary, setSummary] = useState(""); // Add summary state
   const [authors, setAuthors] = useState(""); // Add authors state
+  const [qualifiedAuthors, setQualifiedAuthors] = useState(""); // New state
+  const [discipline, setDiscipline] = useState(""); // New state
   const [formType, setFormType] = useState("");
   const [uploadForm, setUploadForm] = useState("");
   const [files, setFiles] = useState("");
 
+  const handleQualifiedAuthorsChange = (event) => {
+    setQualifiedAuthors(event.target.value);
+ };
+ const handleDisciplineChange = (event) => {
+  setDiscipline(event.target.value);
+ };
 
-  const handleKeyDown = (e) => {
-    if (e.key === 'Enter' && e.shiftKey) {
-      e.preventDefault(); // Prevent the default behavior of adding a new line
-      
-      // Get the current cursor position in the summary field
-      const startPos = e.target.selectionStart;
-      const endPos = e.target.selectionEnd;
-  
-      // Insert a newline character at the cursor position
-      setSummary(summary.substring(0, startPos) + '\n' + summary.substring(endPos));
-  
-      // Move the cursor position to after the inserted newline character
-      e.target.selectionStart = startPos + 1;
-      e.target.selectionEnd = startPos + 1;
-    }
-  };
+
+ const handleKeyDown = (e) => {
+  if (e.key === 'Enter' && e.shiftKey) {
+    e.preventDefault(); // Prevent the default behavior of adding a new line
+    
+    // Get the current cursor position in the summary field
+    const startPos = e.target.selectionStart;
+    const endPos = e.target.selectionEnd;
+
+    // Insert a newline character at the cursor position
+    setSummary(summary.substring(0, startPos) + '\n' + summary.substring(endPos));
+
+    // Move the cursor position to after the inserted newline character
+    e.target.selectionStart = startPos + 1;
+    e.target.selectionEnd = startPos + 1;
+  }
+};
   
 
   const removeFile = (id) => {
@@ -123,6 +132,8 @@ function SubmitContent({ onFileUpload, type, onChange }) {
       formData1.append("invention_title", inventionTitle);
       formData1.append("summary", summary);
       formData1.append("authors", authors);
+      formData1.append("QualifiedAuthors", qualifiedAuthors);
+      formData1.append("discipline", discipline);
       formData1.append("form_type", formType);
       console.log("formdata1", formData1)
       // Endpoint for uploading form data
@@ -168,6 +179,8 @@ function SubmitContent({ onFileUpload, type, onChange }) {
       setAuthors("");
       setFormType("");
       setFiles("");
+      setDiscipline("");
+      setQualifiedAuthors("");
   
       // Update files state if needed
       // setFiles(uploadedFiles);
@@ -253,6 +266,24 @@ function SubmitContent({ onFileUpload, type, onChange }) {
             }
             value={authors}
             onChange={(e) => setAuthors(e.target.value)}
+          ></TextFieldComponent>
+
+          <div className="selection-authors">
+          </div>
+          <TextFieldComponent
+            width={"100%"}
+            label={"Qualified Authors"}
+            value={inventionTitle}
+            onChange={(e) => setQualifiedAuthors(e.target.value)}
+          ></TextFieldComponent>
+
+          <div className="selection-discipline">
+          </div>
+          <TextFieldComponent
+            width={"100%"}
+            label={"Discipline or Invention Type"}
+            value={inventionTitle}
+            onChange={(e) => setDiscipline(e.target.value)}
           ></TextFieldComponent>
 
           <div style={{ width: "55vw", height: "15vh", marginBottom: '5vh'}}>

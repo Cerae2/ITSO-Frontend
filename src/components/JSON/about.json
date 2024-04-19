@@ -1,4 +1,4 @@
 [
-  { "value": "TPCO", "label": "TPCO Office" },
-  { "value": "Staff", "label": "Staff" }
+  { "value": "TPCO", "label": "TPCO Office", "link":"https://www.ustp.edu.ph/tpco/" },
+  { "value": "Staff", "label": "Staff", "link": "https://www.ustp.edu.ph/tpco/#the-team:" }
 ]

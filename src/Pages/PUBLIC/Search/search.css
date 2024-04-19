@@ -43,21 +43,24 @@
   flex-direction: row;
   display: flex;
   width: 90%;
+ 
 }
-
 .invention-title {
   color: white;
   font-size: 6vh;
   font-weight: 500;
   font-family: "Times New Roman", Times, serif;
   right: 0;
+  
+
 }
 .sub-title {
   color: white;
   font-family: "Times New Roman", Times, serif;
   font-weight: lighter;
-  font-size: 2vh;
+  font-size: 3vh;
   right: 0;
+  
 }
 
 .patent-container {
@@ -77,11 +80,12 @@
   margin-right: 5vh;
   padding: 20px;
   height: 100%;
-
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   display: flex;
   flex-direction: column;
+  margin-bottom: 80px;
+
 }
 
 .filter-subcotainer {
@@ -115,6 +119,7 @@
   width: 60%;
   padding: 10px;
   padding-top: 50px;
+  padding-bottom: 100vh; 
   padding-left: 50px;
   padding-right: 50px;
   border-top: 15px solid #1a103f;
@@ -122,6 +127,7 @@
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   flex-direction: column;
+  
 }
 
 .row-line {
@@ -168,8 +174,98 @@
 
 .search-message {
   font-family: "Times New Roman", Times, serif;
+  margin-top: 100px;
+  margin-bottom: 10px;
+}
+.TPCO-container {
+  margin-bottom: 100px;
+  padding: 20px; /* Example padding adjustment */
+  font-size: 16px; /* Example font size adjustment */
+  /* Additional responsive adjustments */
+  @media (max-width: 768px) {
+     margin-bottom: 50px; /* Reduced margin for medium screens */
+     padding: 15px; /* Reduced padding for medium screens */
+     font-size: 14px; /* Reduced font size for medium screens */
+  }
+  @media (max-width: 480px) {
+     margin-bottom: 20px; /* Further reduced margin for small screens */
+     padding: 10px; /* Further reduced padding for small screens */
+     font-size: 12px; /* Further reduced font size for small screens */
+     /* Example layout adjustment for very small screens */
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+  }
+ }
+.aboutus-container {
+  background-color: #1a103f;
+  width: 92%;
+  margin: 0 auto;
+  height: 50px;
+  text-align: center;
+  color: #f9f9f9;
+  
+
+ 
+}
+.aboutus-text {
+  color: black;
+  text-align: justify;
+  width: 90%;
+  margin-top: 20px;
+  font-size: large;
+  font-style: italic;
+
+}
+.ourpartner-container {
+  background-color: #1a103f;
+  width: 92%;
+  margin: 0 auto;
+  margin-top: 20px;
+  height: 50px;
+  text-align: center;
+  color: #f9f9f9;
+}
+.ourpartner-text {
+  color: black;
+  text-align: justify;
+  width: 90%;
+  margin-top: 20px;
+  font-size: large;
+  font-style: italic;
+}
+.main-container {
+  display: flex;
+  align-items: center; 
+  width: 100%;
+  height: 50%;
+  justify-content: center;
+  padding: 10px;
+  
+ 
 }
 
+.dost-container, .dostlogo-container, .oro-container, .orobest-container, .dti-container, .usaid-container, .rti-container, .food-container{
+  margin-bottom: 20px; 
+  margin-top: 10px;
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+}
+
+.dost, .dostlogo, .oro, .orobest, .dti,  .food{
+  max-width: 100%; /* Make images responsive */
+  height: 150px; /* Maintain aspect ratio */
+  align-content: center;
+}
+.rti{
+  height: 150px;
+  width: 100%;
+}
+.usaid{
+  height:150px;
+  width: 100%;
+}
 .category-label {
   font-weight: bold;
   font-size: 40px;
@@ -213,3 +309,230 @@
     text-align: center;
   }
 }
+/* Container for the text fields */
+.text-fields-container {
+  margin-top: 20px; /* Add some space above the container */
+  padding: 20px; /* Add some padding inside the container */
+  border: 1px solid #ccc; /* Add a border around the container */
+  border-radius: 5px; /* Round the corners of the container */
+  background-color: #f9f9f9; /* Light background color for the container */
+ }
+ 
+ /* Style for the labels and inputs inside the container */
+ .text-fields-container label,
+ .text-fields-container input {
+  display: block; /* Make the label and input block elements */
+  margin-bottom: 10px; /* Add some space below each label and input */
+ }
+ 
+ /* Style for the input fields */
+ .text-fields-container input[type="text"] {
+  width: 100%; /* Make the input fields take up the full width of the container */
+  padding: 10px; /* Add some padding inside the input fields */
+  border: 1px solid #ccc; /* Add a border around the input fields */
+  border-radius: 5px; /* Round the corners of the input fields */
+  color: #333; /* Set the text color */
+ }
+ 
+ /* Optional: Add some hover effects for the input fields */
+ .text-fields-container input[type="text"]:hover {
+  border-color: #999;
+ }
+ 
+ .text-fields-container input[type="text"]:focus {
+  border-color: #007bff;
+  outline: none;
+ }
+ 
+ /* Style for the select elements */
+ .text-fields-container select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+ }
+ 
+ /* Style for the placeholder text */
+ .text-fields-container input[type="text"]::placeholder {
+  color: #999; /* Change the color of the placeholder text */
+  opacity: 1; /* Ensure the placeholder text is fully visible */
+ }
+ 
+ /* Optional: Add some hover effects for the placeholder text */
+ .text-fields-container input[type="text"]:hover::placeholder {
+  color: #666; /* Change the color of the placeholder text on hover */
+ }
+ 
+ /* Optional: Add some focus effects for the placeholder text */
+ .text-fields-container input[type="text"]:focus::placeholder {
+  color: #333; /* Change the color of the placeholder text when the input is focused */
+ }
+ 
+ .custom-input {
+  width: 100%; /* Adjust as needed */
+  padding: 10px;
+  margin: 5px 0;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  border-color: #007bff;
+  outline: none;
+ }
+ /* Existing CSS */
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .banner {
+     height: 50vh; /* Reduce height for smaller screens */
+  }
+ 
+  .title-search {
+     flex-direction: column; /* Stack elements vertically on smaller screens */
+     align-items: center; /* Center elements horizontally */
+     text-align: center; /* Center text */
+  }
+ 
+  .invention-title {
+     font-size: 4vh; /* Reduce font size */
+  }
+ 
+  .sub-title {
+     font-size: 2vh; /* Reduce font size */
+  }
+ 
+  .patent-container {
+     flex-direction: column; /* Stack elements vertically */
+     padding: 2vh; /* Reduce padding */
+  }
+ 
+  .filter-cotainer {
+     width: 90%; /* Increase width */
+     margin-right: 0; /* Remove margin */
+  }
+ 
+  .archive-container {
+     width: 90%; /* Increase width */
+     padding: 2vh; /* Reduce padding */
+  }
+ 
+  .row-line {
+     flex-direction: column; /* Stack elements vertically */
+  }
+ 
+  .title-sub, .title-main {
+     font-size: 1.5vh; /* Reduce font size */
+  }
+ 
+  .container-data {
+     padding: 5px; /* Reduce padding */
+  }
+ 
+  .search-message {
+     font-size: 2.5vh; /* Reduce font size */
+  }
+ 
+  .TPCO-container, .aboutus-container, .ourpartner-container {
+     width: 100%; /* Full width */
+     padding: 10px; /* Adjust padding */
+  }
+ 
+  .dost, .dostlogo, .oro, .orobest, .dti, .food, .usaid, .rti {
+     height: 100px; /* Reduce height */
+  }
+ 
+  .category-label {
+     font-size: 30px; /* Reduce font size */
+  }
+ 
+  .empty-state {
+     padding: 20px; /* Adjust padding */
+  }
+ }
+ /* OurServices.css */
+
+.our-services {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+ }
+ 
+ .our-services h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+ }
+ 
+ .our-services ul {
+  list-style-type: none;
+  padding: 0;
+ }
+ 
+ .our-services li {
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+ }
+ 
+ .our-services li:last-child {
+  border-bottom: none;
+ }
+ 
+ .our-services h2 {
+  font-size: 1.2em;
+  margin-bottom: 5px;
+ }
+ 
+ .our-services p {
+  color: #666;
+  font-size: 0.9em; /* Adjust the font size of the descriptions */
+  line-height: 1.5; /* Adjust the line height for better readability */
+ }
+ .services-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+ }
+ 
+ .services-container h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+ }
+ 
+ .services-container ul {
+  list-style-type: none;
+  padding: 0;
+ }
+ 
+ .services-container li {
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+ }
+ 
+ .services-container li:last-child {
+  border-bottom: none;
+ }
+ 
+ .services-container h2 {
+  font-size: 1.2em;
+  margin-bottom: 5px;
+ }
+ 
+ .services-container p {
+  color: #0a0d5c;
+  font-size: 0.9em;
+  line-height: 1.5;
+ }
+ 
+ 
+
+ 
+ 
+ 

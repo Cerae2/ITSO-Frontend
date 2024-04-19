@@ -20,6 +20,9 @@ function Registration(props) {
   const [campus, setCampus] = useState("");
   const [college, setCollege] = useState("");
   const [username, setUsername] = useState("");
+  const [month, setMonth] = useState("");
+  const [day, setDay] = useState("");
+  const [year, setYear] = useState("");
 
   const handleChangeBirthdate = (date) => {
     try {
@@ -54,45 +57,54 @@ function Registration(props) {
 
   const handleAddUser = async () => {
     try {
-      const userData = {
-        first_name: firstName,
-        middle_name: middleName,
-        last_name: lastName,
-        email: email,
-        birth_date: birthdate,
-        contact_number: contactNo,
-        school_campus: campus,
-        department_type: college,
-        user_role: userType,
-        username: username,
-      };
-
-      // Axios POST request to send user data to the backend
-      const response = await axios.post("accounts/users/", userData, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      // add alert
-      alert("Successfully Added User");
-
-      // delete all inputted data after adding
-      setFirstName("");
-      setMiddleName("");
-      setLastName("");
-      setEmail("");
-      setBirthdate("");
-      setContactNo("");
-      setCampus("");
-      setUserType("");
-      setCollege("");
-      setUsername("");
+       // Combine month, day, and year into a single date string
+       const birthdateISO = `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+   
+       const userData = {
+         first_name: firstName,
+         middle_name: middleName,
+         last_name: lastName,
+         email: email,
+         birth_date: birthdateISO, // Use the combined date string
+         contact_number: contactNo,
+         school_campus: campus,
+         department_type: college,
+         user_role: userType,
+         username: username,
+       };
+   
+       // Axios POST request to send user data to the backend
+       const response = await axios.post("accounts/users/", userData, {
+         headers: {
+           "Content-Type": "application/json",
+         },
+       });
+   
+       // add alert
+       alert("Successfully Added User");
+   
+       // delete all inputted data after adding
+       setFirstName("");
+       setMiddleName("");
+       setLastName("");
+       setEmail("");
+       setMonth("");
+       setDay("");
+       setYear("");
+       setContactNo("");
+       setCampus("");
+       setUserType("");
+       setCollege("");
+       setUsername("");
     } catch (error) {
-      console.error("Error adding user:", error);
+       if (error.response && error.response.status === 409) {
+         // Status code 409 indicates a conflict, which might mean the username is already taken
+         alert("Username is already taken. Please choose another username.");
+     ;
+       }
     }
-  };
-
+   };
+   
   return (
     <div>
       <div className="add-user-cont">

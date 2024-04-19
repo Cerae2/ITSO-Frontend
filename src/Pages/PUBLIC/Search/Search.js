@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Header from "../../../components/header/Header";
 import "./search.css";
 import SearchBar from "../../../components/SearchBar/SearchBar";
@@ -7,80 +7,117 @@ import empty from "./../../../assets/empty_state.png";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Footer from "../../../components/footer/footer";
+import tpco from "../../../assets/tpco.png";
+import dost from "../../../assets/dost.jpg";
+import dostlogo from "../../../assets/dostlogo.jpg";
+import oro from "../../../assets/oro.jpg";
+import orobest from "../../../assets/orobest.png";
+import dti from "../../../assets/dti.jpg";
+import rti from "../../../assets/rti.jpg";
+import usaid from "../../../assets/usaid.jpg";
+import food from "../../../assets/food.jpg";
+
 
 function Search(props) {
-  const [selectedCampuses, setSelectedCampuses] = useState([]);
-  const [selectedCategories, setSelectedCategories] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [inventionData, setInventionData] = useState([])
-  const navigate = useNavigate();
-  const [selectedInvention, setSelectedInvention] = useState(null);
-  const handleCampusChange = (campus, checked) => {
-    if (checked) {
-      setSelectedCampuses([...selectedCampuses, campus]);
-    } else {
-      const newSelectedCampuses = selectedCampuses.filter((c) => c !== campus);
-      setSelectedCampuses(newSelectedCampuses);
-    }
-  };
+  const services = [
+    {
+      title: 'IP Consultancy & Mentoring',
+      description: 'This service involves providing guidance and advice to individuals or businesses regarding intellectual property (IP) matters. Consultants offer expertise in various aspects of IP law and strategy, helping clients navigate issues such as patents, trademarks, copyrights, and trade secrets. Mentoring may involve ongoing support and education to help clients better understand and manage their IP assets.',
+    },
+    {
+      title: 'IP Audit',
+      description: 'An IP audit is a comprehensive review and analysis of an organization intellectual property portfolio. This service assesses the strengths, weaknesses, and potential risks associated with existing IP assets. It helps businesses understand the value of their intellectual property, identify opportunities for protection or monetization, and ensure compliance with relevant laws and regulations.',
+    },
+    {
+      title: 'Patent Search',
+      description: 'Patent search services involve conducting thorough searches of existing patents and literature to assess the novelty and patentability of a new invention or innovation. This process helps individuals and businesses determine whether their idea or invention meets the criteria for patent protection and identifies any potential conflicts with existing patents.',
+    },
+    {
+      title: 'Patent Draft',
+      description: 'Patent drafting involves preparing and drafting the necessary documents and specifications required for filing a patent application with the relevant intellectual property office. This service includes crafting detailed descriptions, claims, and drawings to accurately and effectively protect the invention or innovation..',
+    },
+    {
+      title: 'IP Application',
+      description: 'IP application services involve assisting clients in filing applications for various forms of intellectual property protection, such as patents, trademarks, copyrights, and industrial designs. These services help ensure that applications are properly prepared, submitted, and managed throughout the registration process.',
+    },
+    {
+      title: 'IP Clinics, Trainings, Write-shop',
+      description: 'IP clinics, trainings, and write-shops are educational programs and workshops designed to raise awareness and build capacity in intellectual property matters. These initiatives provide practical training, guidance, and resources to individuals, businesses, and communities interested in understanding and managing their intellectual property rights effectively.',
+    },
+    {
+      title: 'IP TRL Assessment',
+      description: 'Intellectual Property Technology Readiness Level (IP TRL) assessment evaluates the maturity and readiness of a technology or innovation for commercialization and intellectual property protection. This service helps stakeholders assess the feasibility, potential value, and strategic implications of investing in and protecting intellectual property assets at different stages of development.',
+    },
+ ];
+ const [selectedCategories, setSelectedCategories] = useState([]);
+ const [searchTerm, setSearchTerm] = useState("");
+ const [inventionData, setInventionData] = useState([]);
+ const navigate = useNavigate();
+ const searchMessageRef = useRef(null);
+ const servicesRef =useRef(null);
+ const [showFilingInfo, setShowFilingInfo] = useState({
+  "Filing Number": false,
+  "Filing Date": false,
+  "Publication Number": false,
+  "Publication Date": false,
+  "Technology": false,
+  "Registration Number": false,
+  "Application Type": false,
+  "IP Type": false,
+ });
+ const [selectedOptions, setSelectedOptions] = useState({
+  "IP Type": "",
+ });
+ 
 
-  useEffect(() => {
-  
-    axios.get('uploadforms/forms/',{
+ useEffect(() => {
+    axios.get('uploadforms/forms/', {
       params: {
         select_invention: false,
         is_admin: true
       },
-
     }).then((response) => {
-      console.log(response.data)
       const filteredData = response.data.filter(item => item.upload_status === 'Granted');
-      console.log(filteredData);
       setInventionData(filteredData);
-    })
-  }, [])
+    });
+ }, []);
+ useEffect(() => {
+  if (searchMessageRef.current) {
+    searchMessageRef.current.scrollIntoView({ behavior: 'smooth' });
+  }
+}, []);
+ 
 
-  const handleDetailsPage = (invention) => {
-    console.log("Selected Invention:", invention);
-    setSelectedInvention(invention);
-    navigate(`/detailsPage/${invention.id}`);
-  };
+ 
+ const handleCategoryChange = (category, checked) => {
+  if (checked) {
+     setSelectedCategories([...selectedCategories, category]);
+     if (category === "IP Type") {
+       setSelectedOptions(prevState => ({ ...prevState, [category]: "" }));
+     }
+  } else {
+     const newSelectedCategories = selectedCategories.filter(
+       (c) => c !== category
+     );
+     setSelectedCategories(newSelectedCategories);
+     if ( category === "IP Type") {
+       setSelectedOptions(prevState => ({ ...prevState, [category]: "" }));
+     }
+  }
+ };
 
-  const handleCategoryChange = (category, checked) => {
-    if (checked) {
-      setSelectedCategories([...selectedCategories, category]);
-    } else {
-      const newSelectedCategories = selectedCategories.filter(
-        (c) => c !== category
-      );
-      setSelectedCategories(newSelectedCategories);
-    }
-  };
-
-  const handleResetFilters = () => {
-    setSelectedCampuses([]);
+ const handleResetFilters = () => {
     setSelectedCategories([]);
     setSearchTerm("");
-  };
+ };
 
-  const filteredData = inventionData.filter((invention) => {
-    const campusFilter =
-      selectedCampuses.length === 0 ||
-      selectedCampuses.includes(invention.school_campus);
+ const filteredData = inventionData.filter((invention) => {
+    const categoryFilter = selectedCategories.length === 0 || selectedCategories.includes(invention.form_type);
+    const searchTermFilter = invention.invention_title.toLowerCase().includes(searchTerm.toLowerCase());
 
-    const categoryFilter =
-      selectedCategories.length === 0 ||
-      selectedCategories.includes(invention.form_type);
-
-    const searchTermFilter =
-      invention.invention_title.toLowerCase().includes(
-        searchTerm.toLowerCase()
-      );
-
-   
-
-    return campusFilter && categoryFilter && searchTermFilter;
-  });
+    return categoryFilter && searchTermFilter;
+ });
 
   return (
     <>
@@ -100,11 +137,10 @@ function Search(props) {
       </section>
       <div className="title-search">
         <div>
-          <h1 className="invention-title">Available Inventions of USTP</h1>
-          <p className="sub-title">
-            Explore a myriad of innovative inventions within the University
-            Science and Technology Park (USTP).
-          </p>
+          <h1 className="invention-title">Secure exclusive rights to your inventions</h1>
+          <h2 className="sub-title">
+            Apply Now!
+          </h2>
         </div>
       </div>
       <div
@@ -116,101 +152,142 @@ function Search(props) {
           marginTop: "10vh",
         }}
       >
-        <h1 className="search-message">Search our available Inventions</h1>
+    <div className="TPCO-container">
+    <img className="tpco" src={tpco}></img></div>
+    <div className="aboutus-container"><h1>About us</h1></div>
+    <p className="aboutus-text">The Technology Promotions and Commercialization Office (TPCO) serves 
+    as the interface between the talent and technology housed in the academic institute, the industry, 
+    and the community; fostering new relationships and partnerships resulting in life-changing innovations, 
+    enhanced productivity and ingenious discoveries that amends the human condition. The TPCO ambitiously aspires 
+    to be in the innovation map, visibly interfacing with stakeholders and creating a significant mark in fostering 
+    innovations not just in the academe but in the whole innovation community. 
+    At the TPCO, we contribute towards nurturing an empowered innovation ecosystem that promotes entrepreneurship 
+    and commercialization of technologies to contribute to the economic and social development of the community it serves. 
+    As part of the university’s commitment in delivering its Strategic Directional Areas, the TPCO was established and approved 
+    by the Board of Regents in May 2020 amidst the challenges of the COVID-19 pandemic in the country. 
+    The office was officially launched to the public in August 2020 and is strategically poised right at 
+    the forefront of the university making it accessible for stakeholders.</p>  
+
+    <div className="ourpartner-container"><h1>Our Partners</h1></div>
+    <p className="ourpartner-text">We thrive on partnerships and collaboration to advance our mission and to also help build 
+      the innovation ecosystem in our region.</p>
+      <div className="main-container">
+   
+        <div className="dost-container">
+            <a href="https://region10.dost.gov.ph/about-us" target="_blank" rel="noopener noreferrer">
+                <img className="dost" src={dost}></img>
+            </a>
+        </div>
+        <div className="dostlogo-container">
+            <a href="https://pcieerd.dost.gov.ph/" target="_blank" rel="noopener noreferrer">
+                <img className="dostlogo" src={dostlogo}></img>
+            </a>
+        </div>
+        <div className="oro-container">
+            <a href="https://issuu.com/orobestinnovation/docs/final_2022_oro_chamber_annual_report/s/18035663" target="_blank" rel="noopener noreferrer">
+                <img className="oro" src={oro}></img>
+            </a>
+        </div>
+        <div className="orobest-container">
+            <a href="https://www.facebook.com/profile.php?id=100064762540373" target="_blank" rel="noopener noreferrer">
+                <img className="orobest" src={orobest}></img>
+            </a>
+        </div>
+   
+    
+        <div className="dti-container">
+            <a href="https://www.facebook.com/DTI.Region10/" target="_blank" rel="noopener noreferrer">
+                <img className="dti" src={dti}>
+                </img>
+            </a>
+        </div>
+        
+        <div className="rti-container">
+            <a href="https://www.rti.org/" target="_blank" rel="noopener noreferrer">
+                <img className="rti" src={rti}></img>
+            </a>
+        </div>
+        <div className="food-container">
+            <a href="https://www.facebook.com/nmficustpcdo/" target="_blank" rel="noopener noreferrer">
+                <img className="food" src={food}></img>
+            </a>
+        </div>
+        <div className="usaid-container">
+            <a href="https://www.usaid.gov/" target="_blank" rel="noopener noreferrer">
+                <img className="usaid" src={usaid}></img>
+            </a>
+        </div>
+    </div>
+    <div className="services-container">
+
+    <h1 ref={servicesRef} id="services" className="services">Our Services</h1>
+    <ul>
+    {services.map((service, index) => (
+    <li key={index}>
+      <h2>{service.title}</h2>
+      <p>{service.description}</p>
+    </li>
+     ))}
+      </ul>
+      </div>
+    
+    <h1 ref={searchMessageRef} id="search-message" className="search-message">
+        Search our available Technologies
+      </h1>
         <SearchBar onChange={(e) => setSearchTerm(e.target.value)} />
       </div>
       <div className="patent-container">
         <div className="filter-cotainer">
           <div className="filter-subcotainer campus">
-            <h2 className="category-label">Campuses</h2>
-            <CheckBox
-              key={selectedCampuses.includes("USTP Alubijid")}
-              label={"USTP Alubijid"}
-              checked={selectedCampuses.includes("USTP Alubijid")}
-              onChange={(checked) =>
-                handleCampusChange("USTP Alubijid", checked)
-              }
-            />
-            <CheckBox
-              checked={selectedCampuses.includes("USTP Cagayan de Oro")}
-              label={"USTP Cagayan de Oro"}
-              onChange={(checked) =>
-                handleCampusChange("USTP Cagayan de Oro", checked)
-              }
-            />
-            <CheckBox
-              checked={selectedCampuses.includes("USTP Claveria")}
-              label={"USTP Claveria"}
-              onChange={(checked) =>
-                handleCampusChange("USTP Claveria", checked)
-              }
-            />
-            <CheckBox
-              checked={selectedCampuses.includes("USTP Balubal")}
-              label={"USTP Balubal"}
-              onChange={(checked) =>
-                handleCampusChange("USTP Balubal", checked)
-              }
-            />
-            <CheckBox
-              checked={selectedCampuses.includes("USTP Jasaan")}
-              label={"USTP Jasaan"}
-              onChange={(checked) => handleCampusChange("USTP Jasaan", checked)}
-            />
-            <CheckBox
-              checked={selectedCampuses.includes("USTP Oroquieta")}
-              label={"USTP Oroquieta"}
-              onChange={(checked) =>
-                handleCampusChange("USTP Oroquieta", checked)
-              }
-            />
-            <CheckBox
-              checked={selectedCampuses.includes("USTP Panaon")}
-              label={"USTP Panaon"}
-              onChange={(checked) => handleCampusChange("USTP Panaon", checked)}
-            />
-            <CheckBox
-              checked={selectedCampuses.includes("USTP Vallanueva")}
-              label={"USTP Vallanueva"}
-              onChange={(checked) =>
-                handleCampusChange("USTP Vallanueva", checked)
-              }
-            />
-          </div>
-
-          <div className="filter-subcotainer categories">
-            <h2 className="category-label">Categories</h2>
-            <CheckBox
-              checked={selectedCategories.includes("Patent")}
-              label={"Patent"}
-              onChange={(checked) => handleCategoryChange("Patent", checked)}
-            />
-            <CheckBox
-              checked={selectedCategories.includes("Industrial Design")}
-              label={"Industrial Design"}
-              onChange={(checked) =>
-                handleCategoryChange("Industrial Design", checked)
-              }
-            />
-            <CheckBox
-              checked={selectedCategories.includes("Copyright")}
-              label={"Copyright"}
-              onChange={(checked) => handleCategoryChange("Copyright", checked)}
-            />
-            <CheckBox
-              checked={selectedCategories.includes("Utility Model")}
-              label={"Utility Model"}
-              onChange={(checked) =>
-                handleCategoryChange("Utility Model", checked)
-              }
-            />
-          </div>
+          <h2 className="category-label">Select Categories</h2>
+{['Title', 'Authors', 'Filing Date', 'Publication Date', 'Publication No.', 'Registration Date', 'Registration No', 'IP Type'].map((category, index) => (
+ <div key={index}>
+    <CheckBox
+      label={category}
+      checked={selectedCategories.includes(category)}
+      onChange={(checked) => {
+        handleCategoryChange(category, checked);
+        setShowFilingInfo(prevState => ({ ...prevState, [category]: checked }));
+      }}
+    />
+    {showFilingInfo[category] && (
+      <div style={{ marginLeft: '10px' }}>
+        <label htmlFor={category.replace(/\s+/g, '')}>{category}:</label>
+        {category === 'IP Type' ? (
+          <select
+            id={category.replace(/\s+/g, '')}
+            name={category}
+            onChange={(e) => setSelectedOptions({ ...selectedOptions, [category]: e.target.value })}
+          >
+            <option value="">Select IP Type</option>
+            <option value="Patent">Patent</option>
+            <option value="Industrial Design">Industrial Design</option>
+            <option value="Utility Model">Utility Model</option>
+            <option value="Trademark">Trademark</option>
+            <option value="Copyright">Copyright</option>
+            {/* Add more options as needed */}
+          </select>
+        ) : (
+          <input
+            type={category === 'Filing Date' || category === 'Publication Date' || category === 'Registration Date' ? "date" : "text"}
+            id={category.replace(/\s+/g, '')}
+            placeholder={`Enter ${category}`}
+            name={category}
+          />
+        )}
+      </div>
+    )}
+ </div>
+))}     
         </div>
+        
+    
+            </div>
         <div className="archive-container">
           {filteredData.length === 0 ? (
             <div className="empty-state">
               <img src={empty} alt="Empty State" />
-              <p>No matching inventions found.</p>
+              <p>No matching technologies found.</p>
             </div>
           ) : (
             filteredData.map((invention) => (
@@ -249,6 +326,7 @@ function Search(props) {
                       <p className="title-sub Category">Category:</p>
                     </div>
                     <p className="title-main Category">{invention.form_type}</p>
+                    
                   </div>
                 </div>
               </>
@@ -256,6 +334,7 @@ function Search(props) {
           )}
         </div>
       </div>
+      <Footer></Footer>
     </>
   );
 }
