@@ -106,22 +106,32 @@ function Search(props) {
      }
   }
  };
+ const filteredData = inventionData.filter((invention) => {
+  // Filter by selected categories
+  const categoryFilter = selectedCategories.length === 0 || selectedCategories.includes(invention.form_type);
 
- const handleResetFilters = () => {
+  // Filter by search term
+  const searchTermFilter = invention.invention_title.toLowerCase().includes(searchTerm.toLowerCase());
+
+  // Filter by selected options (e.g., IP Type)
+  const optionsFilter = selectedOptions["IP Type"] === "" || invention.ip_type === selectedOptions["IP Type"];
+
+  // Combine all filters
+  return categoryFilter && searchTermFilter && optionsFilter;
+});
+ const handleCheckboxFilters = () => {
     setSelectedCategories([]);
     setSearchTerm("");
- };
+    setSelectedOptions(prevState => ({ ...prevState, "IP Type": "" }));
+  };
 
- const filteredData = inventionData.filter((invention) => {
-    const categoryFilter = selectedCategories.length === 0 || selectedCategories.includes(invention.form_type);
-    const searchTermFilter = invention.invention_title.toLowerCase().includes(searchTerm.toLowerCase());
+  
+   
 
-    return categoryFilter && searchTermFilter;
- });
 
   return (
     <>
-      <Header />
+      <Header/>
       <section className="banner">
         <svg
           className="waves"
@@ -219,8 +229,7 @@ function Search(props) {
         </div>
     </div>
     <div className="services-container">
-
-    <h1 ref={servicesRef} id="services" className="services">Our Services</h1>
+   <h1 ref={servicesRef} id="services" className="services">Our Services</h1>
     <ul>
     {services.map((service, index) => (
     <li key={index}>
@@ -235,7 +244,7 @@ function Search(props) {
         Search our available Technologies
       </h1>
         <SearchBar onChange={(e) => setSearchTerm(e.target.value)} />
-      </div>
+      </div>  
       <div className="patent-container">
         <div className="filter-cotainer">
           <div className="filter-subcotainer campus">
@@ -247,6 +256,14 @@ function Search(props) {
       checked={selectedCategories.includes(category)}
       onChange={(checked) => {
         handleCategoryChange(category, checked);
+        setSelectedCategories(prev => {
+          if (checked) {
+            return [...prev, category];
+          } else {
+            return prev.filter(item => item !== category);
+          }
+       });
+
         setShowFilingInfo(prevState => ({ ...prevState, [category]: checked }));
       }}
     />
@@ -259,7 +276,7 @@ function Search(props) {
             name={category}
             onChange={(e) => setSelectedOptions({ ...selectedOptions, [category]: e.target.value })}
           >
-            <option value="">Select IP Type</option>
+            
             <option value="Patent">Patent</option>
             <option value="Industrial Design">Industrial Design</option>
             <option value="Utility Model">Utility Model</option>

@@ -38,10 +38,6 @@
   cursor: pointer;
   
 }
-.button-login.clicked {
-  background-color: #007bff; /* Change to your preferred color */
-  color: white; /* Change text color if needed */
- }
 .cont-selection {
   display: none;
 }
@@ -105,7 +101,7 @@
   .link-contact {
     text-decoration: none;
     color: white;
-    margin-bottom: 5px;
+    margin-bottom: 5px; 
     font-weight: lighter;
   }
   .cam-cont-head.login {

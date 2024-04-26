@@ -98,6 +98,7 @@ function Landing(props) {
             {<div style={{}}>
               <Button
                 style={{ fontSize: 12, color: "white", marginBottom: 20 }}
+                onClick={() => navigate('/ChangePassword')}
               >
                 Forgot Password? 
               </Button>

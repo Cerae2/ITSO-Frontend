@@ -21,6 +21,7 @@ import AddUser from "./Pages/ADMIN/AddUser/AddUser";
 import UserList from "./Pages/ADMIN/UserList/UserList";
 import Registration from "./Pages/PUBLIC/Registration/Registration";
 import DetailsAdminDash from "./Pages/ADMIN/Dashboard/DetailsAdminDash/DetailsAdminDash";
+import ChangePassword from "./Pages/PRIVATE/Changepassword/ChangePassword";
 
 
 import Patent from "./Pages/PRIVATE/Services/1patent/Patent"
@@ -29,7 +30,7 @@ import IndustrialDesign from "./Pages/PRIVATE/Services/3industrialdesign/Industr
 import Trademark from "./Pages/PRIVATE/Services/4trademark/Trademark"
 import Copyright from "./Pages/PRIVATE/Services/5copyright/Copyright"
 import GenerateReports from "./Pages/ADMIN/GenerateReports/GenerateReports";
-import Edit from "./Pages/PRIVATE/edit/edit";
+
 
 
 function App() {
@@ -74,10 +75,10 @@ function App() {
           <Route path="/industrialdesign" element={<IndustrialDesign></IndustrialDesign>}></Route>
           <Route path="/trademark" element={<Trademark></Trademark>}></Route>
           <Route path="/copyright" element={<Copyright></Copyright>}></Route>
+          <Route path="/ChangePassword" element={<ChangePassword></ChangePassword>}></Route>
 
           <Route path="/home" element={<Home></Home>}></Route>
           <Route path="/profile" element={<Profile></Profile>}></Route>
-          <Route path="/edit" element={<Edit></Edit>}></Route>
           <Route path="/detailsPage/:id" element={<DetailsPage />} />
           <Route path="/detailsDashPage/:id" element={<DetailsDash />} />
           <Route path="/logout" element={<Search />} />

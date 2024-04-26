@@ -76,23 +76,23 @@ function Header(props) {
         </div>
         <div className="dropdown-container">
         <div className="dropdown-container">
-      <button onClick={() => handleButtonClick('home')} className={`button-login ${lastClickedButton === 'home' ? 'clicked' : ''}`}>
+        <button onClick={() => handleButtonClick('home')} className="button-login">
         Home
-      </button>
+        </button>
       <Link to="#services">
-      <button onClick={() => handleButtonClick('services')} className={`button-login ${lastClickedButton === 'services' ? 'clicked' : ''}`}>
+      <button onClick={() => handleButtonClick('services')} className="button-login">
         Our Services
       </button>
       </Link>
       <Link to="#search-message">
-        <button onClick={() => handleButtonClick('technology')} className={`button-login ${lastClickedButton === 'technology' ? 'clicked' : ''}`}>
+        <button onClick={() => handleButtonClick('technology')} className="button-login">
           Our Technologies
         </button>
       </Link>
-      <button onClick={() => handleButtonClick('login')} className={`button-login ${lastClickedButton === 'login' ? 'clicked' : ''}`}>
+      <button onClick={() => handleButtonClick('login')} className="button-login">
         Login
       </button>
-      <button onClick={() => handleButtonClick('register')} className={`button-login ${lastClickedButton === 'register' ? 'clicked' : ''}`}>
+      <button onClick={() => handleButtonClick('register')} className="button-login">
         Register
     
           </button>
